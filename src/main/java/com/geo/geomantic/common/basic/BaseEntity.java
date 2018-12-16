@@ -1,4 +1,4 @@
-package com.geo.geomantic.module.pojo;
+package com.geo.geomantic.common.basic;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -8,33 +8,41 @@ import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * @author zyz
  * @date 2018/12/15
  */
-public abstract class DataEntity implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
     /**
      * 删除标记（0：正常；1：删除）
      */
     public static final String DEL_FLAG_NORMAL = "0";
     public static final String DEL_FLAG_DELETE = "1";
+//  炒鸡管理员
+    public static final String IS_ADMIN = "1";
 
     protected String id;
     protected Date createDate;
     protected Date updateDate;
     protected String createBy;
 
-    protected String state; 	// 状态（0：正常；1：删除）
-
     protected int pageNo; // 当前页码
     protected int pageSize; // 页面大小，设置为“-1”表示不进行分页（分页无效）
+    protected String orderBy; // 排序sql，例如：a.create_date desc
 
     /**
      * 自定义SQL（SQL标识，SQL内容）
      */
     protected Map<String, String> sqlMap;
+
+    public BaseEntity() {}
+
+    public BaseEntity(String id) {
+        this.id = id;
+    }
 
     public String getId() {
         return id;
@@ -83,14 +91,6 @@ public abstract class DataEntity implements Serializable {
         this.sqlMap = sqlMap;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public int getPageNo() {
         return pageNo;
     }
@@ -106,4 +106,28 @@ public abstract class DataEntity implements Serializable {
     public void setPageSize(int pageSize) {
         this.pageSize = pageSize;
     }
+
+    /**
+     * 获取查询排序字符串
+     * @return
+     */
+    @JsonIgnore
+    public String getOrderBy() {
+        // SQL过滤，防止注入
+        String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|"
+                + "(\\b(select|update|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
+        Pattern sqlPattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
+        if (sqlPattern.matcher(orderBy).find()) {
+            return "";
+        }
+        return orderBy;
+    }
+
+    /**
+     * 设置查询排序，标准查询有效， 实例： updatedate desc, name asc
+     */
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
+
 }

@@ -2,7 +2,7 @@ package com.geo.geomantic.module.service.Impl;
 
 import com.geo.geomantic.module.dao.DemoDao;
 import com.geo.geomantic.module.pojo.Demo;
-import com.geo.geomantic.module.service.BaseService;
+import com.geo.geomantic.common.basic.BaseService;
 import com.geo.geomantic.module.service.DemoService;
 import org.springframework.stereotype.Service;
 

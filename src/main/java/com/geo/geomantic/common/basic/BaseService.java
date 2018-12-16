@@ -1,11 +1,9 @@
-package com.geo.geomantic.module.service;
+package com.geo.geomantic.common.basic;
 
-import com.geo.geomantic.module.dao.BaseDao;
-import com.geo.geomantic.module.pojo.DataEntity;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.thymeleaf.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.List;
  * @author zyz
  * @date 2018/12/15
  */
-public abstract class BaseService<D extends BaseDao<T>, T extends DataEntity> {
+public abstract class BaseService<D extends BaseDao<T>, T extends BaseEntity> {
 
     /**
      * 持久层对象
@@ -73,7 +71,7 @@ public abstract class BaseService<D extends BaseDao<T>, T extends DataEntity> {
      * @param entity
      */
     public void save(T entity) {
-        if (StringUtils.isEmpty(entity.getId())) {
+        if (StringUtils.isBlank(entity.getId())) {
             entity.setCreateDate(new Date());
             entity.setUpdateDate(new Date());
             dao.insert(entity);

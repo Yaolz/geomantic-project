@@ -1,15 +1,18 @@
 package com.geo.geomantic.module.dao;
 
 import com.geo.geomantic.common.basic.BaseDao;
-import com.geo.geomantic.module.pojo.Demo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+import com.geo.geomantic.module.pojo.User;
+
 
 /**
+ * 用户管理DAO接口
  * @author zyz
- * @date 2018/9/14
+ * @version 2018-12-16
  */
 @Mapper
 @Repository
-public interface DemoDao extends BaseDao<Demo> {
+public interface UserDao extends BaseDao<User> {
+	
 }

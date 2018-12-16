@@ -1,11 +1,13 @@
 package com.geo.geomantic.module.pojo;
 
 
+import com.geo.geomantic.common.basic.BaseEntity;
+
 /**
  * @author zyz
  * @date 2018/9/14
  */
-public class Demo extends DataEntity {
+public class Demo extends BaseEntity {
 
     private String name;
 

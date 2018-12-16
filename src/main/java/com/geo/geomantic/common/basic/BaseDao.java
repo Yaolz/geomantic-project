@@ -1,4 +1,4 @@
-package com.geo.geomantic.module.dao;
+package com.geo.geomantic.common.basic;
 
 import java.util.List;
 
