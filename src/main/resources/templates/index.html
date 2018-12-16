@@ -1,15 +1,48 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8"/>
-    <title>首页</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>风水罗盘</title>
+
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
 </head>
+
 <body>
-测试项目是否成功
+
+<div class="compass-main">
+    <div class="compassdiv">
+        <div class="compass-c"></div>
+        <div class="compass w h">
+            <div class="compass-1 w h"></div>
+            <div class="compass-2 w h"></div>
+            <div class="compass-3 w h"></div>
+            <div class="compass-4 w h"></div>
+            <div class="compass-5 w h"></div>
+            <div class="compass-6 w h"></div>
+            <div class="compass-7 w h"></div>
+            <div class="compass-8 w h"></div>
+            <div class="compass-9 w h"></div>
+            <div class="compass-10 w h"></div>
+            <div class="compass-11 w h"></div>
+            <div class="compass-12 w h"></div>
+            <div class="compass-13 w h"></div>
+            <div class="compass-14 w h"></div>
+            <div class="compass-15 w h"></div>
+            <div class="compass-16 w h"></div>
+            <div class="compass-17 w h"></div>
+            <div class="compass-18 w h"></div>
+            <div class="compass-19 w h"></div>
+        </div>
+    </div>
+</div>
+
+
 </body>
-<script type="text/javascript" th:inline="javascript">
-    /*<![CDATA[*/
-console.log(/*[[@{相对地址}]]*/);
-/*]]>*/
+<script>
+//    window.setTimeout(function () {
+//        window.location = "/page";
+//    }, 3000);
+    setTimeout("location.href='page'", 3000);
 </script>
 </html>
+

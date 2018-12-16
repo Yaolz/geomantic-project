@@ -23,5 +23,7 @@ public interface UserService {
     void save(User user);
 
     void delete(User user);
+
+    String getId();
 		
 }

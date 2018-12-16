@@ -1,0 +1,28 @@
+body {
+    font-size: 20px;
+    font-family: 微软雅黑;
+}
+
+.common {
+    margin-top: 60px;
+}
+
+.fonts {
+    font-size: 30px;
+    font-style: italic;
+    margin-left: 10%;
+}
+
+.call {
+    float: right;
+    margin-right: 30px;
+    font-size: 16px;
+    color: #964893;
+}
+.img{
+    cursor: pointer;
+    transition: all 0.6s;
+}
+.img:hover {
+    transform:scale(1.1);
+}

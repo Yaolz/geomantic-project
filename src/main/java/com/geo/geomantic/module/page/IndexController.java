@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2018/9/14
  */
 @Controller
+@RequestMapping("/")
 public class IndexController {
 
 
@@ -15,5 +16,11 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping("/page")
+    public String page() {
+        return "compass";
+    }
+
 
 }

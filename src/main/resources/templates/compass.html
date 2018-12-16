@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+
+<link rel="stylesheet"  th:href="@{/layui/css/layui.css}"  media="all"/>
+<link rel="stylesheet"  th:href="@{/css/index.css}"  media="all"/>
+<link href="../static/calendar/css/wnl.css" th:href="@{/calendar/css/wnl.css}" rel="stylesheet" type="text/css"/>
+
+<script src="../static/calendar/js/calendar_top_one.js" th:src="@{/calendar/js/calendar_top_one.js}"></script>
+<script src="../static/calendar/js/calendar_top_two.js" th:src="@{/calendar/js/calendar_top_two.js}"></script>
+
+<body>
+
+<div class="layui-row">
+        <ul class="layui-nav" lay-filter="">
+            <li class="layui-nav-item  layui-this"><a th:href="@{/}"> 首页</a></li>
+            <li class="layui-nav-item"><a th:href="@{/}">大师简介</a></li>
+            <li class="layui-nav-item"><a th:href="@{/}">测算功能</a></li>
+        <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
+        <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
+        <li class="layui-nav-item layui-layout-right">
+            <a th:href="@{/}">个人中心</a>
+        </li>
+    </ul>
+</div>
+<div class="layui-row">
+    <span class="fonts">XXX风水网</span>
+
+    <span class="call">看风水：请拨打：xxxxxxxxxxxxxxx</span>
+</div>
+<div class="layui-container">
+    <div class="layui-row" style="margin-top: 20px">
+        <div class="layui-row layui-col-space10">
+            <div class="layui-col-md3">
+                1/3
+            </div>
+            <div class="layui-col-md6" >
+                <div th:include="calendar1 :: copy" style="background: deepskyblue"></div>
+            </div>
+            <div class="layui-col-md3">
+                1/3
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-row layui-col-space10 common">
+        <h3>大师简介:</h3>
+        <div class="layui-col-md5">
+            <img th:src="@{/images/173.png}">
+        </div>
+        <div class="layui-col-md7">
+            <span>
+                年轻时酷爱易学，从事宅居人文环境研究十几年，深信人文环境对人生成长起到一定的作用。
+                曾经花十几年的时间和财力，拜过三位知名易学风水名师，有杨筠松（杨救贫）贴身关门弟子刘江东后裔之孙刘方正师父、兴国三僚曾氏徒子后裔（郭航州）师父，还得到几位地方老仙师的真传。
+                勘察全国各地名墓、古宅。
+            </span>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space10 common">
+        <h3>风水吉祥物：</h3>
+        <div class="layui-col-md3">
+            <a href=""><img th:src="@{/images/173.png}" style="width: 280px" class="img"></a>
+            <div class="layui-row">
+                <div class="layui-col-md4"><a>名称</a></div>
+                <div class="layui-col-md8"> 商品简介</div>
+            </div>
+            <span class="word"></span>
+        </div>
+        <div class="layui-col-md3">
+            <img th:src="@{/images/173.png}" style="width: 280px">
+            <div class="layui-row">
+                <div class="layui-col-md4"><a>名称</a></div>
+                <div class="layui-col-md8"> 商品简介</div>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <img th:src="@{/images/173.png}" style="width: 280px">
+            <div class="layui-row">
+                <div class="layui-col-md4"><a>名称</a></div>
+                <div class="layui-col-md8"> 商品简介</div>
+            </div>
+        </div>
+        <div class="layui-col-md3">
+            <img th:src="@{/images/173.png}" style="width: 280px">
+            <div class="layui-row">
+                <div class="layui-col-md4"><a>名称</a></div>
+                <div class="layui-col-md8"> 商品简介</div>
+            </div>
+        </div>
+    </div>
+    <div class="layui-row layui-col-space10 common">
+        <h3>风水案例：</h3>
+        <div class="layui-col-md4">
+            <img th:src="@{/images/173.png}">
+        </div>
+        <div class="layui-col-md4">
+            <img th:src="@{/images/173.png}">
+        </div>
+        <div class="layui-col-md4">
+            <img th:src="@{/images/173.png}">
+        </div>
+    </div>
+
+</div>
+</body>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/jquery/jquery.min.js}"></script>
+<script>
+    //注意：导航 依赖 element 模块，否则无法进行功能性操作
+    layui.use('element', function () {
+        var element = layui.element;
+
+        //…
+    });
+
+
+    $.get('/data/userPage?pageNum=1&pageSize=10',
+        function (res) {
+        console.log("msg：");
+        console.log(res);
+            if (res.code === '0000') {
+                console.log("body：" );
+                console.log(res.body);
+            } else {
+                alert(res.msg);
+            }
+    });
+</script>
+</html>

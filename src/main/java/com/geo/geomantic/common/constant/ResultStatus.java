@@ -8,6 +8,9 @@ package com.geo.geomantic.common.constant;
 public enum  ResultStatus {
 
     SUCCESS("0000", "成功"),
+    ONE("0001", "错误一"),
+    TWO("0001", "错误二"),
+    THREE("0001", "错误三"),
 
     SYSTEM_ERROR("9999","系统错误！");
 

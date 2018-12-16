@@ -14,5 +14,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends BaseService<UserDao, User> implements UserService{
 
-		
+
+    @Override
+    public String getId() {
+        return "1";
+    }
 }
