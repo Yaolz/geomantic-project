@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.TaskDao">
+	
+	<sql id="taskColumns">
+		a.id AS "id",
+		a.photo AS "photo",
+		a.task_name AS "taskName",
+		a.description AS "description",
+		a.price AS "price",
+		a.use_num AS "useNum",
+		a.page_view AS "pageView",
+		a.state AS "state",
+		a.create_by AS "createBy",
+		a.create_date AS "createDate",
+		a.update_by AS "updateBy",
+		a.update_date AS "updateDate"
+	</sql>
+	
+	<sql id="taskJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM t_task a
+		<include refid="taskJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="photo != null and photo != ''">
+				AND a.photo = #{photo}
+			</if>
+			<if test="taskName != null and taskName != ''">
+				AND a.task_name = #{taskName}
+			</if>
+			<if test="description != null and description != ''">
+				AND a.description = #{description}
+			</if>
+			<if test="price != null and price != ''">
+				AND a.price = #{price}
+			</if>
+			<if test="useNum != null and useNum != ''">
+				AND a.use_num = #{useNum}
+			</if>
+			<if test="pageView != null and pageView != ''">
+				AND a.page_view = #{pageView}
+			</if>
+			<if test="state != null and state != ''">
+				AND a.state = #{state}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.create_by = #{createBy}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND a.create_date = #{createDate}
+			</if>
+			<if test="updateBy != null and updateBy != ''">
+				AND a.update_by = #{updateBy}
+			</if>
+			<if test="updateDate != null and updateDate != ''">
+				AND a.update_date = #{updateDate}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="Task">
+		SELECT 
+			<include refid="taskColumns"/>
+		FROM t_task a
+		<include refid="taskJoins"/>
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="queryBy" resultType="Task">
+		SELECT
+			<include refid="taskColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="Task">
+		SELECT 
+			<include refid="taskColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_task
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="photo != null">photo,</if>
+			<if test="taskName != null">task_name,</if>
+			<if test="description != null">description,</if>
+			<if test="price != null">price,</if>
+			<if test="useNum != null">use_num,</if>
+			<if test="pageView != null">page_view,</if>
+			<if test="state != null">state,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateBy != null">update_by,</if>
+			<if test="updateDate != null">update_date,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="photo != null">#{photo},</if>
+			<if test="taskName != null">#{taskName},</if>
+			<if test="description != null">#{description},</if>
+			<if test="price != null">#{price},</if>
+			<if test="useNum != null">#{useNum},</if>
+			<if test="pageView != null">#{pageView},</if>
+			<if test="state != null">#{state},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="createDate != null">#{createDate},</if>
+			<if test="updateBy != null">#{updateBy},</if>
+			<if test="updateDate != null">#{updateDate},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE t_task
+		<set> 
+			<if test="photo != null">photo = #{photo},</if>
+			<if test="taskName != null">task_name = #{taskName},</if>
+			<if test="description != null">description = #{description},</if>
+			<if test="price != null">price = #{price},</if>
+			<if test="useNum != null">use_num = #{useNum},</if>
+			<if test="pageView != null">page_view = #{pageView},</if>
+			<if test="state != null">state = #{state},</if>
+			<if test="updateBy != null">update_by = #{updateBy},</if>
+			<if test="updateDate != null">update_date = #{updateDate},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM t_task
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

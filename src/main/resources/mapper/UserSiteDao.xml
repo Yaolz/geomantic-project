@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.UserSiteDao">
+	
+	<sql id="userSiteColumns">
+		a.id AS "id",
+		a.create_by AS "createBy",
+		a.address AS "address",
+		a.is_site AS "isSite",
+		a.address_code AS "addressCode"
+	</sql>
+	
+	<sql id="userSiteJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM x_user_site a
+		<include refid="userSiteJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.create_by = #{createBy}
+			</if>
+			<if test="address != null and address != ''">
+				AND a.address = #{address}
+			</if>
+			<if test="isSite != null and isSite != ''">
+				AND a.is_site = #{isSite}
+			</if>
+			<if test="addressCode != null and addressCode != ''">
+				AND a.address_code = #{addressCode}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="UserSite">
+		SELECT 
+			<include refid="userSiteColumns"/>
+		FROM x_user_site a
+		<include refid="userSiteJoins"/>
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="queryBy" resultType="UserSite">
+		SELECT
+			<include refid="userSiteColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="UserSite">
+		SELECT 
+			<include refid="userSiteColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO x_user_site
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="address != null">address,</if>
+			<if test="isSite != null">is_site,</if>
+			<if test="addressCode != null">address_code,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="address != null">#{address},</if>
+			<if test="isSite != null">#{isSite},</if>
+			<if test="addressCode != null">#{addressCode},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE x_user_site
+		<set> 
+			<if test="address != null">address = #{address},</if>
+			<if test="isSite != null">is_site = #{isSite},</if>
+			<if test="addressCode != null">address_code = #{addressCode},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM x_user_site
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

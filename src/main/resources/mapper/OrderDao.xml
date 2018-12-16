@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.OrderDao">
+	
+	<sql id="orderColumns">
+		a.id AS "id",
+		a.product_id AS "productId",
+		a.order_num AS "orderNum",
+		a.create_date AS "createDate",
+		a.update_date AS "updateDate",
+		a.create_by AS "createBy",
+		a.state AS "state"
+	</sql>
+	
+	<sql id="orderJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM t_order a
+		<include refid="orderJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="productId != null and productId != ''">
+				AND a.product_id = #{productId}
+			</if>
+			<if test="orderNum != null and orderNum != ''">
+				AND a.order_num = #{orderNum}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND a.create_date = #{createDate}
+			</if>
+			<if test="updateDate != null and updateDate != ''">
+				AND a.update_date = #{updateDate}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.create_by = #{createBy}
+			</if>
+			<if test="state != null and state != ''">
+				AND a.state = #{state}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="Order">
+		SELECT 
+			<include refid="orderColumns"/>
+		FROM t_order a
+		<include refid="orderJoins"/>
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="queryBy" resultType="Order">
+		SELECT
+			<include refid="orderColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="Order">
+		SELECT 
+			<include refid="orderColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_order
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="productId != null">product_id,</if>
+			<if test="orderNum != null">order_num,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateDate != null">update_date,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="state != null">state,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="productId != null">#{productId},</if>
+			<if test="orderNum != null">#{orderNum},</if>
+			<if test="createDate != null">#{createDate},</if>
+			<if test="updateDate != null">#{updateDate},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="state != null">#{state},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE t_order
+		<set> 
+			<if test="productId != null">product_id = #{productId},</if>
+			<if test="orderNum != null">order_num = #{orderNum},</if>
+			<if test="updateDate != null">update_date = #{updateDate},</if>
+			<if test="state != null">state = #{state},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM t_order
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

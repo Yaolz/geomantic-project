@@ -14,7 +14,8 @@
 		a.address_code AS "addressCode",
 		a.state AS "state",
 		a.create_date AS "createDate",
-		a.update_date AS "updateDate"
+		a.update_date AS "updateDate",
+		a.create_by AS "createBy"
 	</sql>
 	
 	<sql id="userJoins">
@@ -59,6 +60,9 @@
 			</if>
 			<if test="updateDate != null and updateDate != ''">
 				AND a.update_date = #{updateDate}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.create_by = #{createBy}
 			</if>
 		</where>
 	</sql>
@@ -116,6 +120,7 @@
 			<if test="state != null">state,</if>
 			<if test="createDate != null">create_date,</if>
 			<if test="updateDate != null">update_date,</if>
+			<if test="createBy != null">create_by,</if>
 		</trim>
 		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
 			<if test="id != null">#{id},</if>
@@ -130,6 +135,7 @@
 			<if test="state != null">#{state},</if>
 			<if test="createDate != null">#{createDate},</if>
 			<if test="updateDate != null">#{updateDate},</if>
+			<if test="createBy != null">#{createBy},</if>
 		</trim>
 	</insert>
 	

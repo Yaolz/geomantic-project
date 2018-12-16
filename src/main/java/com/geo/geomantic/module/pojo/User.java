@@ -14,15 +14,15 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class User extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
-	private String nickName;		// ??
-	private String phone;		// ???
-	private String password;		// ??
-	private String sex;		// ??
-	private String headphoto;		// ??
-	private String autograph;		// ????
+	private String nickName;		// 昵称
+	private String phone;		// 手机号
+	private String password;		// 密码
+	private String sex;		// 性别
+	private String headphoto;		// 头像
+	private String autograph;		// 个性签名
 	private String address;		// address
 	private String addressCode;		// address_code
-	private String state;		// ??
+	private String state;		// 状态
 	
 	public User() {
 		super();
@@ -32,7 +32,7 @@ public class User extends BaseEntity {
 		super(id);
 	}
 
-	@Length(min=1, max=120, message="??长度不能为空且不能超过120个字符")
+	@Length(min=1, max=120, message="昵称长度不能为空且不能超过120个字符")
 	public String getNickName() {
 		return nickName;
 	}
@@ -41,7 +41,7 @@ public class User extends BaseEntity {
 		this.nickName = nickName;
 	}
 	
-	@Length(min=1, max=11, message="???长度不能为空且不能超过11个字符")
+	@Length(min=1, max=11, message="手机号长度不能为空且不能超过11个字符")
 	public String getPhone() {
 		return phone;
 	}
@@ -50,7 +50,7 @@ public class User extends BaseEntity {
 		this.phone = phone;
 	}
 	
-	@Length(min=1, max=100, message="??长度不能为空且不能超过100个字符")
+	@Length(min=1, max=100, message="密码长度不能为空且不能超过100个字符")
 	public String getPassword() {
 		return password;
 	}
@@ -59,7 +59,7 @@ public class User extends BaseEntity {
 		this.password = password;
 	}
 	
-	@Length(min=1, max=20, message="??长度不能为空且不能超过20个字符")
+	@Length(min=1, max=20, message="性别长度不能为空且不能超过20个字符")
 	public String getSex() {
 		return sex;
 	}
@@ -68,7 +68,7 @@ public class User extends BaseEntity {
 		this.sex = sex;
 	}
 	
-	@Length(min=1, max=100, message="??长度不能为空且不能超过100个字符")
+	@Length(min=1, max=100, message="头像长度不能为空且不能超过100个字符")
 	public String getHeadphoto() {
 		return headphoto;
 	}
@@ -77,7 +77,7 @@ public class User extends BaseEntity {
 		this.headphoto = headphoto;
 	}
 	
-	@Length(min=0, max=500, message="????长度不能超过 500个字符")
+	@Length(min=0, max=500, message="个性签名长度不能超过 500个字符")
 	public String getAutograph() {
 		return autograph;
 	}
@@ -104,7 +104,7 @@ public class User extends BaseEntity {
 		this.addressCode = addressCode;
 	}
 	
-	@Length(min=1, max=4, message="??长度不能为空且不能超过4个字符")
+	@Length(min=1, max=4, message="状态长度不能为空且不能超过4个字符")
 	public String getState() {
 		return state;
 	}

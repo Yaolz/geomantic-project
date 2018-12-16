@@ -51,6 +51,23 @@ public class MsgModel {
         this.body = responsebody;
     }
 
+    public static MsgModel ok(Object responsebody) {
+        return new MsgModel(ResultStatus.SUCCESS, responsebody);
+    }
+
+    public static MsgModel ok() {
+        return new MsgModel(ResultStatus.SUCCESS);
+    }
+
+    public static MsgModel error(ResultStatus error) {
+        return new MsgModel(error);
+    }
+
+    //自定义错误信息
+    public static MsgModel error(String error) {
+        return new MsgModel("9999", error);
+    }
+
     public String getCode() {
         return code;
     }

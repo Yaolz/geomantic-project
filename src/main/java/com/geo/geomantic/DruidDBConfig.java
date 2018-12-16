@@ -27,7 +27,7 @@ public class DruidDBConfig {
     @Value("${spring.datasource.password}")
     private String password;
 
-    @Value("com.mysql.jdbc.Driver")
+    @Value("${spring.datasource.driver-class-name}")
     private String driverClassName;
 
     @Value("5")

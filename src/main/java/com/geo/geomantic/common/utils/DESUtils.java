@@ -32,7 +32,7 @@ public class DESUtils {
     /** 解密工具 */
     private Cipher decryptCipher = null;
     /**
-     * 将byte数组转换为表示16进制值的字符串， 如：byte[]{8,18}转换为：0813， 和public static byte[]
+     * 将byte数组转换为表示32进制值的字符串， 如：byte[]{8,18}转换为：0813， 和public static byte[]
      * hexStr2ByteArr(String strIn) 互为可逆的转换过程
      * @param arrB  需要转换的byte数组
      * @return 转换后的字符串
@@ -49,15 +49,15 @@ public class DESUtils {
                 intTmp = intTmp + 256;
             }
             // 小于0F的数需要在前面补0
-            if (intTmp < 16) {
+            if (intTmp < 32) {
                 sb.append("0");
             }
-            sb.append(Integer.toString(intTmp, 16));
+            sb.append(Integer.toString(intTmp, 32));
         }
         return sb.toString();
     }
     /**
-     * 将表示16进制值的字符串转换为byte数组， 和public static String byteArr2HexStr(byte[] arrB)
+     * 将表示32进制值的字符串转换为byte数组， 和public static String byteArr2HexStr(byte[] arrB)
      * 互为可逆的转换过程
      * @param strIn 需要转换的字符串
      * @return 转换后的byte数组
@@ -69,7 +69,7 @@ public class DESUtils {
         byte[] arrOut = new byte[iLen / 2];
         for (int i = 0; i < iLen; i = i + 2) {
             String strTmp = new String(arrB, i, 2);
-            arrOut[i / 2] = (byte) Integer.parseInt(strTmp, 16);
+            arrOut[i / 2] = (byte) Integer.parseInt(strTmp, 32);
         }
         return arrOut;
     }
@@ -124,7 +124,7 @@ public class DESUtils {
 
     public static void main(String[] args) {
         try {
-            String test2 = "1";
+            String test2 = "123456";
             DESUtils des2 = new DESUtils("zyz");// 自定义密钥
             System.out.println("加密前的字符：" + test2);
             System.out.println("加密后的字符：" + des2.encrypt(test2));
