@@ -3,6 +3,7 @@ package com.geo.geomantic.common.basic;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Maps;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -117,7 +118,7 @@ public abstract class BaseEntity implements Serializable {
         String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|"
                 + "(\\b(select|update|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)";
         Pattern sqlPattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
-        if (sqlPattern.matcher(orderBy).find()) {
+        if (StringUtils.isNotBlank(orderBy) && sqlPattern.matcher(orderBy).find()) {
             return "";
         }
         return orderBy;

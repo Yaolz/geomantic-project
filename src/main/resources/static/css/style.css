@@ -67,9 +67,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .1s;*/
-    /*-webkit-transition:all .1s;*/
-    /*transition:all .1s;*/
+    -moz-transition:all .1s;
+    -webkit-transition:all .1s;
+    transition:all .1s;
 	-moz-animation:rotate 1s infinite linear;
     -webkit-animation:rotate 1s infinite linear;
     animation:rotate 1s infinite linear;
@@ -87,9 +87,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .5s;*/
-    /*-webkit-transition:all .5s;*/
-    /*transition:all .5s;*/
+    -moz-transition:all .5s;
+    -webkit-transition:all .5s;
+    transition:all .5s;
 	-moz-animation:rotate 5s infinite linear;
     -webkit-animation:rotate 5s infinite linear;
     animation:rotate 5s infinite linear;
@@ -111,9 +111,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .25s;*/
-    /*-webkit-transition:all .25s;*/
-    /*transition:all .25s;*/
+    -moz-transition:all .25s;
+    -webkit-transition:all .25s;
+    transition:all .25s;
 	-moz-animation:rotate 25s infinite linear;
     -webkit-animation:rotate 25s infinite linear;
     animation:rotate 25s infinite linear;
@@ -135,9 +135,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .55s;*/
-    /*-webkit-transition:all .55s;*/
-    /*transition:all .55s;*/
+    -moz-transition:all .55s;
+    -webkit-transition:all .55s;
+    transition:all .55s;
 	-moz-animation:rotate 55s infinite linear;
     -webkit-animation:rotate 55s infinite linear;
     animation:rotate 55s infinite linear;
@@ -154,9 +154,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .55s;*/
-    /*-webkit-transition:all .55s;*/
-    /*transition:all .55s;*/
+    -moz-transition:all .55s;
+    -webkit-transition:all .55s;
+    transition:all .55s;
 	-moz-animation:rotate 55s infinite linear;
     -webkit-animation:rotate 55s infinite linear;
     animation:rotate 55s infinite linear;
@@ -173,9 +173,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .35s;*/
-    /*-webkit-transition:all .35s;*/
-    /*transition:all .35s;*/
+    -moz-transition:all .35s;
+    -webkit-transition:all .35s;
+    transition:all .35s;
 	-moz-animation:rotate 35s infinite linear;
     -webkit-animation:rotate 35s infinite linear;
     animation:rotate 35s infinite linear;
@@ -192,9 +192,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .25s;*/
-    /*-webkit-transition:all .25s;*/
-    /*transition:all .25s;*/
+    -moz-transition:all .25s;
+    -webkit-transition:all .25s;
+    transition:all .25s;
 	-moz-animation:rotate 25s infinite linear;
     -webkit-animation:rotate 25s infinite linear;
     animation:rotate 25s infinite linear;
@@ -216,9 +216,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .45s;*/
-    /*-webkit-transition:all .45s;*/
-    /*transition:all .45s;*/
+    -moz-transition:all .45s;
+    -webkit-transition:all .45s;
+    transition:all .45s;
 	-moz-animation:rotate 45s infinite linear;
     -webkit-animation:rotate 45s infinite linear;
     animation:rotate 45s infinite linear;
@@ -240,9 +240,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .55s;*/
-    /*-webkit-transition:all .55s;*/
-    /*transition:all .55s;*/
+    -moz-transition:all .55s;
+    -webkit-transition:all .55s;
+    transition:all .55s;
 	-moz-animation:rotate 55s infinite linear;
     -webkit-animation:rotate 55s infinite linear;
     animation:rotate 55s infinite linear;
@@ -264,9 +264,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .45s;*/
-    /*-webkit-transition:all .45s;*/
-    /*transition:all .45s;*/
+    -moz-transition:all .45s;
+    -webkit-transition:all .45s;
+    transition:all .45s;
 	-moz-animation:rotate 45s infinite linear;
     -webkit-animation:rotate 45s infinite linear;
     animation:rotate 45s infinite linear;
@@ -283,9 +283,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .35s;*/
-    /*-webkit-transition:all .35s;*/
-    /*transition:all .35s;*/
+    -moz-transition:all .35s;
+    -webkit-transition:all .35s;
+    transition:all .35s;
 	-moz-animation:rotate 35s infinite linear;
     -webkit-animation:rotate 35s infinite linear;
     animation:rotate 35s infinite linear;
@@ -307,9 +307,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .25s;*/
-    /*-webkit-transition:all .25s;*/
-    /*transition:all .25s;*/
+    -moz-transition:all .25s;
+    -webkit-transition:all .25s;
+    transition:all .25s;
 	-moz-animation:rotate 25s infinite linear;
     -webkit-animation:rotate 25s infinite linear;
     animation:rotate 25s infinite linear;
@@ -326,9 +326,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .3s;*/
-    /*-webkit-transition:all .3s;*/
-    /*transition:all .3s;*/
+    -moz-transition:all .3s;
+    -webkit-transition:all .3s;
+    transition:all .3s;
 	-moz-animation:rotate 3s infinite linear;
     -webkit-animation:rotate 3s infinite linear;
     animation:rotate 3s infinite linear;
@@ -350,9 +350,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .35s;*/
-    /*-webkit-transition:all .35s;*/
-    /*transition:all .35s;*/
+    -moz-transition:all .35s;
+    -webkit-transition:all .35s;
+    transition:all .35s;
 	-moz-animation:rotate 35s infinite linear;
     -webkit-animation:rotate 35s infinite linear;
     animation:rotate 35s infinite linear;
@@ -369,9 +369,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .15s;*/
-    /*-webkit-transition:all .15s;*/
-    /*transition:all .15s;*/
+    -moz-transition:all .15s;
+    -webkit-transition:all .15s;
+    transition:all .15s;
 	-moz-animation:rotate 15s infinite linear;
     -webkit-animation:rotate 15s infinite linear;
     animation:rotate 15s infinite linear;
@@ -388,9 +388,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .25s;*/
-    /*-webkit-transition:all .25s;*/
-    /*transition:all .25s;*/
+    -moz-transition:all .25s;
+    -webkit-transition:all .25s;
+    transition:all .25s;
 	-moz-animation:rotate 25s infinite linear;
     -webkit-animation:rotate 25s infinite linear;
     animation:rotate 25s infinite linear;
@@ -412,9 +412,9 @@ img{border:none;}
 	background-size: 700px 700px;
 	-webkit-border-radius: 350px;
 	border-radius: 350px;
-    /*-moz-transition:all .20s;*/
-    /*-webkit-transition:all .20s;*/
-    /*transition:all .20s;*/
+    -moz-transition:all .20s;
+    -webkit-transition:all .20s;
+    transition:all .20s;
 	-moz-animation:rotate 20s infinite linear;
     -webkit-animation:rotate 20s infinite linear;
     animation:rotate 20s infinite linear;

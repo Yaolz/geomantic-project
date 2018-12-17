@@ -26,3 +26,6 @@ body {
 .img:hover {
     transform:scale(1.1);
 }
+.layui-form-item input{
+    float: right;
+}

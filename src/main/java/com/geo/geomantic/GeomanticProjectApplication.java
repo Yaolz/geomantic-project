@@ -19,7 +19,7 @@ public class GeomanticProjectApplication {
 		SpringApplication.run(GeomanticProjectApplication.class, args);
 		StringBuilder sb = new StringBuilder();
 		sb.append("\r\n======================================================================\r\n");
-		sb.append("\r\n    欢迎使用  风水网站  - Powered By zyz\r\n");
+		sb.append("\r\n    欢迎使用  风水网站  - Powered By ylz\r\n");
 		sb.append("\r\n======================================================================\r\n");
 		System.out.println(sb.toString());
 	}

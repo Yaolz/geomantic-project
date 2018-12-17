@@ -8,10 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author zyz
@@ -21,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("data")
 @Api(value = "UserController", description = "用户接口")
 public class UserController {
-
     @Autowired
     private UserService userService;
+
 
     @GetMapping("user")
     @ApiOperation("获取用户详情")
@@ -56,6 +53,20 @@ public class UserController {
             }
             return MsgModel.ok();
     }
+
+    @PostMapping("queryUser")
+    @ApiOperation("根据信息查询用户是否存在")
+    public MsgModel queryUser(@RequestParam("phone") String phone) {
+        User user = new User();
+        user.setPhone(phone);
+        user = userService.get(user);
+        if (user == null) {
+            return MsgModel.error(ResultStatus.USER_EXIS);
+        }
+        return MsgModel.ok();
+    }
+
+
 
 
 }

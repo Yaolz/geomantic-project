@@ -12,6 +12,9 @@ public enum  ResultStatus {
     TWO("0001", "错误二"),
     THREE("0001", "错误三"),
 
+    USER_NOT_EXIS("1000","用户不存在"),
+    USER_EXIS("1001","用户已存在"),
+
     SYSTEM_ERROR("9999","系统错误！");
 
 
