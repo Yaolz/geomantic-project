@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.FlowDao">
+	
+	<sql id="flowColumns">
+		a.id AS "id",
+		a.create_by AS "createBy",
+		a.product_id AS "productId",
+		a.order_no AS "orderNo",
+		a.transaction_no AS "transactionNo",
+		a.way AS "way",
+		a.status AS "status",
+		a.money AS "money",
+		a.remarks AS "remarks",
+		a.create_date AS "createDate",
+		a.update_date AS "updateDate"
+	</sql>
+	
+	<sql id="flowJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM t_flow a
+		<include refid="flowJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.create_by = #{createBy}
+			</if>
+			<if test="productId != null and productId != ''">
+				AND a.product_id = #{productId}
+			</if>
+			<if test="orderNo != null and orderNo != ''">
+				AND a.order_no = #{orderNo}
+			</if>
+			<if test="transactionNo != null and transactionNo != ''">
+				AND a.transaction_no = #{transactionNo}
+			</if>
+			<if test="way != null and way != ''">
+				AND a.way = #{way}
+			</if>
+			<if test="status != null and status != ''">
+				AND a.status = #{status}
+			</if>
+			<if test="money != null and money != ''">
+				AND a.money = #{money}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				AND a.remarks = #{remarks}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND a.create_date = #{createDate}
+			</if>
+			<if test="updateDate != null and updateDate != ''">
+				AND a.update_date = #{updateDate}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="Flow">
+		SELECT 
+			<include refid="flowColumns"/>
+		FROM t_flow a
+		<include refid="flowJoins"/>
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="queryBy" resultType="Flow">
+		SELECT
+			<include refid="flowColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="Flow">
+		SELECT 
+			<include refid="flowColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_flow
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">id,</if>
+			<if test="createBy != null">create_by,</if>
+			<if test="productId != null">product_id,</if>
+			<if test="orderNo != null">order_no,</if>
+			<if test="transactionNo != null">transaction_no,</if>
+			<if test="way != null">way,</if>
+			<if test="status != null">status,</if>
+			<if test="money != null">money,</if>
+			<if test="remarks != null">remarks,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateDate != null">update_date,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="productId != null">#{productId},</if>
+			<if test="orderNo != null">#{orderNo},</if>
+			<if test="transactionNo != null">#{transactionNo},</if>
+			<if test="way != null">#{way},</if>
+			<if test="status != null">#{status},</if>
+			<if test="money != null">#{money},</if>
+			<if test="remarks != null">#{remarks},</if>
+			<if test="createDate != null">#{createDate},</if>
+			<if test="updateDate != null">#{updateDate},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE t_flow
+		<set> 
+			<if test="productId != null">product_id = #{productId},</if>
+			<if test="orderNo != null">order_no = #{orderNo},</if>
+			<if test="transactionNo != null">transaction_no = #{transactionNo},</if>
+			<if test="way != null">way = #{way},</if>
+			<if test="status != null">status = #{status},</if>
+			<if test="money != null">money = #{money},</if>
+			<if test="remarks != null">remarks = #{remarks},</if>
+			<if test="updateDate != null">update_date = #{updateDate},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM t_flow
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

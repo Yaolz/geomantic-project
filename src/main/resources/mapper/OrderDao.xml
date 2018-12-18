@@ -3,13 +3,39 @@
 <mapper namespace="com.geo.geomantic.module.dao.OrderDao">
 	
 	<sql id="orderColumns">
-		a.id AS "id",
+		a.order_id AS "orderId",
 		a.product_id AS "productId",
-		a.order_num AS "orderNum",
+		a.order_no AS "orderNo",
 		a.create_date AS "createDate",
+		a.order_money AS "orderMoney",
 		a.update_date AS "updateDate",
+		a.orderIntegration AS "orderintegration",
 		a.create_by AS "createBy",
-		a.state AS "state"
+		a.integration_amount AS "integrationAmount",
+		a.state AS "state",
+		a.freight AS "freight",
+		a.order_count_money AS "orderCountMoney",
+		a.deal_state AS "dealState",
+		a.buyer_remark AS "buyerRemark",
+		a.dealpay_type AS "dealpayType",
+		a.receiver_address AS "receiverAddress",
+		a.receiver_mobile AS "receiverMobile",
+		a.receiver_name AS "receiverName",
+		a.receiver_phone AS "receiverPhone",
+		a.receiver_postcode AS "receiverPostcode",
+		a.buyer_name AS "buyerName",
+		a.buy_userid AS "buyUserid",
+		a.create_time AS "createTime",
+		a.pay_time AS "payTime",
+		a.recvfee_time AS "recvfeeTime",
+		a.recv_username AS "recvUsername",
+		a.freight_company AS "freightCompany",
+		a.freight_number AS "freightNumber",
+		a.express_code AS "expressCode",
+		a.channel_balance AS "channelBalance",
+		a.return_balance AS "returnBalance",
+		a.update_by AS "updateBy",
+		a.remarks AS "remarks"
 	</sql>
 	
 	<sql id="orderJoins">
@@ -19,26 +45,104 @@
 		FROM t_order a
 		<include refid="orderJoins"/>
 		<where>
-			<if test="id != null and id != ''">
-				AND a.id = #{id}
+			<if test="orderId != null and orderId != ''">
+				AND a.order_id = #{orderId}
 			</if>
 			<if test="productId != null and productId != ''">
 				AND a.product_id = #{productId}
 			</if>
-			<if test="orderNum != null and orderNum != ''">
-				AND a.order_num = #{orderNum}
+			<if test="orderNo != null and orderNo != ''">
+				AND a.order_no = #{orderNo}
 			</if>
 			<if test="createDate != null and createDate != ''">
 				AND a.create_date = #{createDate}
 			</if>
+			<if test="orderMoney != null and orderMoney != ''">
+				AND a.order_money = #{orderMoney}
+			</if>
 			<if test="updateDate != null and updateDate != ''">
 				AND a.update_date = #{updateDate}
+			</if>
+			<if test="orderintegration != null and orderintegration != ''">
+				AND a.orderIntegration = #{orderintegration}
 			</if>
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by = #{createBy}
 			</if>
+			<if test="integrationAmount != null and integrationAmount != ''">
+				AND a.integration_amount = #{integrationAmount}
+			</if>
 			<if test="state != null and state != ''">
 				AND a.state = #{state}
+			</if>
+			<if test="freight != null and freight != ''">
+				AND a.freight = #{freight}
+			</if>
+			<if test="orderCountMoney != null and orderCountMoney != ''">
+				AND a.order_count_money = #{orderCountMoney}
+			</if>
+			<if test="dealState != null and dealState != ''">
+				AND a.deal_state = #{dealState}
+			</if>
+			<if test="buyerRemark != null and buyerRemark != ''">
+				AND a.buyer_remark = #{buyerRemark}
+			</if>
+			<if test="dealpayType != null and dealpayType != ''">
+				AND a.dealpay_type = #{dealpayType}
+			</if>
+			<if test="receiverAddress != null and receiverAddress != ''">
+				AND a.receiver_address = #{receiverAddress}
+			</if>
+			<if test="receiverMobile != null and receiverMobile != ''">
+				AND a.receiver_mobile = #{receiverMobile}
+			</if>
+			<if test="receiverName != null and receiverName != ''">
+				AND a.receiver_name = #{receiverName}
+			</if>
+			<if test="receiverPhone != null and receiverPhone != ''">
+				AND a.receiver_phone = #{receiverPhone}
+			</if>
+			<if test="receiverPostcode != null and receiverPostcode != ''">
+				AND a.receiver_postcode = #{receiverPostcode}
+			</if>
+			<if test="buyerName != null and buyerName != ''">
+				AND a.buyer_name = #{buyerName}
+			</if>
+			<if test="buyUserid != null and buyUserid != ''">
+				AND a.buy_userid = #{buyUserid}
+			</if>
+			<if test="createTime != null and createTime != ''">
+				AND a.create_time = #{createTime}
+			</if>
+			<if test="payTime != null and payTime != ''">
+				AND a.pay_time = #{payTime}
+			</if>
+			<if test="recvfeeTime != null and recvfeeTime != ''">
+				AND a.recvfee_time = #{recvfeeTime}
+			</if>
+			<if test="recvUsername != null and recvUsername != ''">
+				AND a.recv_username = #{recvUsername}
+			</if>
+			<if test="freightCompany != null and freightCompany != ''">
+				AND a.freight_company = #{freightCompany}
+			</if>
+			<if test="freightNumber != null and freightNumber != ''">
+				AND a.freight_number = #{freightNumber}
+			</if>
+			<if test="expressCode != null and expressCode != ''">
+				AND a.express_code = #{expressCode}
+			</if>
+			<if test="channelBalance != null and channelBalance != ''">
+				AND a.channel_balance = #{channelBalance}
+			</if>
+			<if test="returnBalance != null and returnBalance != ''">
+				AND a.return_balance = #{returnBalance}
+			</if>
+			<if test="updateBy != null and updateBy != ''">
+				AND a.update_by = #{updateBy}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				AND a.remarks = #{remarks}
 			</if>
 		</where>
 	</sql>
@@ -48,7 +152,7 @@
 			<include refid="orderColumns"/>
 		FROM t_order a
 		<include refid="orderJoins"/>
-		WHERE a.id = #{id}
+		WHERE a.order_id = #{orderId}
 	</select>
 
 	<select id="queryBy" resultType="Order">
@@ -84,39 +188,118 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO t_order
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">id,</if>
+			<if test="orderId != null">order_id,</if>
 			<if test="productId != null">product_id,</if>
-			<if test="orderNum != null">order_num,</if>
+			<if test="orderNo != null">order_no,</if>
 			<if test="createDate != null">create_date,</if>
+			<if test="orderMoney != null">order_money,</if>
 			<if test="updateDate != null">update_date,</if>
+			<if test="orderintegration != null">orderIntegration,</if>
 			<if test="createBy != null">create_by,</if>
+			<if test="integrationAmount != null">integration_amount,</if>
 			<if test="state != null">state,</if>
+			<if test="freight != null">freight,</if>
+			<if test="orderCountMoney != null">order_count_money,</if>
+			<if test="dealState != null">deal_state,</if>
+			<if test="buyerRemark != null">buyer_remark,</if>
+			<if test="dealpayType != null">dealpay_type,</if>
+			<if test="receiverAddress != null">receiver_address,</if>
+			<if test="receiverMobile != null">receiver_mobile,</if>
+			<if test="receiverName != null">receiver_name,</if>
+			<if test="receiverPhone != null">receiver_phone,</if>
+			<if test="receiverPostcode != null">receiver_postcode,</if>
+			<if test="buyerName != null">buyer_name,</if>
+			<if test="buyUserid != null">buy_userid,</if>
+			<if test="createTime != null">create_time,</if>
+			<if test="payTime != null">pay_time,</if>
+			<if test="recvfeeTime != null">recvfee_time,</if>
+			<if test="recvUsername != null">recv_username,</if>
+			<if test="freightCompany != null">freight_company,</if>
+			<if test="freightNumber != null">freight_number,</if>
+			<if test="expressCode != null">express_code,</if>
+			<if test="channelBalance != null">channel_balance,</if>
+			<if test="returnBalance != null">return_balance,</if>
+			<if test="updateBy != null">update_by,</if>
+			<if test="remarks != null">remarks,</if>
 		</trim>
 		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
-			<if test="id != null">#{id},</if>
+			<if test="orderId != null">#{orderId},</if>
 			<if test="productId != null">#{productId},</if>
-			<if test="orderNum != null">#{orderNum},</if>
+			<if test="orderNo != null">#{orderNo},</if>
 			<if test="createDate != null">#{createDate},</if>
+			<if test="orderMoney != null">#{orderMoney},</if>
 			<if test="updateDate != null">#{updateDate},</if>
+			<if test="orderintegration != null">#{orderintegration},</if>
 			<if test="createBy != null">#{createBy},</if>
+			<if test="integrationAmount != null">#{integrationAmount},</if>
 			<if test="state != null">#{state},</if>
+			<if test="freight != null">#{freight},</if>
+			<if test="orderCountMoney != null">#{orderCountMoney},</if>
+			<if test="dealState != null">#{dealState},</if>
+			<if test="buyerRemark != null">#{buyerRemark},</if>
+			<if test="dealpayType != null">#{dealpayType},</if>
+			<if test="receiverAddress != null">#{receiverAddress},</if>
+			<if test="receiverMobile != null">#{receiverMobile},</if>
+			<if test="receiverName != null">#{receiverName},</if>
+			<if test="receiverPhone != null">#{receiverPhone},</if>
+			<if test="receiverPostcode != null">#{receiverPostcode},</if>
+			<if test="buyerName != null">#{buyerName},</if>
+			<if test="buyUserid != null">#{buyUserid},</if>
+			<if test="createTime != null">#{createTime},</if>
+			<if test="payTime != null">#{payTime},</if>
+			<if test="recvfeeTime != null">#{recvfeeTime},</if>
+			<if test="recvUsername != null">#{recvUsername},</if>
+			<if test="freightCompany != null">#{freightCompany},</if>
+			<if test="freightNumber != null">#{freightNumber},</if>
+			<if test="expressCode != null">#{expressCode},</if>
+			<if test="channelBalance != null">#{channelBalance},</if>
+			<if test="returnBalance != null">#{returnBalance},</if>
+			<if test="updateBy != null">#{updateBy},</if>
+			<if test="remarks != null">#{remarks},</if>
 		</trim>
 	</insert>
 	
 	<update id="update">
 		UPDATE t_order
 		<set> 
+			<if test="orderId != null">order_id = #{orderId},</if>
 			<if test="productId != null">product_id = #{productId},</if>
-			<if test="orderNum != null">order_num = #{orderNum},</if>
+			<if test="orderNo != null">order_no = #{orderNo},</if>
+			<if test="orderMoney != null">order_money = #{orderMoney},</if>
 			<if test="updateDate != null">update_date = #{updateDate},</if>
+			<if test="orderintegration != null">orderIntegration = #{orderintegration},</if>
+			<if test="integrationAmount != null">integration_amount = #{integrationAmount},</if>
 			<if test="state != null">state = #{state},</if>
+			<if test="freight != null">freight = #{freight},</if>
+			<if test="orderCountMoney != null">order_count_money = #{orderCountMoney},</if>
+			<if test="dealState != null">deal_state = #{dealState},</if>
+			<if test="buyerRemark != null">buyer_remark = #{buyerRemark},</if>
+			<if test="dealpayType != null">dealpay_type = #{dealpayType},</if>
+			<if test="receiverAddress != null">receiver_address = #{receiverAddress},</if>
+			<if test="receiverMobile != null">receiver_mobile = #{receiverMobile},</if>
+			<if test="receiverName != null">receiver_name = #{receiverName},</if>
+			<if test="receiverPhone != null">receiver_phone = #{receiverPhone},</if>
+			<if test="receiverPostcode != null">receiver_postcode = #{receiverPostcode},</if>
+			<if test="buyerName != null">buyer_name = #{buyerName},</if>
+			<if test="buyUserid != null">buy_userid = #{buyUserid},</if>
+			<if test="createTime != null">create_time = #{createTime},</if>
+			<if test="payTime != null">pay_time = #{payTime},</if>
+			<if test="recvfeeTime != null">recvfee_time = #{recvfeeTime},</if>
+			<if test="recvUsername != null">recv_username = #{recvUsername},</if>
+			<if test="freightCompany != null">freight_company = #{freightCompany},</if>
+			<if test="freightNumber != null">freight_number = #{freightNumber},</if>
+			<if test="expressCode != null">express_code = #{expressCode},</if>
+			<if test="channelBalance != null">channel_balance = #{channelBalance},</if>
+			<if test="returnBalance != null">return_balance = #{returnBalance},</if>
+			<if test="updateBy != null">update_by = #{updateBy},</if>
+			<if test="remarks != null">remarks = #{remarks},</if>
 		</set>
-		WHERE id = #{id}
+		WHERE order_id = #{orderId}
 	</update>
 	
 	<update id="delete">
 		DELETE FROM t_order
-		WHERE id = #{id}
+		WHERE order_id = #{orderId}
 	</update>
 	
 </mapper>

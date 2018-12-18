@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.AreaDao">
+	
+	<sql id="areaColumns">
+		a.ID AS "id",
+		a.PARENT_ID AS "parentId",
+		a.PARENT_IDS AS "parentIds",
+		a.NAME AS "name",
+		a.SORT AS "sort",
+		a.CODE AS "code",
+		a.TYPE AS "type",
+		a.CREATE_BY AS "createBy",
+		a.CREATE_DATE AS "createDate",
+		a.UPDATE_BY AS "updateBy",
+		a.UPDATE_DATE AS "updateDate",
+		a.REMARKS AS "remarks",
+		a.DEL_FLAG AS "delFlag"
+	</sql>
+	
+	<sql id="areaJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM s_area a
+		<include refid="areaJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.ID = #{id}
+			</if>
+			<if test="parentId != null and parentId != ''">
+				AND a.PARENT_ID = #{parentId}
+			</if>
+			<if test="parentIds != null and parentIds != ''">
+				AND a.PARENT_IDS LIKE concat('%',#{parentIds},'%')
+			</if>
+			<if test="name != null and name != ''">
+				AND a.NAME LIKE concat('%',#{name},'%')
+			</if>
+			<if test="sort != null and sort != ''">
+				AND a.SORT = #{sort}
+			</if>
+			<if test="code != null and code != ''">
+				AND a.CODE = #{code}
+			</if>
+			<if test="type != null and type != ''">
+				AND a.TYPE = #{type}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.CREATE_BY = #{createBy}
+			</if>
+			<if test="createDate != null and createDate != ''">
+				AND a.CREATE_DATE = #{createDate}
+			</if>
+			<if test="updateBy != null and updateBy != ''">
+				AND a.UPDATE_BY = #{updateBy}
+			</if>
+			<if test="updateDate != null and updateDate != ''">
+				AND a.UPDATE_DATE = #{updateDate}
+			</if>
+			<if test="remarks != null and remarks != ''">
+				AND a.REMARKS = #{remarks}
+			</if>
+			<if test="delFlag != null and delFlag != ''">
+				AND a.DEL_FLAG = #{delFlag}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="Area">
+		SELECT 
+			<include refid="areaColumns"/>
+		FROM s_area a
+		<include refid="areaJoins"/>
+		WHERE a.ID = #{id}
+	</select>
+
+	<select id="queryBy" resultType="Area">
+		SELECT
+			<include refid="areaColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="Area">
+		SELECT 
+			<include refid="areaColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO s_area
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">ID,</if>
+			<if test="parentId != null">PARENT_ID,</if>
+			<if test="parentIds != null">PARENT_IDS,</if>
+			<if test="name != null">NAME,</if>
+			<if test="sort != null">SORT,</if>
+			<if test="code != null">CODE,</if>
+			<if test="type != null">TYPE,</if>
+			<if test="createBy != null">CREATE_BY,</if>
+			<if test="createDate != null">CREATE_DATE,</if>
+			<if test="updateBy != null">UPDATE_BY,</if>
+			<if test="updateDate != null">UPDATE_DATE,</if>
+			<if test="remarks != null">REMARKS,</if>
+			<if test="delFlag != null">DEL_FLAG,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null">#{id},</if>
+			<if test="parentId != null">#{parentId},</if>
+			<if test="parentIds != null">#{parentIds},</if>
+			<if test="name != null">#{name},</if>
+			<if test="sort != null">#{sort},</if>
+			<if test="code != null">#{code},</if>
+			<if test="type != null">#{type},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="createDate != null">#{createDate},</if>
+			<if test="updateBy != null">#{updateBy},</if>
+			<if test="updateDate != null">#{updateDate},</if>
+			<if test="remarks != null">#{remarks},</if>
+			<if test="delFlag != null">#{delFlag},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE s_area
+		<set> 
+			<if test="parentId != null">PARENT_ID = #{parentId},</if>
+			<if test="parentIds != null">PARENT_IDS = #{parentIds},</if>
+			<if test="name != null">NAME = #{name},</if>
+			<if test="sort != null">SORT = #{sort},</if>
+			<if test="code != null">CODE = #{code},</if>
+			<if test="type != null">TYPE = #{type},</if>
+			<if test="updateBy != null">UPDATE_BY = #{updateBy},</if>
+			<if test="updateDate != null">UPDATE_DATE = #{updateDate},</if>
+			<if test="remarks != null">REMARKS = #{remarks},</if>
+		</set>
+		WHERE ID = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM s_area
+		WHERE ID = #{id}
+	</update>
+	
+</mapper>
