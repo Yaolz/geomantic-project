@@ -17,9 +17,14 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/page")
+    @RequestMapping("page")
     public String page() {
         return "compass";
+    }
+
+    @RequestMapping("home")
+    public String home () {
+        return "home";
     }
 
 

@@ -36,20 +36,21 @@ public class UserController {
         user.setPageNo(pageNum);
         user.setPageSize(pageSize);
         user.setOrderBy("a.create_date DESC");
+        Math.min(1,2);
         return MsgModel.ok(userService.findPage(user));
     }
 
-    @GetMapping("one")
-    @ApiOperation("方法说明1")
-    public MsgModel one(@RequestParam(value = "one", required = false) String one){
-            if (StringUtils.isBlank(one)) {
-                System.out.println("StringUtils使用");
-            } else if ("1".equals(one)) {
-                return MsgModel.error(ResultStatus.ONE);
-            }else if ("2".equals(one)) {
-                return MsgModel.error(ResultStatus.TWO);
-            }else {
-                return MsgModel.error("自定义信息");
+    @PostMapping("update")
+    @ApiOperation("根据用户id更新用户信息")
+    public MsgModel update(@RequestParam("id") String id,@RequestParam("phone") String phone,
+                           @RequestParam("password") String password,@RequestParam("sex") String sex,
+                           @RequestParam(name = "headphoto", required = false) String headphoto, @RequestParam(name = "autograph",required = false) String autograph,
+                           @RequestParam(name = "address",required = false) String address){
+            if (StringUtils.isNotBlank(id)) {
+                User user = userService.get(id);
+                if(user != null){
+                    userService.save(user);
+                }
             }
             return MsgModel.ok();
     }
@@ -63,6 +64,13 @@ public class UserController {
         if (user == null) {
             return MsgModel.error(ResultStatus.USER_EXIS);
         }
+        return MsgModel.ok();
+    }
+
+    @PostMapping("updState")
+    @ApiOperation("根据id冻结、激活用户")
+    public MsgModel updStateById(@RequestParam("id")String id,@RequestParam("state")String state){
+       userService.updStateById(id,state);
         return MsgModel.ok();
     }
 

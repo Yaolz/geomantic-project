@@ -14,5 +14,5 @@ import com.geo.geomantic.module.pojo.User;
 @Mapper
 @Repository
 public interface UserDao extends BaseDao<User> {
-	
+    int updStateById(String id,String state);
 }

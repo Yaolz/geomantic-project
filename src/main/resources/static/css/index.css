@@ -26,6 +26,26 @@ body {
 .img:hover {
     transform:scale(1.1);
 }
-.layui-form-item input{
-    float: right;
+.containDiv{
+    display:none;
+    padding-top: 16%;
+}
+.containDiv,.containDivs input{
+    font-size: 14px;
+}
+.containDivs{
+    display:none;
+    padding-top: 16%;
+}
+.links{
+     margin-top: 28%;
+     margin-left: 2%;
+     font-size: 14px;
+     color: #ed442c;
+ }
+.link{
+    margin-top: 18%;
+    margin-left: 2%;
+    font-size: 14px;
+    color: #ed442c;
 }

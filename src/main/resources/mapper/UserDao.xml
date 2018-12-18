@@ -160,5 +160,13 @@
 		DELETE FROM s_user
 		WHERE id = #{id}
 	</update>
+
+	<update id="updStateById">
+		update  s_user
+		<set>
+			<if test="state != null">state = #{state}</if>
+		</set>
+		WHERE id = #{id}
+	</update>
 	
 </mapper>

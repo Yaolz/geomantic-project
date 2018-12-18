@@ -25,5 +25,7 @@ public interface UserService {
     void delete(User user);
 
     String getId();
+
+    int updStateById(String id,String state);
 		
 }

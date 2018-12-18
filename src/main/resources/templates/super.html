@@ -1,13 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>后台</title>
-    <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
-    <link rel="stylesheet" th:href="@{/css/home/app.css}" media="all">
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
 <div class="layui-layout layui-layout-admin kit-layout-admin">
@@ -30,7 +25,7 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a th:href="@{/page}"><i class="fa fa-sign-out" aria-hidden="true"></i> 首页</a>
+                <a href="/"><i class="fa fa-sign-out" aria-hidden="true"></i> 首页</a>
             </li>
         </ul>
     </div>
@@ -54,15 +49,6 @@
                         <dd><a href="javascript:;" kit-target
                                data-options="{url:'<%=path %>/page/borrowApply/investManage',icon:'&#xe658;',title:'修改密码',id:'14'}"><i
                                 class="layui-icon">&#xe658;</i><span>修改密码</span></a>
-                        </dd>
-                    </dl>
-                </li>
-                <li class="layui-nav-item">
-                    <a th:href="@{/page/menu}"><span>菜单管理</span></a>
-                    <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" kit-target
-                               data-options="{icon:'&#xe62d;',title:'菜单信息',id:'10'}"><i
-                                class="layui-icon">&#xe62d;</i><span>菜单信息</span></a>
                         </dd>
                     </dl>
                 </li>
@@ -111,9 +97,7 @@
     </div>
     <div class="layui-body" id="container">、
         <!-- 内容主体区域 ,修改main路劲的话要去tab.js下改动，所以我们到时候规定好一个main页面-->
-        <div style="padding: 15px;">主体内容加载中,请稍等...
-            <input th:if="${session.user} != null"  th:value="${session.user.id}"/>
-        </div>
+        <div style="padding: 15px;">主体内容加载中,请稍等...</div>
     </div>
 
     <div class="layui-footer">
@@ -124,8 +108,8 @@
     </div>
 </div>
 
-<script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" th:src="/layui/layui.js"></script>
 <script>
 
     layui.use('element', function(){
@@ -151,17 +135,32 @@
         }).init();
 
 
-
-        $('#out').on('click', function () {
-            $.get('/data/admin/out',
-                function (data) {
-                    if (data.code == '0000') {
-                        window.location = '/page'
-                    } else {
-                        layer.msg('注销失败！');
-                    }
-                });
+        //信息
+        $('#info').on('click', function () {
+            layer.open({
+                type: 1,                //弹窗类型
+                title: '编辑个人信息',     //显示标题
+                closeBtn: 1,         //是否显示关闭按钮
+                shadeClose: true, //显示模态窗口
+                fixed: false,    //层是否固定在可视区域
+                move: false,//禁止拖拽
+                area: ['890px', '560px'], //宽高
+                content: $("#editIndexMsg")  //弹窗内容
+            });
         });
+
+//        $('#out').on('click', function () {
+//            <%--$.get('<%=path %>/data/admin/out',--%>
+//                <%--function (data) {--%>
+//                    <%--if (data.code == 0) {--%>
+//                        <%--window.location = '/page/admin/login'--%>
+//                    <%--} else {--%>
+//                        <%--layer.msg('注销失败！');--%>
+//                    <%--}--%>
+//                <%--}--%>
+//            <%--);--%>
+//            layer.msg('不让你注销');
+//        });
 //
 //        //修改信息
 //        form.on('submit(edit)', function (data) {
