@@ -15,6 +15,7 @@
 </fieldset>
 
     <form class="layui-form" id="inputForm" action="/page/user/save">
+        <input type="hidden" name="id" th:value="${user.id}"/>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>姓名</label>
             <div class="layui-input-block">
@@ -51,7 +52,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                <button class="layui-btn" lay-submit="" lay-filter="subBtn">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/user">返回</a>
             </div>
@@ -62,12 +63,10 @@
 <script th:src="@{/layui/layui.js}"></script>
 <script>
     layui.use(['form', 'layedit'], function () {
-        var form = layui.form
-            ,layer = layui.layer
-            ,layedit = layui.layedit;
+        var form = layui.form;
 
         //监听提交
-        form.on('submit(demo1)', function(data){
+        form.on('submit(subBtn)', function(data){
             $("#inputForm").submit();
         });
     });

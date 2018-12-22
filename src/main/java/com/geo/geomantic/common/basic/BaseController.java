@@ -17,11 +17,12 @@ public abstract class BaseController {
 
     private  HttpSession session;
 
+    /**
+     * 获取用户信息，未写完
+     * @return
+     */
     public User getUserInfo() {
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            user = userService.get(User.IS_ADMIN);
-        }
+        User user = userService.get(User.IS_ADMIN);
         return user;
     }
 
