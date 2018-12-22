@@ -24,7 +24,7 @@ public class UserPgController {
         PageInfo<User> page = userService.findPage(user);
         model.addAttribute("page", page);
         model.addAttribute("user", user);
-        return "user/userList";
+        return "home/user/userList";
     }
 
     @RequestMapping("form")
@@ -33,7 +33,7 @@ public class UserPgController {
             user = userService.get(user.getId());
         }
         model.addAttribute("user", user);
-        return "user/userForm";
+        return "home/user/userForm";
     }
 
     @RequestMapping("save")

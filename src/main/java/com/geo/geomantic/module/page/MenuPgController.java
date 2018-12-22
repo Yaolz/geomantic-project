@@ -15,18 +15,18 @@ import javax.servlet.http.HttpSession;
  * Created by yao on 2018/12/18.
  */
 @Controller
-@RequestMapping("/page")
+@RequestMapping("/page/menu")
 public class MenuPgController {
 
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("menu")
+    @RequestMapping("")
     public String menu(){
         return "home/menu/menu";
     }
 
-    @RequestMapping("menu/save")
+    @RequestMapping("save")
     public String save(Menu menu, HttpSession session, Model model){
         if (session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
@@ -38,12 +38,12 @@ public class MenuPgController {
         return "home/menu/menu";
     }
 
-    @RequestMapping("menu/updatePg")
+    @RequestMapping("updatePg")
     public String updatePg(@RequestParam("id") String id,Model model){
         model.addAttribute("menu",menuService.get(id));
         return "home/menu/update";
     }
-    @RequestMapping("menu/update")
+    @RequestMapping("update")
     public String update(Menu  menu ,Model model){
         menuService.save(menu);
         model.addAttribute("msg","修改成功！");
