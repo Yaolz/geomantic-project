@@ -2,6 +2,8 @@ package com.geo.geomantic.module.pojo;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.validation.constraints.NotNull;
+import javax.xml.crypto.Data;
+
 import org.hibernate.validator.constraints.Length;
 
 import com.geo.geomantic.common.basic.BaseEntity;
@@ -16,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Menu extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
-	private Menu parentId;		// 父级编号
+	private String parentId;		// 父级编号
 	private String parentIds;		// 所有父级编号
 	private String name;		// 名称
 	private String sort;		// 排序
@@ -25,7 +27,8 @@ public class Menu extends BaseEntity {
 	private String icon;		// 图标
 	private String isShow;		// 是否在菜单中显示
 	private String permission;		// 权限标识
-	
+	private String  remarks;		// 备注信息
+
 	public Menu() {
 		super();
 	}
@@ -34,16 +37,15 @@ public class Menu extends BaseEntity {
 		super(id);
 	}
 
-	@JsonBackReference
-	@NotNull(message="父级编号不能为空")
-	public Menu getParentId() {
+	@Length(min=1, max=255, message="parentId")
+	public String getParentId() {
 		return parentId;
 	}
 
-	public void setParentId(Menu parentId) {
+	public void setParentId(String parentId) {
 		this.parentId = parentId;
 	}
-	
+
 	@Length(min=1, max=2000, message="所有父级编号长度不能为空且不能超过2000个字符")
 	public String getParentIds() {
 		return parentIds;
@@ -114,5 +116,16 @@ public class Menu extends BaseEntity {
 	public void setPermission(String permission) {
 		this.permission = permission;
 	}
-	
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
 }

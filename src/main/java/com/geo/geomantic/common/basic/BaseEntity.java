@@ -29,6 +29,7 @@ public abstract class BaseEntity implements Serializable {
     protected Date createDate;
     protected Date updateDate;
     protected String createBy;
+    protected String updateBy;
 
     protected int pageNo; // 当前页码
     protected int pageSize; // 页面大小，设置为“-1”表示不进行分页（分页无效）
@@ -77,6 +78,14 @@ public abstract class BaseEntity implements Serializable {
 
     public void setCreateBy(String createBy) {
         this.createBy = createBy;
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
     @JsonIgnore

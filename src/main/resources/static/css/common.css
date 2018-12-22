@@ -1,0 +1,16 @@
+.bg-Btn{
+    padding-top: 1%;
+    float:right;
+}
+.bg-table col{
+    width: 33%;
+}
+.comTable tbody tr:hover{
+    background-color:white;
+}
+.bg-form input{
+    width:100%;
+}
+.bg-top{
+    margin-top: 2%;
+}

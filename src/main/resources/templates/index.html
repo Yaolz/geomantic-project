@@ -1,49 +1,200 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" >
+<!--<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>风水罗盘</title>
-    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>Title</title>
+    <link rel="stylesheet"  th:href="@{/layui/css/layui.css}"  media="all"/>
+    <link rel="stylesheet"  th:href="@{/layui/css/modules/layer/default/layer.css}"  media="all"/>
+    <link rel="stylesheet"  th:href="@{/css/index.css}"  media="all"/>
+    <link href="../static/calendar/css/wnl.css" th:href="@{/calendar/css/wnl.css}" rel="stylesheet" type="text/css"/>
 </head>
 
-<body>
+<script src="../static/calendar/js/calendar_top_one.js" th:src="@{/calendar/js/calendar_top_one.js}"></script>
+<script src="../static/calendar/js/calendar_top_two.js" th:src="@{/calendar/js/calendar_top_two.js}"></script>
 
-<div class="compass-main">
-    <div class="compassdiv">
-        <div class="compass-c"></div>
-        <div class="compass w h">
-            <div class="compass-1 w h"></div>
-            <div class="compass-2 w h"></div>
-            <div class="compass-3 w h"></div>
-            <div class="compass-4 w h"></div>
-            <div class="compass-5 w h"></div>
-            <div class="compass-6 w h"></div>
-            <div class="compass-7 w h"></div>
-            <div class="compass-8 w h"></div>
-            <div class="compass-9 w h"></div>
-            <div class="compass-10 w h"></div>
-            <div class="compass-11 w h"></div>
-            <div class="compass-12 w h"></div>
-            <div class="compass-13 w h"></div>
-            <div class="compass-14 w h"></div>
-            <div class="compass-15 w h"></div>
-            <div class="compass-16 w h"></div>
-            <div class="compass-17 w h"></div>
-            <div class="compass-18 w h"></div>
-            <div class="compass-19 w h"></div>
+<body>
+            <ul class="layui-nav" lay-filter="">
+                <li class="layui-nav-item  layui-this"><a th:href="@{/}"> 首页</a></li>
+                <li class="layui-nav-item"><a th:href="@{/}">大师简介</a></li>
+                <li class="layui-nav-item"><a th:href="@{/}">测算功能</a></li>
+                <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
+                <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
+                <li class="layui-nav-item layui-layout-right "  >
+                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);" onclick="login()">请登录</a>
+                    <a th:if="${session.user} != null"   href="javascript:void(0);" onclick="home()">个人中心</a>
+                </li>
+            </ul>
+        <div class="layui-row">
+            <span class="fonts">XXX风水网</span>
+
+            <span class="call">看风水：请拨打：xxxxxxxxxxxxxxx</span>
+        </div>
+        <div class="layui-container contain_main">
+            <div class="layui-row">
+                <div class="layui-row layui-col-space10">
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                        1/3
+                    </div>
+                    <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" >
+                        <div th:include="calendar1 :: calendar" style="background: deepskyblue"></div>
+                    </div>
+                    <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                        1/3
+                    </div>
+                </div>
+            </div>
+
+            <div class="layui-row">
+                <h3>大师简介:</h3>
+                <div class="layui-col-xs5 layui-col-sm5 layui-col-md5">
+                    <img th:src="@{/images/173.png}">
+                </div>
+                <div class="layui-col-xs7 layui-col-sm7 layui-col-md7">
+                    <span>
+                        年轻时酷爱易学，从事宅居人文环境研究十几年，深信人文环境对人生成长起到一定的作用。
+                        曾经花十几年的时间和财力，拜过三位知名易学风水名师，有杨筠松（杨救贫）贴身关门弟子刘江东后裔之孙刘方正师父、兴国三僚曾氏徒子后裔（郭航州）师父，还得到几位地方老仙师的真传。
+                        勘察全国各地名墓、古宅。
+                    </span>
+                </div>
+            </div>
+            <div class="layui-row">
+                <h3>风水吉祥物：</h3>
+                <div class="layui-col-xs3layui-col-sm3 layui-col-md3">
+                    <a href=""><img th:src="@{/images/173.png}"></a>
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4"><a>名称</a></div>
+                        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8"> 商品简介</div>
+                    </div>
+                    <span class="word"></span>
+                </div>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                    <img th:src="@{/images/173.png}">
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4"><a>名称</a></div>
+                        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8"> 商品简介</div>
+                    </div>
+                </div>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                    <img th:src="@{/images/173.png}">
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4"><a>名称</a></div>
+                        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8"> 商品简介</div>
+                    </div>
+                </div>
+                <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
+                    <img th:src="@{/images/173.png}" >
+                    <div class="layui-row">
+                        <div class="layui-col-xs4 layui-col-sm4 layui-col-md4"><a>名称</a></div>
+                        <div class="layui-col-xs8 layui-col-sm8 layui-col-md8"> 商品简介</div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row ">
+                <h3>风水案例：</h3>
+                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                    <img th:src="@{/images/173.png}">
+                </div>
+                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                    <img th:src="@{/images/173.png}">
+                </div>
+                <div class="layui-col-xs4 layui-col-sm4 layui-col-md4">
+                    <img th:src="@{/images/173.png}">
+                </div>
+            </div>
+        </div>
+
+        <div id="login" class="containDiv">
+            <form id="loginFrom" class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon layui-icon-username"></i>
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone" lay-verify="required|phone|number" autocomplete="off" placeholder="请输入手机号" minlength="11" maxlength="11" class="layui-input" style="margin-right: 1000px;" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="login">登录</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <div class="links">
+                    <a href="javascript:void(0);" onclick="register()" style="color: #ed442c;">还没有账号? 点击注册</a>
+                </div>
+            </form>
+        </div>
+        <div id="register" class="containDivs">
+            <form class="layui-form">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon layui-icon-username"></i>
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="nick_name" lay-verify="required|username" autocomplete="off" placeholder="请设置用户名" minlength="11" maxlength="11" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon layui-icon-cellphone"></i>
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="text" name="phone" lay-verify="required|phone|number" autocomplete="off" placeholder="请输入手机号" minlength="11" maxlength="11" class="layui-input" style="margin-right: 1000px;" >
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+                    <div class="layui-input-block">
+                        <input type="password" name="password" lay-verify="pass" placeholder="请设置密码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">
+                        <i class="layui-icon">&#xe642;</i>
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="codeMsg" required  placeholder="请输入验证码" autocomplete="off" class="layui-input">
+                    </div>
+                    <button  class="layui-btn layui-btn-primary" lay-submit lay-filter="getCode">获取验证码</button>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn" lay-submit lay-filter="register">注册</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    </div>
+                </div>
+                <div class="link">
+                    <a href="javascript:void(0);" onclick="login()" style="color: #ed442c;">已有账号? 去登录</a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
-<!--#02348c-->
-<!--#7ec7de-->
-<!--#2857c7-->
-
 </body>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script th:src="@{/js/jquery/jquery.min.js}"></script>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/indexs.js}"></script>
 <script>
-    //跳转页面
-    setTimeout("location.href='page'", 3000);
+    $.get('/data/userPage?pageNum=1&pageSize=10',
+        function (res) {
+            if (res.code === '0000') {
+            } else {
+                alert(res.msg);
+            }
+        });
 </script>
 </html>
-
