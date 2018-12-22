@@ -4,6 +4,7 @@ import com.geo.geomantic.common.constant.MsgModel;
 import com.geo.geomantic.common.constant.ResultStatus;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
@@ -31,28 +32,20 @@ public class UserController {
 
     @GetMapping("userPage")
     @ApiOperation("获取用户详情")
-    public MsgModel userPage(@RequestParam("pageNum") int pageNum, @RequestParam("pageSize") int pageSize) {
+    public MsgModel userPage(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize) {
         User user = new User();
-        user.setPageNo(pageNum);
+        user.setPageNo(pageNo);
         user.setPageSize(pageSize);
         user.setOrderBy("a.create_date DESC");
-        Math.min(1,2);
-        return MsgModel.ok(userService.findPage(user));
+        PageInfo<User> date = userService.findPage(user);
+        return new MsgModel("0000","查询成功！",date.getList(),date.getTotal());
     }
 
     @PostMapping("update")
     @ApiOperation("根据用户id更新用户信息")
-    public MsgModel update(@RequestParam("id") String id,@RequestParam("phone") String phone,
-                           @RequestParam("password") String password,@RequestParam("sex") String sex,
-                           @RequestParam(name = "headphoto", required = false) String headphoto, @RequestParam(name = "autograph",required = false) String autograph,
-                           @RequestParam(name = "address",required = false) String address){
-            if (StringUtils.isNotBlank(id)) {
-                User user = userService.get(id);
-                if(user != null){
-                    userService.save(user);
-                }
-            }
-            return MsgModel.ok();
+    public MsgModel update(@RequestBody User user){
+        userService.save(user);
+        return MsgModel.ok();
     }
 
     @PostMapping("queryUser")
@@ -70,7 +63,10 @@ public class UserController {
     @PostMapping("updState")
     @ApiOperation("根据id冻结、激活用户")
     public MsgModel updStateById(@RequestParam("id")String id,@RequestParam("state")String state){
-       userService.updStateById(id,state);
+        User user = new User();
+        user.setId(id);
+        user.setState(state);
+        userService.save(user);
         return MsgModel.ok();
     }
 

@@ -27,20 +27,24 @@ public class LoginController {
     @ApiOperation("用户登录")
     public MsgModel login (@RequestParam("phone") String phone, @RequestParam("password") String password,
                            HttpSession session) {
-                User user = new User();
-                user.setPhone(phone);
-                user.setPassword(password);
-                User user1 = userService.get(user);
-                if (user1 == null) {
-                    return MsgModel.error(ResultStatus.USER_NOT_EXIS);
-                }
-                session.setAttribute("user", user1);
-                return MsgModel.ok();
+        User user = new User();
+        user.setPhone(phone);
+        User user1 = userService.get(user);
+        if (user1 == null) {
+            return MsgModel.error(ResultStatus.USER_NOT_EXIS);
+        }
+//                判断密码是否一致
+        if (!SecretUtils.validatePassword(password, user1.getPassword())) {
+            return MsgModel.error("密码错误！");
+        }
+        session.setAttribute("user", user1);
+        return MsgModel.ok();
     }
+
 
     @PostMapping("register")
     @ApiOperation("用户注册")
-    public MsgModel register(@RequestParam("phone") String phone, @RequestParam("password") String password) {
+    public MsgModel register(@RequestParam("nick_name") String nick_name,@RequestParam("phone") String phone, @RequestParam("password") String password,@RequestParam("codeMsg") String codeMsg) {
         User user1 = new User();
         user1.setPhone(phone);
         user1 = userService.get(user1);

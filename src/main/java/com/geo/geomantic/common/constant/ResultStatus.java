@@ -17,7 +17,7 @@ public enum  ResultStatus {
 
     SYSTEM_ERROR("9999","系统错误！");
 
-
+//    CODE_ERROR("1111","验证码错误！")；
     /**
      * 返回码
      */

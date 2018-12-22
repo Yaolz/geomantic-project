@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/layui/css/layui.css}" media="all"/>
     <link rel="stylesheet" th:href="@{/css/home/app.css}" media="all">
 </head>
-<body>
+<body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin kit-layout-admin">
     <div class="layui-header">
         <div class="layui-logo">赣州姚达风水网</div>
@@ -58,21 +58,21 @@
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a th:href="@{/page/menu}"><span>菜单管理</span></a>
+                    <a href="javascript:;"><span>菜单管理</span></a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;" kit-target
-                               data-options="{icon:'&#xe62d;',title:'菜单信息',id:'10'}"><i
+                        <dd><a  href="javascript:;" kit-target
+                               data-options="{url:'/page/menu',icon:'&#xe62d;',title:'菜单信息',id:'10'}"><i
                                 class="layui-icon">&#xe62d;</i><span>菜单信息</span></a>
                         </dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
-                    <a class="" href="javascript:;"><span>测算管理</span></a>
+                    <a class="" href="javascript:;"><span>用户管理</span></a>
                     <dl class="layui-nav-child">
                         <dd>
                             <a href="javascript:;" kit-target
-                               data-options="{url:'<%=path %>/',icon:'&#xe62d;',title:'测算类型',id:'1'}">
-                                <i class="layui-icon">&#xe62d;</i><span>测算类型</span></a>
+                               data-options="{url:'/page/user',icon:'&#xe62d;',title:'用户信息',id:'1'}">
+                                <i class="layui-icon">&#xe62d;</i><span>用户信息</span></a>
                         </dd>
                         <dd>
                             <a href="javascript:;" data-url="<%=path %>/"
@@ -109,7 +109,7 @@
             </ul>
         </div>
     </div>
-    <div class="layui-body" id="container">、
+    <div class="layui-body" id="container">
         <!-- 内容主体区域 ,修改main路劲的话要去tab.js下改动，所以我们到时候规定好一个main页面-->
         <div style="padding: 15px;">主体内容加载中,请稍等...
             <input th:if="${session.user} != null"  th:value="${session.user.id}"/>
@@ -127,61 +127,22 @@
 <script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
 <script>
-
-    layui.use('element', function(){
-        var element = layui.element;
-
-        //…
-    });
-
-    $("input[name='sex'][value=${admin.sex}]").attr("checked", true);
+//    $("input[name='sex'][value=${admin.sex}]").attr("checked", true);
     var message;
     layui.config({
-        base: '<%=path %>/static/js/home/'
-    }).use(['app', 'message', 'form'], function () {
+        base: '/js/home/'
+    }).use(['app', 'message', 'form','element'], function () {
         var app = layui.app,
             $ = layui.jquery,
             layer = layui.layer
         //将message设置为全局以便子页面调用
         message = layui.message;
+        var element = layui.element;
         var form = layui.form;
         //主入口
         app.set({
             type: 'iframe'
         }).init();
-
-
-
-        $('#out').on('click', function () {
-            $.get('/data/admin/out',
-                function (data) {
-                    if (data.code == '0000') {
-                        window.location = '/page'
-                    } else {
-                        layer.msg('注销失败！');
-                    }
-                });
-        });
-//
-//        //修改信息
-//        form.on('submit(edit)', function (data) {
-//            <%--$.post('<%=path %>/data/admin/edit',--%>
-//                <%--$('#huserForm').serialize(),--%>
-//                <%--function (res) {--%>
-//                    <%--if (res.code === 0) {--%>
-//                        <%--layer.closeAll();--%>
-//                        <%--layer.msg('修改成功！');--%>
-//                        <%--$('#rname').empty();--%>
-//                        <%--$('#rname').text(res.data.rname);--%>
-//                    <%--} else {--%>
-//                        <%--layer.msg("修改失败，请重新再试")--%>
-//                    <%--}--%>
-//                <%--}, 'json'--%>
-//            <%--);--%>
-//            layer.msg('不让你修改！');
-//            return false;
-//        });
-
     });
 
 </script>

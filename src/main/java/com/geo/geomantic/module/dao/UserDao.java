@@ -2,6 +2,7 @@ package com.geo.geomantic.module.dao;
 
 import com.geo.geomantic.common.basic.BaseDao;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import com.geo.geomantic.module.pojo.User;
 
@@ -14,5 +15,7 @@ import com.geo.geomantic.module.pojo.User;
 @Mapper
 @Repository
 public interface UserDao extends BaseDao<User> {
-    int updStateById(String id,String state);
+
+    int updStateById(@Param("id") String id, @Param("state") String state);
+
 }

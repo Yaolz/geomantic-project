@@ -42,6 +42,8 @@ layui.use(['element','form'], function () {
                     $("#loginBtn").attr('onclick','home()');
                     $("#loginBtn").text('个人中心');
                     layer.closeAll('page');
+                }else  if (res.code === '1000') {
+                    layer.msg("用户不存在，请注册！");
                 } else {
                     layer.msg("手机号或者密码错误");
                 }

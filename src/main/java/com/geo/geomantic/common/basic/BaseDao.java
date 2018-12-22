@@ -42,11 +42,11 @@ public interface BaseDao<T> {
      * @return
      */
     List<T> queryList(T t);
-
     /**
      * 删除
      * @param t
      * @return
      */
     Integer delete(T t);
+
 }

@@ -11,11 +11,11 @@
 		a.HREF AS "href",
 		a.TARGET AS "target",
 		a.ICON AS "icon",
-		a.IS_SHOW AS "isShow",
+		 if(a.IS_SHOW='0', '激活', '冻结') "isShow",
 		a.PERMISSION AS "permission",
-		a.CREATE_BY AS "createBy",
+		(SELECT nick_name from s_user where id =  a.CREATE_BY ) "createBy",
 		a.CREATE_DATE AS "createDate",
-		a.UPDATE_BY AS "updateBy",
+		(SELECT nick_name from s_user where id =  a.UPDATE_BY )  "updateBy",
 		a.UPDATE_DATE AS "updateDate",
 		a.REMARKS AS "remarks"
 	</sql>

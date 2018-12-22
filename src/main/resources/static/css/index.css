@@ -3,10 +3,6 @@ body {
     font-family: 微软雅黑;
 }
 
-.common {
-    margin-top: 60px;
-}
-
 .fonts {
     font-size: 30px;
     font-style: italic;
@@ -15,11 +11,11 @@ body {
 
 .call {
     float: right;
-    margin-right: 30px;
+    margin-right: 5%;
     font-size: 16px;
     color: #964893;
 }
-.img{
+.contain_main img{
     cursor: pointer;
     transition: all 0.6s;
 }
@@ -35,7 +31,7 @@ body {
 }
 .containDivs{
     display:none;
-    padding-top: 16%;
+    padding-top: 10%;
 }
 .links{
      margin-top: 28%;
@@ -44,7 +40,7 @@ body {
      color: #ed442c;
  }
 .link{
-    margin-top: 18%;
+    margin-top: 14%;
     margin-left: 2%;
     font-size: 14px;
     color: #ed442c;

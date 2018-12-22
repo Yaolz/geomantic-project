@@ -14,12 +14,12 @@ public class IndexController {
 
     @RequestMapping("")
     public String index() {
-        return "index";
+        return "compass";
     }
 
     @RequestMapping("page")
     public String page() {
-        return "compass";
+        return "index";
     }
 
     @RequestMapping("home")

@@ -1,5 +1,4 @@
 package com.geo.geomantic.common.constant;
-
 /**
  * 返回信息类
  * @author zyz
@@ -21,6 +20,12 @@ public class MsgModel {
      * 返回内容
      */
     private Object body;
+
+    /**
+     * 用于分页统计数量
+     */
+    private Long total;
+
 
     public MsgModel() {
 
@@ -49,6 +54,13 @@ public class MsgModel {
         this.code = status.getCode();
         this.msg = status.getMsg();
         this.body = responsebody;
+    }
+
+    public MsgModel(String code, Object msg, Object body, Long total) {
+        this.code = code;
+        this.msg = msg;
+        this.body = body;
+        this.total = total;
     }
 
     public static MsgModel ok(Object responsebody) {
@@ -90,5 +102,13 @@ public class MsgModel {
 
     public void setBody(Object body) {
         this.body = body;
+    }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
     }
 }
