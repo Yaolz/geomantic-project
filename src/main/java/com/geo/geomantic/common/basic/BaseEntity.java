@@ -26,7 +26,10 @@ public abstract class BaseEntity implements Serializable {
     public static final String IS_ADMIN = "1";
 
     protected String id;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     protected Date createDate;
+
     protected Date updateDate;
     protected String createBy;
     protected String updateBy;
@@ -57,7 +60,7 @@ public abstract class BaseEntity implements Serializable {
         this.id = id;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+
     public Date getCreateDate() {
         return createDate;
     }

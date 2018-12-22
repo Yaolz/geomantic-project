@@ -7,7 +7,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>用户列表</title>
     <link rel="stylesheet" href="../../static/layui/css/layui.css" th:href="@{/layui/css/layui.css}" media="all"/>
-    <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
 </head>
 <body>
 <div class="layui-fluid">
@@ -41,7 +40,8 @@
             </div>
         </div>
     </form>
-        <table class="layui-table bg-table">
+        <table class="layui-table">
+            <thead>
             <tr>
                 <td>姓名</td>
                 <td>手机号</td>
@@ -50,6 +50,7 @@
                 <td>修改时间</td>
                 <td>操作</td>
             </tr>
+            </thead>
             <tbody>
             <tr th:each="user : ${page.list}">
                 <td th:text="${user.nickName}"></td>
@@ -87,7 +88,6 @@
                     $("#pageNo").val(obj.curr);
                     $("#pageSize").val(obj.limit);
                     $("#inputForm").submit();
-                    // $("#subBtn").submit();
                 }
 
             }
