@@ -165,7 +165,7 @@
 							<td th:text="${#dates.format(product.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/product/form?id=' + ${product.id}}" href="${ctx}//product/form?id=${product.id}">修改</a>
+					<a class="layui-btn" th:href="@{'/page/product/form?id=' + ${product.id}}">修改</a>
 					<a class="layui-btn">删除</a>
 				</td>
 			</tr>

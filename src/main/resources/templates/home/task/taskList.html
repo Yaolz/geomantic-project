@@ -147,7 +147,7 @@
 							<td th:text="${#dates.format(task.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/task/form?id=' + ${task.id}}" href="${ctx}//task/form?id=${task.id}">修改</a>
+					<a class="layui-btn" th:href="@{'/page/task/form?id=' + ${task.id}}" >修改</a>
 					<a class="layui-btn">删除</a>
 				</td>
 			</tr>

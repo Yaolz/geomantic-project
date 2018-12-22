@@ -111,7 +111,7 @@
 							<td th:text="${#dates.format(news.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/news/form?id=' + ${news.id}}" href="${ctx}//news/form?id=${news.id}">修改</a>
+					<a class="layui-btn" th:href="@{'/page/news/form?id=' + ${news.id}}" >修改</a>
 					<a class="layui-btn">删除</a>
 				</td>
 			</tr>

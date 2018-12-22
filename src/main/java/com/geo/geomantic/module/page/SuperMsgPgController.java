@@ -28,7 +28,7 @@ public class SuperMsgPgController  extends BaseController {
         PageInfo<SuperMsg> page = superMsgService.findPage(superMsg);
         model.addAttribute("page", page);
         model.addAttribute("superMsg", superMsg);
-        return "home/superMsg/superMsgList";
+        return "home/superinfo/superMsgList";
     }
 
 	@RequestMapping("form")
@@ -37,7 +37,7 @@ public class SuperMsgPgController  extends BaseController {
 			superMsg = superMsgService.get(superMsg.getId());
 		}
 		model.addAttribute("superMsg", superMsg);
-		return "home/superMsg/superMsgForm";
+		return "home/superinfo/superMsgForm";
 	}
 
 	@RequestMapping("save")
