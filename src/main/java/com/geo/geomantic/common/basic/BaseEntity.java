@@ -40,7 +40,10 @@ public abstract class BaseEntity implements Serializable {
      */
     protected Map<String, String> sqlMap;
 
-    public BaseEntity() {}
+    public BaseEntity() {
+        this.pageNo = 1;
+        this.pageSize = 10;
+    }
 
     public BaseEntity(String id) {
         this.id = id;
