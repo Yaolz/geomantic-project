@@ -18,6 +18,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/page/user")
 public class UserPgController extends BaseController{
 
+    @Autowired
+    private UserService userService;
+
     @RequestMapping(value = {"", "list"})
     public String userList(User user, Model model) {
         PageInfo<User> page = userService.findPage(user);

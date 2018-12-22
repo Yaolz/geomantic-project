@@ -55,8 +55,8 @@
                 <td th:text="${user.nickName}"></td>
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.sex}"></td>
-                <td th:text="${user.createDate}"></td>
-                <td th:text="${user.updateDate}"></td>
+                <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd')}"></td>
+                <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd')}"></td>
                 <td>
                     <a class="layui-btn" th:href="@{'/page/user/form?id=' + ${user.id}}">修改</a>
                     <a class="layui-btn">删除</a>

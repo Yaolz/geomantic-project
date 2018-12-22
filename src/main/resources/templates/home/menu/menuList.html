@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>菜单列表</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
+</head>
+<body>
+<div class="layui-fluid">
+    <form class="layui-form bg-form" id="inputForm" action="/page/menu/list" method="post">
+        <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
+        <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
+        <input type="hidden" id="pageTotal" th:value="${page.total}"/>
+        <input type="hidden" id="msg" th:value="${msg}"/>
+        <div class="layui-row">
+            <div class="layui-form-item">
+				<div class="form-group">
+					<label for="id" class="bg-form-label">编号</label>
+						<div class="layui-input-inline">
+							<input id="id" type="text" name="nickName" maxlength="64" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="parentId" class="bg-form-label">父级编号</label>
+						<div class="layui-input-inline">
+							<input id="parentId" type="text" name="nickName" maxlength="64" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="parentIds" class="bg-form-label">所有父级编号</label>
+						<div class="layui-input-inline">
+							<input id="parentIds" type="text" name="nickName" maxlength="2000" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="name" class="bg-form-label">名称</label>
+						<div class="layui-input-inline">
+							<input id="name" type="text" name="nickName" maxlength="100" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="sort" class="bg-form-label">排序</label>
+						<div class="layui-input-inline">
+							<input id="sort" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="href" class="bg-form-label">链接</label>
+						<div class="layui-input-inline">
+							<input id="href" type="text" name="nickName" maxlength="2000" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="target" class="bg-form-label">目标</label>
+						<div class="layui-input-inline">
+							<input id="target" type="text" name="nickName" maxlength="20" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="icon" class="bg-form-label">图标</label>
+						<div class="layui-input-inline">
+							<input id="icon" type="text" name="nickName" maxlength="100" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="isShow" class="bg-form-label">是否在菜单中显示</label>
+						<div class="layui-input-inline">
+							<input id="isShow" type="text" name="nickName" maxlength="1" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="permission" class="bg-form-label">权限标识</label>
+						<div class="layui-input-inline">
+							<input id="permission" type="text" name="nickName" maxlength="200" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="createBy" class="bg-form-label">创建者</label>
+						<div class="layui-input-inline">
+							<input id="createBy" type="text" name="nickName" maxlength="64" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="createDate" class="bg-form-label">创建时间</label>
+						<div class="layui-input-inline">
+							<input id="createDate" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="updateBy" class="bg-form-label">更新者</label>
+						<div class="layui-input-inline">
+							<input id="updateBy" type="text" name="nickName" maxlength="64" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="updateDate" class="bg-form-label">更新时间</label>
+						<div class="layui-input-inline">
+							<input id="updateDate" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="remarks" class="bg-form-label">备注信息</label>
+						<div class="layui-input-inline">
+							<input id="remarks" type="text" name="nickName" maxlength="255" class="layui-input">
+						</div>
+				</div>
+                <div class="layui-inline  bg-Btn">
+                    <div class="layui-input-inline">
+                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
+                        <a class="layui-btn" th:href="@{/page/menu/form}">添加</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+        <table class="layui-table  bg-table">
+            <thead>
+			<tr>
+				<th nowrap="nowrap">编号</th>
+				<th nowrap="nowrap">父级编号</th>
+				<th nowrap="nowrap">所有父级编号</th>
+				<th nowrap="nowrap">名称</th>
+				<th nowrap="nowrap">排序</th>
+				<th nowrap="nowrap">链接</th>
+				<th nowrap="nowrap">目标</th>
+				<th nowrap="nowrap">图标</th>
+				<th nowrap="nowrap">是否在菜单中显示</th>
+				<th nowrap="nowrap">权限标识</th>
+				<th nowrap="nowrap">创建者</th>
+				<th nowrap="nowrap">创建时间</th>
+				<th nowrap="nowrap">更新者</th>
+				<th nowrap="nowrap">更新时间</th>
+				<th nowrap="nowrap">备注信息</th>
+				<th nowrap="nowrap">操作</th>
+			</tr>
+            </thead>
+            <tbody>
+			<tr th:each="menu : ${page.list}">
+							<td  th:text="${menu.id}"></td>
+
+							<td  th:text="${menu.parentId}"></td>
+
+							<td  th:text="${menu.parentIds}"></td>
+
+							<td  th:text="${menu.name}"></td>
+
+							<td  th:text="${menu.sort}"></td>
+
+							<td  th:text="${menu.href}"></td>
+
+							<td  th:text="${menu.target}"></td>
+
+							<td  th:text="${menu.icon}"></td>
+
+							<td  th:text="${menu.isShow}"></td>
+
+							<td  th:text="${menu.permission}"></td>
+
+							<td  th:text="${menu.createBy}"></td>
+
+							<td th:text="${#dates.format(menu.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+							<td  th:text="${menu.updateBy}"></td>
+
+							<td th:text="${#dates.format(menu.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+							<td  th:text="${menu.remarks}"></td>
+
+				<td>
+					<a class="layui-btn" th:href="@{'/page/menu/form?id=' + ${menu.id}}" href="${ctx}//menu/form?id=${menu.id}">修改</a>
+					<a class="layui-btn">删除</a>
+				</td>
+			</tr>
+
+            </tbody>
+        </table>
+        <div id="paging"></div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery/jquery.min.js}"></script>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/common/util.js}"></script>
+</html>
