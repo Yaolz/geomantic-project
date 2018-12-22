@@ -30,6 +30,10 @@ layui.use(['element','form'], function () {
         pass: [/(.+){6,12}$/, '密码必须6到12位，且不能出现空格']
     });
 
+    $("#loginBtn").click(function () {
+        login();
+    });
+
     //监听提交
     form.on('submit(login)', function (data) {
         var index = layer.load(0, {shade: false});
@@ -93,10 +97,10 @@ function login() {
         type: 1,
         title: ['登录', 'font-size:18px;'],
         area: ['40%', '70%'],
-        shadeClose: false,
+        shadeClose: true,
         isOutAnim: false,
         anim: -1,
-        shade: [0.1, '#000'],
+        shade: 0,
         content: $("#login")
     })
 }
@@ -107,10 +111,10 @@ function register() {
         type: 1,
         title: ['注册', 'font-size:18px;'],
         area: ['40%', '70%'],
-        shadeClose: false,
+        shadeClose: true,
         isOutAnim: false,
         anim: -1,
-        shade: [0.1, '#000'],
+        shade: 0,
         content: $("#register")
     })
 }

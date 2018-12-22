@@ -23,7 +23,7 @@ public class MenuPgController {
 
     @RequestMapping("menu")
     public String menu(){
-        return "menu/menu";
+        return "home/menu/menu";
     }
 
     @RequestMapping("menu/save")
@@ -35,18 +35,18 @@ public class MenuPgController {
         }
         menuService.save(menu);
         model.addAttribute("msg", "添加成功！");
-        return "menu/menu";
+        return "home/menu/menu";
     }
 
     @RequestMapping("menu/updatePg")
     public String updatePg(@RequestParam("id") String id,Model model){
         model.addAttribute("menu",menuService.get(id));
-        return "menu/update";
+        return "home/menu/update";
     }
     @RequestMapping("menu/update")
     public String update(Menu  menu ,Model model){
         menuService.save(menu);
         model.addAttribute("msg","修改成功！");
-        return "menu/update";
+        return "home/menu/update";
     }
 }

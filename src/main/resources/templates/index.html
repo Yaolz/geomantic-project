@@ -22,7 +22,7 @@
                 <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
                 <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
                 <li class="layui-nav-item layui-layout-right "  >
-                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);" onclick="login()">请登录</a>
+                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);">请登录</a>
                     <a th:if="${session.user} != null"   href="javascript:void(0);" onclick="home()">个人中心</a>
                 </li>
             </ul>
@@ -38,7 +38,7 @@
                         1/3
                     </div>
                     <div class="layui-col-xs6 layui-col-sm6 layui-col-md6" >
-                        <div th:include="calendar1 :: calendar" style="background: deepskyblue"></div>
+                        <div th:include="minpage/calendar1 :: calendar" style="background: deepskyblue"></div>
                     </div>
                     <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">
                         1/3
@@ -181,20 +181,8 @@
                 </div>
             </form>
         </div>
-    </div>
 </body>
-<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
 <script th:src="@{/js/jquery/jquery.min.js}"></script>
 <script th:src="@{/layui/layui.js}"></script>
 <script th:src="@{/js/indexs.js}"></script>
-<script>
-    $.get('/data/userPage?pageNum=1&pageSize=10',
-        function (res) {
-            if (res.code === '0000') {
-            } else {
-                alert(res.msg);
-            }
-        });
-</script>
 </html>

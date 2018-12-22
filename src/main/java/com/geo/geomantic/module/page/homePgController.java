@@ -4,15 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by yao on 2018/12/21.
+ * Created by yao on 2018/12/22.
  */
 @Controller
 @RequestMapping("/page")
-public class UserPgController {
+public class homePgController {
 
-        @RequestMapping("user")
-        public String user(){
-        return "home/user/user";
+    @RequestMapping("/home/main")
+    public String main(){
+        return "home/main";
     }
-
 }
