@@ -13,18 +13,18 @@ public class IndexController {
 
 
     @RequestMapping("")
-    public String index() {
-        return "compass";
+    public String page() {
+        return "minpage/compass";
     }
 
-    @RequestMapping("page")
-    public String page() {
+    @RequestMapping("index")
+    public String index() {
         return "index";
     }
 
     @RequestMapping("home")
     public String home () {
-        return "home";
+        return "home/home";
     }
 
 
