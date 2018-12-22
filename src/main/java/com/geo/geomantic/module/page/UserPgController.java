@@ -26,7 +26,7 @@ public class UserPgController extends BaseController{
         });
         model.addAttribute("page", page);
         model.addAttribute("user", user);
-        return "user/userList";
+        return "home/user/userList";
     }
 
     @RequestMapping("form")
@@ -35,7 +35,7 @@ public class UserPgController extends BaseController{
             user = userService.get(user.getId());
         }
         model.addAttribute("user", user);
-        return "user/userForm";
+        return "home/user/userForm";
     }
 
     @RequestMapping("save")

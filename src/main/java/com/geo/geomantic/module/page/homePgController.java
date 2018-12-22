@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * Created by yao on 2018/12/22.
  */
 @Controller
-@RequestMapping("/page")
+@RequestMapping("/page/home")
 public class homePgController {
 
-    @RequestMapping("/home/main")
+    @RequestMapping("main")
     public String main(){
         return "home/main";
     }
