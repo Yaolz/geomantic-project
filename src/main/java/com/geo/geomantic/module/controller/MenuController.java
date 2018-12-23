@@ -1,5 +1,6 @@
 package com.geo.geomantic.module.controller;
 
+import com.geo.geomantic.common.constant.BaseModel;
 import com.geo.geomantic.common.constant.MsgModel;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.pojo.User;
@@ -8,7 +9,6 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -23,6 +23,14 @@ public class MenuController {
 
     @Autowired
     private MenuService menuService;
+
+    @GetMapping("menu/list")
+    @ApiOperation("菜单列表")
+    public BaseModel list() {
+        Menu menu = new Menu();
+        menu.setOrderBy("a.parent_Id, a.sort");
+        return new BaseModel("0","ok", menuService.findList(menu));
+    }
 
     @RequestMapping(value = "menu/add", method = RequestMethod.POST)
     @ApiOperation("菜单添加")

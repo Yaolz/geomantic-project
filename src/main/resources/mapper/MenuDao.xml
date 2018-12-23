@@ -11,7 +11,7 @@
 		a.HREF AS "href",
 		a.TARGET AS "target",
 		a.ICON AS "icon",
-		 if(a.IS_SHOW='0', '激活', '冻结') "isShow",
+		a.IS_SHOW AS "isShow",
 		a.PERMISSION AS "permission",
 		(SELECT nick_name from s_user where id =  a.CREATE_BY ) "createBy",
 		a.CREATE_DATE AS "createDate",

@@ -21,13 +21,18 @@ public class MenuPgController {
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("")
-    public String menu(){
+    @RequestMapping(value = {"", "list"})
+    public String list() {
+        return "home/menu/menuList";
+    }
+
+    @RequestMapping("menu")
+    public String menu() {
         return "home/menu/menu";
     }
 
     @RequestMapping("save")
-    public String save(Menu menu, HttpSession session, Model model){
+    public String save(Menu menu, HttpSession session, Model model) {
         if (session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
             menu.setCreateBy(user.getId());
@@ -39,14 +44,15 @@ public class MenuPgController {
     }
 
     @RequestMapping("updatePg")
-    public String updatePg(@RequestParam("id") String id,Model model){
-        model.addAttribute("menu",menuService.get(id));
+    public String updatePg(@RequestParam("id") String id, Model model) {
+        model.addAttribute("menu", menuService.get(id));
         return "home/menu/update";
     }
+
     @RequestMapping("update")
-    public String update(Menu  menu ,Model model){
+    public String update(Menu menu, Model model) {
         menuService.save(menu);
-        model.addAttribute("msg","修改成功！");
+        model.addAttribute("msg", "修改成功！");
         return "home/menu/update";
     }
 }
