@@ -16,4 +16,8 @@ public interface Constants {
     /**逗号分割符*/
     String DIVISION_COMMA = ",";
 
+    String YES = "0";
+
+    String NO = "1";
+
 }

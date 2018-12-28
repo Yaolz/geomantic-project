@@ -18,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 public class Menu extends BaseEntity {
 	
 	private static final long serialVersionUID = 1L;
+
+	public static final String PARENT_ID = "0";
 	private String parentId;		// 父级编号
 	private String parentIds;		// 所有父级编号
 	private String name;		// 名称
@@ -27,7 +29,6 @@ public class Menu extends BaseEntity {
 	private String icon;		// 图标
 	private String isShow;		// 是否在菜单中显示
 	private String permission;		// 权限标识
-	private String  remarks;		// 备注信息
 
 	public Menu() {
 		super();
@@ -115,14 +116,6 @@ public class Menu extends BaseEntity {
 
 	public void setPermission(String permission) {
 		this.permission = permission;
-	}
-
-	public String getRemarks() {
-		return remarks;
-	}
-
-	public void setRemarks(String remarks) {
-		this.remarks = remarks;
 	}
 
 	public static long getSerialVersionUID() {

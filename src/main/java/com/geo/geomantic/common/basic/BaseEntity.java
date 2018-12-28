@@ -31,6 +31,8 @@ public abstract class BaseEntity implements Serializable {
     protected String createBy;
     protected String updateBy;
 
+    protected String remarks;
+
     protected int pageNo; // 当前页码
     protected int pageSize; // 页面大小，设置为“-1”表示不进行分页（分页无效）
     protected String orderBy; // 排序sql，例如：a.create_date desc
@@ -143,4 +145,11 @@ public abstract class BaseEntity implements Serializable {
         this.orderBy = orderBy;
     }
 
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 }
