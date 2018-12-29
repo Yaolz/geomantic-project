@@ -17,14 +17,20 @@
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
         <div class="layui-row">
+            <div class="layui-inline   bg-Btn">
+                <div class="layui-input-inline">
+                    <button class="layui-btn" type="submit" id="subBtn">查询</button>
+                    <a class="layui-btn" th:href="@{/page/user/form}">添加</a>
+                </div>
+            </div>
             <div class="layui-form-item">
-                <div class="layui-inline">
+                <div class="form-group">
                     <label for="nickName" class="bg-form-labels">姓名：</label>
                     <div class="layui-input-inline">
                         <input type="text" id ="nickName" name="nickName" class="layui-input">
                     </div>
                 </div>
-                <div class="layui-inline">
+                <div class="form-group">
                     <label for="phone" class="bg-form-labels">手机号：</label>
                     <div class="layui-input-inline">
                         <input type="text" id="phone" name="phone" class="layui-input">
@@ -34,12 +40,6 @@
                     <label for="createDate" class="bg-form-label">创建时间：</label>
                     <div class="layui-input-inline">
                         <input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
-                    </div>
-                </div>
-                <div class="layui-inline   bg-Btn">
-                    <div class="layui-input-inline">
-                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
-                        <a class="layui-btn" th:href="@{/page/user/form}">添加</a>
                     </div>
                 </div>
             </div>

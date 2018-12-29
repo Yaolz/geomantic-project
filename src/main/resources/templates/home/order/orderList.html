@@ -36,30 +36,37 @@
 						<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间：</label>
-						<div class="layui-input-inline">
-							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
-						</div>
+				<div class="layui-inline">
+					<label  for="dealState" class="layui-form-label">订单状态</label>
+					<div class="layui-input-block">
+						<select id="dealState" name="dealState" lay-verify="required">
+							<option value="0">激活</option>
+							<option value="1">冻结</option>
+						</select>
+					</div>
 				</div>
 			</div>
 			<div class="layui-row">
 				<div class="form-group">
+					<label for="createDate" class="bg-form-label">创建时间：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="orderMoney" class="bg-form-label">订单金额：</label>
-						<div class="layui-input-inline">
-							<input id="orderMoney" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
+					<div class="layui-input-inline">
+						<input id="orderMoney" type="text" name="nickName" maxlength="0" class="layui-input">
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="dealState" class="bg-form-label">订单状态：</label>
-						<div class="layui-input-inline">
-							<input id="dealState" type="text" name="nickName" maxlength="2" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="dealpayType" class="bg-form-label">交易类型：</label>
-						<div class="layui-input-inline">
-							<input id="dealpayType" type="text" name="nickName" maxlength="1" class="layui-input">
+				<div class="layui-inline">
+					<label for="dealpayType" class="layui-form-label">交易类型：</label>
+						<div class="layui-input-block">
+							<select id="dealpayType" name="dealpayType" lay-verify="required">
+								<option value="0">第三方平台</option>
+								<option value="0">支付宝</option>
+								<option value="1">现金</option>
+							</select>
 						</div>
 				</div>
 			</div>

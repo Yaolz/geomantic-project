@@ -45,14 +45,14 @@ public class NewsPgController  extends BaseController {
 		news.setCreateBy(getUserInfo().getId());
 		news.setUpdateBy(getUserInfo().getId());
 		newsService.save(news);
-		redirectAttributes.addFlashAttribute("msg", "保存咨询管理成功！");
+		redirectAttributes.addFlashAttribute("msg", "保存资讯管理成功！");
 		return "redirect:/page/news/?repage";
 	}
 
 	@RequestMapping(value = "delete")
 	public String delete(News news, RedirectAttributes redirectAttributes) {
 		newsService.delete(news);
-		redirectAttributes.addFlashAttribute("msg", "删除咨询管理成功！");
+		redirectAttributes.addFlashAttribute("msg", "删除资讯管理成功！");
 		return "redirect:/page/news/?repage";
 	}
 	

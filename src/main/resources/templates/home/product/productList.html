@@ -56,10 +56,13 @@
 							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
 						</div>
 				</div>
-				<div class="form-group">
-					<label for="state" class="bg-form-label">激活：</label>
-					<div class="layui-input-inline">
-						<input id="state" type="text" name="state" maxlength="4" class="layui-input">
+				<div class="layui-inline">
+					<label  for="state" class="layui-form-label">状态：</label>
+					<div class="layui-input-block">
+						<select id="state" name="state" lay-verify="required">
+							<option value="0">激活</option>
+							<option value="1">冻结</option>
+						</select>
 					</div>
 				</div>
 			</div>

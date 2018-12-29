@@ -25,7 +25,7 @@
 			</div>
 			<div class="layui-row">
 				<div class="form-group">
-					<label for="taskName" class="bg-form-label">测算昵称：</label>
+					<label for="taskName" class="bg-form-label">测算名：</label>
 						<div class="layui-input-inline">
 							<input id="taskName" type="text" name="nickName" maxlength="120" class="layui-input">
 						</div>
@@ -44,10 +44,13 @@
 				</div>
 			</div>
 			<div class="layui-row">
-				<div class="form-group">
-					<label for="state" class="bg-form-label">激活：</label>
-					<div class="layui-input-inline">
-						<input id="state" type="text" name="nickName" maxlength="4" class="layui-input">
+				<div class="layui-inline">
+					<label  for="state" class="layui-form-label">状态：</label>
+					<div class="layui-input-block">
+						<select id="state" name="state" lay-verify="required">
+							<option value="0">激活</option>
+							<option value="1">冻结</option>
+						</select>
 					</div>
 				</div>
             </div>
