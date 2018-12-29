@@ -46,7 +46,8 @@
                         <dd th:each="menuChild : ${menuParent.children}">
                             <a href="javascript:;" kit-target
                                th:attr="data-options='{url:&quot;'+ ${menuChild.node.href} + '&quot;, icon:&quot;' + ${menuChild.node.icon} + '&quot;, title:&quot;' + ${menuChild.node.name} + '&quot;,id: &quot;' + ${menuChild.node.id} + '&quot;}'">
-                                <i class="layui-icon" th:value="${menuChild.node.icon}">&#xe621;</i><span th:text="${menuChild.node.name}">基本信息</span></a>
+                                <i class="layui-icon" th:utext="${menuChild.node.icon}"></i>
+                                <span th:text="${menuChild.node.name}">基本信息</span></a>
                         </dd>
                     </dl>
                 </li>
