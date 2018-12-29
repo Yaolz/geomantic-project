@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
@@ -64,6 +65,7 @@ public abstract class BaseEntity implements Serializable {
         return createDate;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
@@ -73,6 +75,7 @@ public abstract class BaseEntity implements Serializable {
         return updateDate;
     }
 
+    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }

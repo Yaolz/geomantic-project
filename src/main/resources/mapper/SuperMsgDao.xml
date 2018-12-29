@@ -31,10 +31,10 @@
 			<if test="description != null and description != ''">
 				AND a.description = #{description}
 			</if>
-			<if test="createDate != null and createDate != ''">
+			<if test="createDate != null">
 				AND a.create_date = #{createDate}
 			</if>
-			<if test="updateDate != null and updateDate != ''">
+			<if test="updateDate != null">
 				AND a.update_date = #{updateDate}
 			</if>
 			<if test="createBy != null and createBy != ''">

@@ -50,10 +50,10 @@
 			<if test="remarks != null and remarks != ''">
 				AND a.remarks = #{remarks}
 			</if>
-			<if test="createDate != null and createDate != ''">
+			<if test="createDate != null">
 				AND a.create_date = #{createDate}
 			</if>
-			<if test="updateDate != null and updateDate != ''">
+			<if test="updateDate != null">
 				AND a.update_date = #{updateDate}
 			</if>
 		</where>

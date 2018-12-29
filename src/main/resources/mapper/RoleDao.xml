@@ -48,13 +48,13 @@
 			<if test="createBy != null and createBy != ''">
 				AND a.CREATE_BY = #{createBy}
 			</if>
-			<if test="createDate != null and createDate != ''">
+			<if test="createDate != null">
 				AND a.CREATE_DATE = #{createDate}
 			</if>
 			<if test="updateBy != null and updateBy != ''">
 				AND a.UPDATE_BY = #{updateBy}
 			</if>
-			<if test="updateDate != null and updateDate != ''">
+			<if test="updateDate != null">
 				AND a.UPDATE_DATE = #{updateDate}
 			</if>
 			<if test="remarks != null and remarks != ''">

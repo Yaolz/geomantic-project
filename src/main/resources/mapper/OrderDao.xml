@@ -54,13 +54,13 @@
 			<if test="orderNo != null and orderNo != ''">
 				AND a.order_no = #{orderNo}
 			</if>
-			<if test="createDate != null and createDate != ''">
+			<if test="createDate != null">
 				AND a.create_date = #{createDate}
 			</if>
 			<if test="orderMoney != null and orderMoney != ''">
 				AND a.order_money = #{orderMoney}
 			</if>
-			<if test="updateDate != null and updateDate != ''">
+			<if test="updateDate != null">
 				AND a.update_date = #{updateDate}
 			</if>
 			<if test="orderintegration != null and orderintegration != ''">
