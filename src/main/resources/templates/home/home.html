@@ -41,7 +41,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
                 <li class="layui-nav-item" th:each="menuParent : ${menuTree}">
-                    <a href="javascript:;"><i class="layui-icon" th:utext="${menuParent.node.icon}"></i><span th:text="${menuParent.node.name}">个人中心</span></a>
+                    <a href="javascript:;"><i class="layui-icon" th:utext="${menuParent.node.icon}"></i><span th:text="${menuParent.node.name}"></span></a>
                     <dl class="layui-nav-child">
                         <dd th:each="menuChild : ${menuParent.children}">
                             <a href="javascript:;" kit-target  th:attr="data-options='{url:&quot;'+ ${menuChild.node.href} + '&quot;, icon:&quot;' + ${menuChild.node.icon} + '&quot;, title:&quot;' + ${menuChild.node.name} + '&quot;,id: &quot;' + ${menuChild.node.id} + '&quot;}'">

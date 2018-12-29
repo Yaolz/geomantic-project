@@ -3,6 +3,7 @@ package com.geo.geomantic.module.page;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.MenuService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,19 +41,15 @@ public class MenuPgController {
         }
         menuService.save(menu);
         model.addAttribute("msg", "添加成功！");
-        return "home/menu/menu";
+        return "home/menu/addMenu";
     }
 
-    @RequestMapping("updatePg")
-    public String updatePg(@RequestParam("id") String id, Model model) {
-        model.addAttribute("menu", menuService.get(id));
-        return "home/menu/update";
-    }
-
-    @RequestMapping("update")
-    public String update(Menu menu, Model model) {
-        menuService.save(menu);
-        model.addAttribute("msg", "修改成功！");
-        return "home/menu/update";
+    @RequestMapping("form")
+    public String form(Menu menu, Model model) {
+        if (StringUtils.isNotBlank(menu.getId())){
+            menu = menuService.get(menu.getId());
+        }
+        model.addAttribute("menu", menu);
+        return "home/menu/menuForm";
     }
 }

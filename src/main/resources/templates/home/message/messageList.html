@@ -16,7 +16,7 @@
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
-            <div class="layui-form-item">
+            <div class="layui-form-item ">
 				<div class="layui-inline  bg-Btn">
 					<div class="layui-input-inline">
 						<button class="layui-btn" type="submit" id="subBtn">查询</button>
@@ -25,7 +25,7 @@
 				</div>
 				<div class="layui-row">
 					<div class="form-group">
-						<label for="createBy" class="bg-form-label">用户：</label>
+						<label for="createBy" class="bg-form-label">创建用户：</label>
 						<div class="layui-input-inline">
 							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
 						</div>
@@ -36,8 +36,8 @@
 							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
 						</div>
 					</div>
-					<div class="layui-inline">
-						<label  for="state" class="layui-form-label">状态：</label>
+					<div class="form-group">
+						<label  for="state" class="layui-form-label">状态</label>
 						<div class="layui-input-block">
 							<select id="state" name="state" lay-verify="required">
 								<option value="0">激活</option>
