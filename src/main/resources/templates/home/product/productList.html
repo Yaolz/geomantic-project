@@ -16,99 +16,53 @@
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
-        <div class="layui-row">
-            <div class="layui-form-item">
+		<div class="layui-form-item">
+			<div class="layui-inline  bg-Btn">
+				<div class="layui-input-inline">
+					<button class="layui-btn" type="submit" id="subBtn">查询</button>
+					<a class="layui-btn" th:href="@{/page/product/form}">添加</a>
+				</div>
+			</div>
+			<div class="layui-row">
 				<div class="form-group">
-					<label for="id" class="bg-form-label">主键</label>
+					<label for="name" class="bg-form-label">商品名称：</label>
 						<div class="layui-input-inline">
-							<input id="id" type="text" name="nickName" maxlength="11" class="layui-input">
+							<input id="name" type="text" name="name" maxlength="100" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="photo" class="bg-form-label">图片</label>
+					<label for="price" class="bg-form-label">商品价格：</label>
 						<div class="layui-input-inline">
-							<input id="photo" type="text" name="nickName" maxlength="60" class="layui-input">
+							<input id="price" type="text" name="price" maxlength="0" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="photoes" class="bg-form-label">结束图，逗号分割</label>
+					<label for="stackSize" class="bg-form-label">库存量：</label>
 						<div class="layui-input-inline">
-							<input id="photoes" type="text" name="nickName" maxlength="0" class="layui-input">
+							<input id="stackSize" type="text" name="stackSize" maxlength="11" class="layui-input">
+						</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="form-group">
+					<label for="createBy" class="bg-form-label">创建人：</label>
+						<div class="layui-input-inline">
+							<input id="createBy" type="text" name="createBy" maxlength="4" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="name" class="bg-form-label">商品昵称</label>
+					<label for="createDate" class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input id="name" type="text" name="nickName" maxlength="100" class="layui-input">
+							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="price" class="bg-form-label">商品价格</label>
-						<div class="layui-input-inline">
-							<input id="price" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
+					<label for="state" class="bg-form-label">激活：</label>
+					<div class="layui-input-inline">
+						<input id="state" type="text" name="state" maxlength="4" class="layui-input">
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="description" class="bg-form-label">description</label>
-						<div class="layui-input-inline">
-							<input id="description" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="buyNum" class="bg-form-label">已购人数</label>
-						<div class="layui-input-inline">
-							<input id="buyNum" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="pageView" class="bg-form-label">浏览量</label>
-						<div class="layui-input-inline">
-							<input id="pageView" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="stackSize" class="bg-form-label">库存量</label>
-						<div class="layui-input-inline">
-							<input id="stackSize" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="bg-form-label">激活</label>
-						<div class="layui-input-inline">
-							<input id="state" type="text" name="nickName" maxlength="4" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="createBy" class="bg-form-label">创建人</label>
-						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="nickName" maxlength="4" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间</label>
-						<div class="layui-input-inline">
-							<input id="createDate" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="updateBy" class="bg-form-label">修改人id</label>
-						<div class="layui-input-inline">
-							<input id="updateBy" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="updateDate" class="bg-form-label">修改时间</label>
-						<div class="layui-input-inline">
-							<input id="updateDate" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-                <div class="layui-inline  bg-Btn">
-                    <div class="layui-input-inline">
-                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
-                        <a class="layui-btn" th:href="@{/page/product/form}">添加</a>
-                    </div>
-                </div>
-            </div>
+			</div>
         </div>
 
 
@@ -117,9 +71,8 @@
         <table class="layui-table  bg-table">
             <thead>
 			<tr>
-				<th nowrap="nowrap">主键</th>
 				<th nowrap="nowrap">图片</th>
-				<th nowrap="nowrap">结束图，逗号分割</th>
+				<th nowrap="nowrap">结束图</th>
 				<th nowrap="nowrap">商品昵称</th>
 				<th nowrap="nowrap">商品价格</th>
 				<th nowrap="nowrap">description</th>
@@ -136,8 +89,6 @@
             </thead>
             <tbody>
 			<tr th:each="product : ${page.list}">
-							<td  th:text="${product.id}"></td>
-
 							<td  th:text="${product.photo}"></td>
 
 							<td  th:text="${product.photoes}"></td>

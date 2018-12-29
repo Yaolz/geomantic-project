@@ -44,10 +44,11 @@
                     <a href="javascript:;"><i class="layui-icon" th:utext="${menuParent.node.icon}"></i><span th:text="${menuParent.node.name}">个人中心</span></a>
                     <dl class="layui-nav-child">
                         <dd th:each="menuChild : ${menuParent.children}">
-                            <a href="javascript:;" kit-target
-                               th:attr="data-options='{url:&quot;'+ ${menuChild.node.href} + '&quot;, icon:&quot;' + ${menuChild.node.icon} + '&quot;, title:&quot;' + ${menuChild.node.name} + '&quot;,id: &quot;' + ${menuChild.node.id} + '&quot;}'">
+                            <a href="javascript:;" kit-target  th:attr="data-options='{url:&quot;'+ ${menuChild.node.href} + '&quot;, icon:&quot;' + ${menuChild.node.icon} + '&quot;, title:&quot;' + ${menuChild.node.name} + '&quot;,id: &quot;' + ${menuChild.node.id} + '&quot;}'">
                                 <i class="layui-icon" th:utext="${menuChild.node.icon}"></i>
-                                <span th:text="${menuChild.node.name}">基本信息</span></a>
+                                <i class="layui-icon"  th:if="${menuChild.node.icon} == null">&#xe62d;</i>
+                                <i class="layui-icon"  th:if="${menuChild.node.icon} == ''">&#xe62d;</i>
+                                <span th:text="${menuChild.node.name}"></span></a>
                         </dd>
                     </dl>
                 </li>
@@ -70,24 +71,8 @@
 
 <script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/js/home.js}"></script>
 <script>
-    var message;
-    layui.config({
-        base: '/js/home/'
-    }).use(['app', 'message', 'form','element'], function () {
-        var app = layui.app,
-            $ = layui.jquery,
-            layer = layui.layer
-        //将message设置为全局以便子页面调用
-        message = layui.message;
-        var element = layui.element;
-        var form = layui.form;
-        //主入口
-        app.set({
-            type: 'iframe'
-        }).init();
-    });
-
 </script>
 </body>
 </html>

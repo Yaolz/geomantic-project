@@ -16,62 +16,40 @@
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
-        <div class="layui-row">
             <div class="layui-form-item">
-				<div class="form-group">
-					<label for="id" class="bg-form-label">id</label>
-						<div class="layui-input-inline">
-							<input id="id" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
+				<div class="layui-inline  bg-Btn">
+					<div class="layui-input-inline">
+						<button class="layui-btn" type="submit" id="subBtn">查询</button>
+						<a class="layui-btn" th:href="@{/page/message/form}">添加</a>
+					</div>
 				</div>
-				<div class="form-group">
-					<label for="userBy" class="bg-form-label">被留言用户id</label>
-						<div class="layui-input-inline">
-							<input id="userBy" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="createBy" class="bg-form-label">创建用户id</label>
+				<div class="layui-row">
+					<div class="form-group">
+						<label for="createBy" class="bg-form-label">创建用户：</label>
 						<div class="layui-input-inline">
 							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
 						</div>
-				</div>
-				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间</label>
+					</div>
+					<div class="form-group">
+						<label for="createDate" class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input id="createDate" type="text" name="nickName" maxlength="0" class="layui-input">
+							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
 						</div>
-				</div>
-				<div class="form-group">
-					<label for="message" class="bg-form-label">用户反馈内容</label>
-						<div class="layui-input-inline">
-							<input id="message" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="bg-form-label">激活</label>
+					</div>
+					<div class="form-group">
+						<label for="state" class="bg-form-label">激活：</label>
 						<div class="layui-input-inline">
 							<input id="state" type="text" name="nickName" maxlength="4" class="layui-input">
 						</div>
+					</div>
 				</div>
-                <div class="layui-inline  bg-Btn">
-                    <div class="layui-input-inline">
-                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
-                        <a class="layui-btn" th:href="@{/page/message/form}">添加</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
+			</div>
     </form>
         <table class="layui-table  bg-table">
             <thead>
 			<tr>
-				<th nowrap="nowrap">id</th>
-				<th nowrap="nowrap">被留言用户id</th>
-				<th nowrap="nowrap">创建用户id</th>
+				<th nowrap="nowrap">被留言用户</th>
+				<th nowrap="nowrap">创建用户</th>
 				<th nowrap="nowrap">创建时间</th>
 				<th nowrap="nowrap">用户反馈内容</th>
 				<th nowrap="nowrap">激活</th>
@@ -80,8 +58,6 @@
             </thead>
             <tbody>
 			<tr th:each="message : ${page.list}">
-							<td  th:text="${message.id}"></td>
-
 							<td  th:text="${message.userBy}"></td>
 
 							<td  th:text="${message.createBy}"></td>

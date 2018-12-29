@@ -131,10 +131,10 @@ function cutString(str, len) {
 }
 
 //后台列表通用js
-layui.use(['laypage', 'layer'], function () {
+layui.use(['laypage', 'layer','laydate'], function () {
     var laypage = layui.laypage;
     var layer = layui.layer;
-
+    var laydate = layui.laydate;
     //分页组件
     laypage.render({
         elem: 'paging' //注意，这里的 paging 是 ID，不用加 # 号
@@ -151,6 +151,10 @@ layui.use(['laypage', 'layer'], function () {
             }
 
         }
+    });
+    laydate.render({
+        elem: '#createDate' //指定元素
+        , type: 'datetime'
     });
 
     //提示

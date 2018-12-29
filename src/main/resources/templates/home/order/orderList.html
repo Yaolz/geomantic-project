@@ -16,213 +16,53 @@
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
-        <div class="layui-row">
-            <div class="layui-form-item">
-				<div class="form-group">
-					<label for="orderId" class="bg-form-label">主键</label>
-						<div class="layui-input-inline">
-							<input id="orderId" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
+		<div class="layui-form-item">
+			<div class="layui-inline  bg-Btn">
+				<div class="layui-input-inline">
+					<button class="layui-btn" type="submit" id="subBtn">查询</button>
+					<a class="layui-btn" th:href="@{/page/order/form}">添加</a>
 				</div>
+			</div>
+			<div class="layui-row">
 				<div class="form-group">
-					<label for="productId" class="bg-form-label">订单id</label>
-						<div class="layui-input-inline">
-							<input id="productId" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="orderNo" class="bg-form-label">订单号</label>
+					<label for="orderNo" class="bg-form-label">订单号：</label>
 						<div class="layui-input-inline">
 							<input id="orderNo" type="text" name="nickName" maxlength="50" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间</label>
-						<div class="layui-input-inline">
-							<input id="createDate" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
+					<label for="createBy" class="bg-form-label">用户姓名：</label>
+					<div class="layui-input-inline">
+						<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
+					</div>
 				</div>
 				<div class="form-group">
-					<label for="orderMoney" class="bg-form-label">订单金额</label>
+					<label for="createDate" class="bg-form-label">创建时间：</label>
+						<div class="layui-input-inline">
+							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+						</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="form-group">
+					<label for="orderMoney" class="bg-form-label">订单金额：</label>
 						<div class="layui-input-inline">
 							<input id="orderMoney" type="text" name="nickName" maxlength="0" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="updateDate" class="bg-form-label">update_date</label>
-						<div class="layui-input-inline">
-							<input id="updateDate" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="orderintegration" class="bg-form-label">抵扣积分</label>
-						<div class="layui-input-inline">
-							<input id="orderintegration" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="createBy" class="bg-form-label">用户id</label>
-						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="integrationAmount" class="bg-form-label">订单积分金额</label>
-						<div class="layui-input-inline">
-							<input id="integrationAmount" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="bg-form-label">0</label>
-						<div class="layui-input-inline">
-							<input id="state" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="freight" class="bg-form-label">运费</label>
-						<div class="layui-input-inline">
-							<input id="freight" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="orderCountMoney" class="bg-form-label">总金额</label>
-						<div class="layui-input-inline">
-							<input id="orderCountMoney" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="dealState" class="bg-form-label">订单状态</label>
+					<label for="dealState" class="bg-form-label">订单状态：</label>
 						<div class="layui-input-inline">
 							<input id="dealState" type="text" name="nickName" maxlength="2" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="buyerRemark" class="bg-form-label">买家留言</label>
-						<div class="layui-input-inline">
-							<input id="buyerRemark" type="text" name="nickName" maxlength="255" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="dealpayType" class="bg-form-label">交易类型,微信支付宝等</label>
+					<label for="dealpayType" class="bg-form-label">交易类型：</label>
 						<div class="layui-input-inline">
 							<input id="dealpayType" type="text" name="nickName" maxlength="1" class="layui-input">
 						</div>
 				</div>
-				<div class="form-group">
-					<label for="receiverAddress" class="bg-form-label">收货地址</label>
-						<div class="layui-input-inline">
-							<input id="receiverAddress" type="text" name="nickName" maxlength="255" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="receiverMobile" class="bg-form-label">收货人手机号</label>
-						<div class="layui-input-inline">
-							<input id="receiverMobile" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="receiverName" class="bg-form-label">收货人姓名</label>
-						<div class="layui-input-inline">
-							<input id="receiverName" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="receiverPhone" class="bg-form-label">收货人电话号码</label>
-						<div class="layui-input-inline">
-							<input id="receiverPhone" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="receiverPostcode" class="bg-form-label">收货人邮编</label>
-						<div class="layui-input-inline">
-							<input id="receiverPostcode" type="text" name="nickName" maxlength="255" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="buyerName" class="bg-form-label">买家名称</label>
-						<div class="layui-input-inline">
-							<input id="buyerName" type="text" name="nickName" maxlength="64" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="buyUserid" class="bg-form-label">买家Id</label>
-						<div class="layui-input-inline">
-							<input id="buyUserid" type="text" name="nickName" maxlength="11" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="createTime" class="bg-form-label">下单时间</label>
-						<div class="layui-input-inline">
-							<input id="createTime" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="payTime" class="bg-form-label">付款时间</label>
-						<div class="layui-input-inline">
-							<input id="payTime" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="recvfeeTime" class="bg-form-label">收款时间</label>
-						<div class="layui-input-inline">
-							<input id="recvfeeTime" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="recvUsername" class="bg-form-label">收款人</label>
-						<div class="layui-input-inline">
-							<input id="recvUsername" type="text" name="nickName" maxlength="64" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="freightCompany" class="bg-form-label">快递公司</label>
-						<div class="layui-input-inline">
-							<input id="freightCompany" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="freightNumber" class="bg-form-label">运费单号</label>
-						<div class="layui-input-inline">
-							<input id="freightNumber" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="expressCode" class="bg-form-label">快递公司编号</label>
-						<div class="layui-input-inline">
-							<input id="expressCode" type="text" name="nickName" maxlength="50" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="channelBalance" class="bg-form-label">渠道金额</label>
-						<div class="layui-input-inline">
-							<input id="channelBalance" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="returnBalance" class="bg-form-label">退款金额</label>
-						<div class="layui-input-inline">
-							<input id="returnBalance" type="text" name="nickName" maxlength="0" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="updateBy" class="bg-form-label">更新者</label>
-						<div class="layui-input-inline">
-							<input id="updateBy" type="text" name="nickName" maxlength="64" class="layui-input">
-						</div>
-				</div>
-				<div class="form-group">
-					<label for="remarks" class="bg-form-label">备注信息</label>
-						<div class="layui-input-inline">
-							<input id="remarks" type="text" name="nickName" maxlength="255" class="layui-input">
-						</div>
-				</div>
-                <div class="layui-inline  bg-Btn">
-                    <div class="layui-input-inline">
-                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
-                        <a class="layui-btn" th:href="@{/page/order/form}">添加</a>
-                    </div>
-                </div>
-            </div>
+			</div>
         </div>
 
 
@@ -231,8 +71,6 @@
         <table class="layui-table  bg-table">
             <thead>
 			<tr>
-				<th nowrap="nowrap">主键</th>
-				<th nowrap="nowrap">订单id</th>
 				<th nowrap="nowrap">订单号</th>
 				<th nowrap="nowrap">创建时间</th>
 				<th nowrap="nowrap">订单金额</th>
@@ -269,10 +107,6 @@
             </thead>
             <tbody>
 			<tr th:each="order : ${page.list}">
-							<td  th:text="${order.orderId}"></td>
-
-							<td  th:text="${order.productId}"></td>
-
 							<td  th:text="${order.orderNo}"></td>
 
 							<td th:text="${#dates.format(order.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>

@@ -44,6 +44,7 @@ public class Order extends BaseEntity {
 	private String expressCode;		// 快递公司编号
 	private String channelBalance;		// 渠道金额
 	private String returnBalance;		// 退款金额
+	private String remarks;					//备注信息
 	
 	public Order() {
 		super();
@@ -296,5 +297,12 @@ public class Order extends BaseEntity {
 	public void setReturnBalance(String returnBalance) {
 		this.returnBalance = returnBalance;
 	}
-	
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 }
