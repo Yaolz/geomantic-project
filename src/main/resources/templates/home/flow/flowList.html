@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>流水列表</title>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" th:href="@{/layui/css/layui.css}" media="all"/>
+    <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
+</head>
+<body>
+<div class="layui-fluid">
+    <form class="layui-form bg-form" id="inputForm" action="/page/flow/list" method="post">
+        <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
+        <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
+        <input type="hidden" id="pageTotal" th:value="${page.total}"/>
+        <input type="hidden" id="msg" th:value="${msg}"/>
+        <div class="layui-row">
+            <div class="layui-form-item">
+				<div class="form-group">
+					<label for="id" class="bg-form-label">主键ID</label>
+						<div class="layui-input-inline">
+							<input id="id" type="text" name="nickName" maxlength="10" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="createBy" class="bg-form-label">用户ID</label>
+						<div class="layui-input-inline">
+							<input id="createBy" type="text" name="nickName" maxlength="10" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="productId" class="bg-form-label">商品ID</label>
+						<div class="layui-input-inline">
+							<input id="productId" type="text" name="nickName" maxlength="10" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="orderNo" class="bg-form-label">本系统订单号</label>
+						<div class="layui-input-inline">
+							<input id="orderNo" type="text" name="nickName" maxlength="50" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="transactionNo" class="bg-form-label">交易流水号(微信或支付宝)</label>
+						<div class="layui-input-inline">
+							<input id="transactionNo" type="text" name="nickName" maxlength="50" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="way" class="bg-form-label">支付方式</label>
+						<div class="layui-input-inline">
+							<input id="way" type="text" name="nickName" maxlength="50" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="status" class="bg-form-label">状态(完成，退款)</label>
+						<div class="layui-input-inline">
+							<input id="status" type="text" name="nickName" maxlength="50" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="money" class="bg-form-label">交易金额</label>
+						<div class="layui-input-inline">
+							<input id="money" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="remarks" class="bg-form-label">remarks</label>
+						<div class="layui-input-inline">
+							<input id="remarks" type="text" name="nickName" maxlength="255" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="createDate" class="bg-form-label">创建日期</label>
+						<div class="layui-input-inline">
+							<input id="createDate" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+				<div class="form-group">
+					<label for="updateDate" class="bg-form-label">修改日期</label>
+						<div class="layui-input-inline">
+							<input id="updateDate" type="text" name="nickName" maxlength="0" class="layui-input">
+						</div>
+				</div>
+                <div class="layui-inline  bg-Btn">
+                    <div class="layui-input-inline">
+                        <button class="layui-btn" type="submit" id="subBtn">查询</button>
+                        <a class="layui-btn" th:href="@{/page/flow/form}">添加</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </form>
+        <table class="layui-table  bg-table">
+            <thead>
+			<tr>
+				<th nowrap="nowrap">主键ID</th>
+				<th nowrap="nowrap">用户ID</th>
+				<th nowrap="nowrap">商品ID</th>
+				<th nowrap="nowrap">本系统订单号</th>
+				<th nowrap="nowrap">交易流水号(微信或支付宝)</th>
+				<th nowrap="nowrap">支付方式</th>
+				<th nowrap="nowrap">状态(完成，退款)</th>
+				<th nowrap="nowrap">交易金额</th>
+				<th nowrap="nowrap">remarks</th>
+				<th nowrap="nowrap">创建日期</th>
+				<th nowrap="nowrap">修改日期</th>
+				<th nowrap="nowrap">操作</th>
+			</tr>
+            </thead>
+            <tbody>
+			<tr th:each="flow : ${page.list}">
+							<td  th:text="${flow.id}"></td>
+
+							<td  th:text="${flow.createBy}"></td>
+
+							<td  th:text="${flow.productId}"></td>
+
+							<td  th:text="${flow.orderNo}"></td>
+
+							<td  th:text="${flow.transactionNo}"></td>
+
+							<td  th:text="${flow.way}"></td>
+
+							<td  th:text="${flow.status}"></td>
+
+							<td  th:text="${flow.money}"></td>
+
+							<td  th:text="${flow.remarks}"></td>
+
+							<td th:text="${#dates.format(flow.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+							<td th:text="${#dates.format(flow.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
+				<td>
+					<a class="layui-btn" th:href="@{'/page/flow/form?id=' + ${flow.id}}" >修改</a>
+					<a class="layui-btn">删除</a>
+				</td>
+			</tr>
+
+            </tbody>
+        </table>
+        <div id="paging"></div>
+
+</div>
+
+</body>
+<script th:src="@{/js/jquery/jquery.min.js}"></script>
+<script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/js/common/util.js}"></script>
+</html>
