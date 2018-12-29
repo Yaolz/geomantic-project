@@ -19,19 +19,19 @@ layui.config({
             treePidName: 'parentId',
             treeDefaultClose: true,
             treeLinkage: false,
-            elem: '#table1',
+            elem: '#menuTable',
             url: '/data/menu/list',
             page: false,
             cols: [[
                 {type: 'numbers'},
-                {field: 'name', width: 200, title: '名称'},
-                {field: 'id', width: 200, title: 'id'},
-                {field: 'sort', width: 200, templet: function (d) {
+                {field: 'name', title: '名称'},
+                {field: 'id',  title: 'id'},
+                {field: 'href',  title: '链接'},
+                {field: 'sort',  templet: function (d) {
                         return '<input class="layui-input" value="' + d.sort + '"/>';
                     }, title: '排序'},
-                {field: 'parentId', width: 200, title: '父级ID'},
                 {
-                    field: 'isShow', width: 200, align: 'center', templet: function (d) {
+                    field: 'isShow',  align: 'center', templet: function (d) {
                         if (d.isShow == 0) {
                             return '<span class="layui-badge layui-bg-gray">显示</span>';
                         } else {
@@ -39,7 +39,8 @@ layui.config({
                         }
                     }, title: '是否显示'
                 },
-                {templet: '#oper-col', title: '操作'}
+                {toolbar: '#oper-col', title: '操作'}
+                // {templet: '#oper-col', title: '操作'}
             ]],
             done: function () {
                 layer.closeAll('loading');
@@ -50,19 +51,42 @@ layui.config({
     renderTable();
 
     $('#btn-expand').click(function () {
-        treetable.expandAll('#table1');
+        treetable.expandAll('#menuTable');
     });
 
     $('#btn-fold').click(function () {
-        treetable.foldAll('#table1');
+        treetable.foldAll('#menuTable');
     });
 
     $('#btn-refresh').click(function () {
         renderTable();
     });
 
+    $('#btn-search').click(function () {
+        var keyword = $('#edt-search').val();
+        var searchCount = 0;
+        $('#menuTable').next('.treeTable').find('.layui-table-body tbody tr td').each(function () {
+            $(this).css('background-color', 'transparent');
+            var text = $(this).text();
+            if (keyword != '' && text.indexOf(keyword) >= 0) {
+                $(this).css('background-color', 'rgba(250,230,160,0.5)');
+                if (searchCount == 0) {
+                    treetable.expandAll('#menuTable');
+                    $('html,body').stop(true);
+                    $('html,body').animate({scrollTop: $(this).offset().top - 150}, 500);
+                }
+                searchCount++;
+            }
+        });
+        if (keyword == '') {
+            layer.msg("请输入搜索内容", {icon: 5});
+        } else if (searchCount == 0) {
+            layer.msg("没有匹配结果", {icon: 5});
+        }
+    });
+
     //监听工具条
-    table.on('tool(table1)', function (obj) {
+    table.on('tool(menuTable)', function (obj) {
         var data = obj.data;
         var layEvent = obj.event;
         console.log(obj);

@@ -1,4 +1,4 @@
-.bg-form-label{
+.bg-form-label {
     float: left;
     display: block;
     padding: 9px 15px;
@@ -6,21 +6,29 @@
     line-height: 20px;
     text-align: right;
 }
-.bg-Btn{
-    float:right;
+
+.bg-Btn {
+    float: right;
 }
-.bg-table col{
+
+.bg-table col {
     width: 33%;
 }
-.comTable tbody tr:hover{
-    background-color:white;
+
+.comTable tbody tr:hover {
+    background-color: white;
 }
+
 .bg-form {
     padding-top: 1%;
 }
-.bg-form input{
-    width:100%;
+
+.bg-form input {
+    width: 100%;
 }
-.bg-top{
+
+.bg-top {
     margin-top: 2%;
 }
+
+
