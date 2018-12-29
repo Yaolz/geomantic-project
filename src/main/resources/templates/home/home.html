@@ -41,7 +41,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="kitNavbar" kit-navbar>
                 <li class="layui-nav-item" th:each="menuParent : ${menuTree}">
-                    <a href="javascript:;"><span th:text="${menuParent.node.name}">个人中心</span></a>
+                    <a href="javascript:;"><i class="layui-icon" th:utext="${menuParent.node.icon}"></i><span th:text="${menuParent.node.name}">个人中心</span></a>
                     <dl class="layui-nav-child">
                         <dd th:each="menuChild : ${menuParent.children}">
                             <a href="javascript:;" kit-target
@@ -63,7 +63,7 @@
     <div class="layui-footer">
         <!-- 底部固定区域 -->
         2018&copy;
-        <a href="https://github.com/ZhengYouzhen">P2P</a>
+        <a href="https://github.com/ZhengYouzhen">YLZ</a>
 
     </div>
 </div>
@@ -71,7 +71,6 @@
 <script type="text/javascript" th:src="@{/js/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/layui/layui.js}"></script>
 <script>
-//    $("input[name='sex'][value=${admin.sex}]").attr("checked", true);
     var message;
     layui.config({
         base: '/js/home/'
