@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="phone" class="bg-form-label">手机号：</label>
                     <div class="layui-input-inline">
-                        <input type="text" id="phone" name="phone" class="layui-input" ${user.phone}>
+                        <input type="text" id="phone" name="phone" class="layui-input" th:value="${user.phone}">
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,8 +55,8 @@
                     <div class="layui-input-inline">
                         <select id="state" name="state" lay-verify="required">
                             <option value="">请选择</option>
-                            <option value="0">激活</option>
-                            <option value="1">冻结</option>
+                            <option value="0" th:selected="${user?.state eq '0'} ? true : false">激活</option>
+                            <option value="1" th:selected="${user?.state eq '1'} ? true : false">冻结</option>
                         </select>
                     </div>
                 </div>

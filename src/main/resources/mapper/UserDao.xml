@@ -64,7 +64,7 @@
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by = #{createBy}
 			</if>
-            <if test="startCreateDate != '' and endCreateDate != ''">
+            <if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
                 AND a.create_date between #{startCreateDate} and #{endCreateDate}
             </if>
 		</where>
