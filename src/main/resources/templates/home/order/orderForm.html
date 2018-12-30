@@ -221,7 +221,7 @@
 
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="subBtn">立即提交</button>
+                <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/order">返回</a>
             </div>
@@ -235,7 +235,7 @@
         var form = layui.form;
 
         //监听提交
-        form.on('submit(subBtn)', function(data){
+        form.on('submit(inputForm)', function(data){
             $("#inputForm").submit();
         });
     });

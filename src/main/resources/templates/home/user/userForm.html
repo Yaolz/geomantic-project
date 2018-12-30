@@ -19,11 +19,11 @@
             <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>姓名</label>
             <div class="layui-input-block">
-                <input type="text" name="nickName" lay-verify="required" autocomplete="off" placeholder="请输入标题"
+                <input type="text" name="nickName" lay-verify="required" autocomplete="off" placeholder="请输入姓名"
                        th:value="${user.nickName}" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item">
+        <div class="layui-form-item" th:if="${user?.id == null}">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>密码</label>
             <div class="layui-input-block">
                 <input type="password" name="password" lay-verify="required" placeholder="请输入" autocomplete="off"
@@ -33,7 +33,7 @@
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>手机号</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" lay-verify="required|phone" placeholder="请输入" autocomplete="off"
+                <input type="text" name="phone" id="phone" lay-verify="required|phone" placeholder="请输入" autocomplete="off" maxlength="11"
                        th:value="${user.phone}" class="layui-input">
             </div>
         </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="subBtn">立即提交</button>
+                <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/user">返回</a>
             </div>
@@ -64,9 +64,24 @@
 <script>
     layui.use(['form', 'layedit'], function () {
         var form = layui.form;
+        var $ = layui.jquery;
+
+        var msg = '[[${msg}]]';
+        if (msg !== '') {
+            layer.msg(msg);
+        }
+
+        $("#phone").change(function () {
+            $.post('/data/queryUser', {phone: this.value}, function (res) {
+                if (res !== '0000') {
+                    $("#phone").val('');
+                    layer.msg('该手机号已存在！');
+                }
+            })
+        });
 
         //监听提交
-        form.on('submit(subBtn)', function(data){
+        form.on('submit(inputForm)', function(data){
             $("#inputForm").submit();
         });
     });

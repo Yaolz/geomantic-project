@@ -1,6 +1,7 @@
 package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.basic.BaseController;
+import com.geo.geomantic.common.utils.SecretUtils;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -24,10 +25,6 @@ public class UserPgController extends BaseController{
     @RequestMapping(value = {"", "list"})
     public String userList(User user, Model model) {
         PageInfo<User> page = userService.findPage(user);
-        page.getList().forEach(user1 -> {
-            System.out.println(user1.getCreateDate());
-            System.out.println(user1.getUpdateDate());
-        });
         model.addAttribute("page", page);
         model.addAttribute("user", user);
         return "home/user/userList";
@@ -43,7 +40,20 @@ public class UserPgController extends BaseController{
     }
 
     @RequestMapping("save")
-    public String save(User user, RedirectAttributes redirectAttributes) {
+    public String save(User user, Model model, RedirectAttributes redirectAttributes) {
+        if (StringUtils.isNotBlank(user.getPassword())) {
+//        密码加密
+            user.setPassword(SecretUtils.entryptPassword(user.getPassword()));
+        }
+        if (StringUtils.isBlank(user.getId())) {
+            User userQuery = new User();
+            userQuery.setPhone(user.getPhone());
+            Object object = userService.get(userQuery);
+            if (object != null) {
+                model.addAttribute("msg", "手机号已经存在");
+                return form(user, model);
+            }
+        }
         user.setCreateBy(getUserInfo().getId());
         user.setUpdateBy(getUserInfo().getId());
         redirectAttributes.addFlashAttribute("msg", "保存成功！");
