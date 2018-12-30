@@ -62,4 +62,11 @@ public class UserPgController extends BaseController{
         return "redirect:/page/user";
     }
 
+    @RequestMapping("delete")
+    public String delete(User user, RedirectAttributes redirectAttributes) {
+        userService.delete(user);
+        redirectAttributes.addFlashAttribute("msg", "删除成功！");
+        return "redirect:/page/user";
+    }
+
 }
