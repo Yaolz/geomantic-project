@@ -23,7 +23,7 @@
                        th:value="${user.nickName}" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item" th:if="${user?.id == null}">
+        <div class="layui-form-item" th:if="${user.id == null}">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>密码</label>
             <div class="layui-input-block">
                 <input type="password" name="password" lay-verify="required" placeholder="请输入" autocomplete="off"

@@ -56,7 +56,7 @@
 				AND a.state = #{state}
 			</if>
 			<if test="createDate != null">
-				AND a.create_date = #{createDate}
+				AND a.create_date----------------= #{createDate}
 			</if>
 			<if test="updateDate != null">
 				AND a.update_date = #{updateDate}

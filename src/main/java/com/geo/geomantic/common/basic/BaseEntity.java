@@ -60,22 +60,22 @@ public abstract class BaseEntity implements Serializable {
         this.id = id;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     public Date getCreateDate() {
         return createDate;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     public Date getUpdateDate() {
         return updateDate;
     }
 
-    @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }

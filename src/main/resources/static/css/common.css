@@ -2,20 +2,11 @@
     float: left;
     display: block;
     padding: 9px 15px;
-    width:10%;
+    width:7%;
     font-weight: 400;
     line-height: 20px;
     text-align: center;
 }
-.bg-form-labels{
-    float: left;
-    display: block;
-    padding: 9px 15px;
-    font-weight: 400;
-    line-height: 20px;
-    text-align: right;
-}
-
 .bg-Btn {
     float: right;
 }
@@ -38,6 +29,9 @@
 
 .bg-top {
     margin-top: 2%;
+}
+.bg-cent{
+    margin-top: 9px;
 }
 
 

@@ -31,22 +31,28 @@
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="createBy" class="bg-form-label">创建人名称：</label>
+					<label for="createBy" class="bg-form-label">创建人：</label>
 						<div class="layui-input-inline">
 							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间：</label>
+					<label class="bg-form-label">创建时间：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+					</div>
+					<div class="layui-input-inline bg-cent">
+						<span> ~</span>
+					</div>
+					<div class="layui-input-inline">
+						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
 					</div>
 				</div>
 			</div>
 			<div class="layui-row">
-				<div class="layui-inline">
-					<label  for="state" class="layui-form-label">状态：</label>
-					<div class="layui-input-block">
+				<div class="form-group">
+					<label  for="state" class="bg-form-label">状态：</label>
+					<div class="layui-input-inline">
 						<select id="state" name="state" lay-verify="required">
 							<option value="0">激活</option>
 							<option value="1">冻结</option>

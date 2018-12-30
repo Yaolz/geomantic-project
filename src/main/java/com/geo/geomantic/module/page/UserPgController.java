@@ -6,6 +6,7 @@ import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

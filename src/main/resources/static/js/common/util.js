@@ -155,7 +155,12 @@ layui.use(['laypage', 'layer','laydate','form'], function () {
     });
     laydate.render({
         elem: '#createDate' //指定元素
-        , type: 'datetime'
+    });
+    laydate.render({
+        elem: '#start_createDate' //指定元素
+    });
+    laydate.render({
+        elem: '#end_createDate' //指定元素
     });
 
     //提示

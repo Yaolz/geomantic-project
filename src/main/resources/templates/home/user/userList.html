@@ -16,30 +16,47 @@
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
         <input type="hidden" id="pageTotal" th:value="${page.total}"/>
         <input type="hidden" id="msg" th:value="${msg}"/>
-        <div class="layui-row">
+        <div class="layui-form-item">
             <div class="layui-inline   bg-Btn">
                 <div class="layui-input-inline">
                     <button class="layui-btn" type="submit" id="subBtn">查询</button>
                     <a class="layui-btn" th:href="@{/page/user/form}">添加</a>
                 </div>
             </div>
-            <div class="layui-form-item">
+            <div class="layui-row">
                 <div class="form-group">
-                    <label for="nickName" class="bg-form-labels">姓名：</label>
+                    <label for="nickName" class="bg-form-label">姓名：</label>
                     <div class="layui-input-inline">
                         <input type="text" id ="nickName" name="nickName" class="layui-input">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="phone" class="bg-form-labels">手机号：</label>
+                    <label for="phone" class="bg-form-label">手机号：</label>
                     <div class="layui-input-inline">
                         <input type="text" id="phone" name="phone" class="layui-input">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="createDate" class="bg-form-label">创建时间：</label>
+                    <label class="bg-form-label">创建时间：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
+                        <input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+                    </div>
+                    <div class="layui-input-inline bg-cent">
+                        <span> ~</span>
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-row">
+                <div class="form-group">
+                    <label  for="state" class="bg-form-label">状态：</label>
+                    <div class="layui-input-inline">
+                        <select id="state" name="state" lay-verify="required">
+                            <option value="0">激活</option>
+                            <option value="1">冻结</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -51,6 +68,8 @@
                 <td>姓名</td>
                 <td>手机号</td>
                 <td>性别</td>
+                <td>个性签名</td>
+                <td>状态</td>
                 <td>创建时间</td>
                 <td>修改时间</td>
                 <td>操作</td>
@@ -61,8 +80,11 @@
                 <td th:text="${user.nickName}"></td>
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.sex}"></td>
-                <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd')}"></td>
-                <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd')}"></td>
+                <td th:text="${user.autograph}"></td>
+                <td th:if="${user.state == '0'}">激活</td>
+                <td th:if="${user.state == '1'}">冻结</td>
+                <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
                     <a class="layui-btn" th:href="@{'/page/user/form?id=' + ${user.id}}">修改</a>
                     <a class="layui-btn">删除</a>
