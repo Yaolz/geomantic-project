@@ -157,10 +157,10 @@ layui.use(['laypage', 'layer','laydate','form'], function () {
         elem: '#createDate' //指定元素
     });
     laydate.render({
-        elem: '#start_createDate' //指定元素
+        elem: '#startCreateDate' //指定元素
     });
     laydate.render({
-        elem: '#end_createDate' //指定元素
+        elem: '#endCreateDate' //指定元素
     });
 
     //提示

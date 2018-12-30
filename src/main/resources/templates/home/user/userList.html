@@ -27,25 +27,25 @@
                 <div class="form-group">
                     <label for="nickName" class="bg-form-label">姓名：</label>
                     <div class="layui-input-inline">
-                        <input type="text" id ="nickName" name="nickName" class="layui-input">
+                        <input type="text" id ="nickName" name="nickName" class="layui-input" th:value="${user.nickName}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phone" class="bg-form-label">手机号：</label>
                     <div class="layui-input-inline">
-                        <input type="text" id="phone" name="phone" class="layui-input">
+                        <input type="text" id="phone" name="phone" class="layui-input" ${user.phone}>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="bg-form-label">创建时间：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+                        <input type="text" name="startCreateDate"  id="startCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.startCreateDate}">
                     </div>
                     <div class="layui-input-inline bg-cent">
                         <span> ~</span>
                     </div>
                     <div class="layui-input-inline">
-                        <input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+                        <input type="text" name="endCreateDate"   id="endCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.endCreateDate}">
                     </div>
                 </div>
             </div>
@@ -54,6 +54,7 @@
                     <label  for="state" class="bg-form-label">状态：</label>
                     <div class="layui-input-inline">
                         <select id="state" name="state" lay-verify="required">
+                            <option value="">请选择</option>
                             <option value="0">激活</option>
                             <option value="1">冻结</option>
                         </select>

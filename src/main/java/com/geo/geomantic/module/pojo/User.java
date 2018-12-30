@@ -23,7 +23,10 @@ public class User extends BaseEntity {
 	private String address;		// address
 	private String addressCode;		// address_code
 	private String state;		// 状态
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
 	public User() {
 		super();
 	}
@@ -112,5 +115,20 @@ public class User extends BaseEntity {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
 }

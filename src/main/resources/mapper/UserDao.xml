@@ -56,7 +56,7 @@
 				AND a.state = #{state}
 			</if>
 			<if test="createDate != null">
-				AND a.create_date----------------= #{createDate}
+				AND a.create_date = #{createDate}
 			</if>
 			<if test="updateDate != null">
 				AND a.update_date = #{updateDate}
@@ -64,6 +64,9 @@
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by = #{createBy}
 			</if>
+            <if test="startCreateDate != '' and endCreateDate != ''">
+                AND a.create_date between #{startCreateDate} and #{endCreateDate}
+            </if>
 		</where>
 	</sql>
 
