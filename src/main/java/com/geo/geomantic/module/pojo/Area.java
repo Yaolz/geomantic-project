@@ -22,7 +22,12 @@ public class Area extends BaseEntity {
 	private String sort;		// 排序
 	private String code;		// 区域编码
 	private String type;		// 区域类型
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
+
+
 	public Area() {
 		super();
 	}
@@ -84,5 +89,20 @@ public class Area extends BaseEntity {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
 }

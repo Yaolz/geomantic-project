@@ -27,28 +27,29 @@
 					<div class="form-group">
 						<label for="createBy" class="bg-form-label">创建用户：</label>
 						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
+							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input" th:value="${message.createBy}">
 						</div>
 					</div>
 					<div class="form-group">
 						<label  for="state" class="bg-form-label">状态：</label>
 						<div class="layui-input-inline">
 							<select id="state" name="state" lay-verify="required">
-								<option value="0">激活</option>
-								<option value="1">冻结</option>
+								<option value="">请选择</option>
+								<option value="0" th:selected="${message?.state eq '0'} ? true : false">激活</option>
+								<option value="1" th:selected="${message?.state eq '1'} ? true : false">冻结</option>
 							</select>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.startCreateDate}">
 						</div>
 						<div class="layui-input-inline bg-cent">
 							<span> ~</span>
 						</div>
 						<div class="layui-input-inline">
-							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.endCreateDate}">
 						</div>
 					</div>
 				</div>

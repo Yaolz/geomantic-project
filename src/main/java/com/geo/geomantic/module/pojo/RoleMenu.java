@@ -16,7 +16,7 @@ public class RoleMenu extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	private String roleId;		// 角色编号
 	private String menuId;		// 菜单编号
-	
+
 	public RoleMenu() {
 		super();
 	}
@@ -41,5 +41,5 @@ public class RoleMenu extends BaseEntity {
 	public void setMenuId(String menuId) {
 		this.menuId = menuId;
 	}
-	
+
 }

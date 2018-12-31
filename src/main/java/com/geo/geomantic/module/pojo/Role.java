@@ -20,7 +20,11 @@ public class Role extends BaseEntity {
 	private String dataScope;		// 数据范围
 	private String isSys;		// 是否系统数据
 	private String useable;		// 是否可用
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
+
 	public Role() {
 		super();
 	}
@@ -82,5 +86,21 @@ public class Role extends BaseEntity {
 	public void setUseable(String useable) {
 		this.useable = useable;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
 }

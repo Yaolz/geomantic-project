@@ -27,25 +27,25 @@
 					<div class="form-group">
 						<label for="infoTitle" class="bg-form-label">标题：</label>
 							<div class="layui-input-inline">
-								<input id="infoTitle" type="text" name="nickName" maxlength="60" class="layui-input">
+								<input id="infoTitle" type="text" name="nickName" maxlength="60" class="layui-input" th:value="${news.infoTitle}">
 							</div>
 					</div>
 					<div class="form-group">
 						<label for="createBy" class="bg-form-label">创建人：</label>
 							<div class="layui-input-inline">
-								<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
+								<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input" th:value="${news.createBy}">
 							</div>
 					</div>
 					<div class="form-group">
 						<label class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.startCreateDate}">
 						</div>
 						<div class="layui-input-inline bg-cent">
 							<span> ~</span>
 						</div>
 						<div class="layui-input-inline">
-							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.endCreateDate}">
 						</div>
 					</div>
 				</div>
@@ -62,8 +62,8 @@
 				<th nowrap="nowrap">副标题</th>
 				<th nowrap="nowrap">资讯内容</th>
 				<th nowrap="nowrap">创建人</th>
-				<th nowrap="nowrap">create_date</th>
-				<th nowrap="nowrap">update_date</th>
+				<th nowrap="nowrap">创建时间</th>
+				<th nowrap="nowrap">修改时间</th>
 				<th nowrap="nowrap">操作</th>
 			</tr>
             </thead>

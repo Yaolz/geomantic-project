@@ -27,25 +27,25 @@
 				<div class="form-group">
 					<label for="taskName" class="bg-form-label">测算名：</label>
 						<div class="layui-input-inline">
-							<input id="taskName" type="text" name="nickName" maxlength="120" class="layui-input">
+							<input id="taskName" type="text" name="nickName" maxlength="120" class="layui-input"   th:value="${task.taskName}">
 						</div>
 				</div>
 				<div class="form-group">
 					<label for="createBy" class="bg-form-label">创建人：</label>
 						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
+							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input"  th:value="${task.createBy}">
 						</div>
 				</div>
 				<div class="form-group">
 					<label class="bg-form-label">创建时间：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"   th:value="${task.startCreateDate}">
 					</div>
 					<div class="layui-input-inline bg-cent">
 						<span> ~</span>
 					</div>
 					<div class="layui-input-inline">
-						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input">
+						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"   th:value="${task.endCreateDate}">
 					</div>
 				</div>
 			</div>
@@ -54,8 +54,9 @@
 					<label  for="state" class="bg-form-label">状态：</label>
 					<div class="layui-input-inline">
 						<select id="state" name="state" lay-verify="required">
-							<option value="0">激活</option>
-							<option value="1">冻结</option>
+							<option value="">请选择</option>
+							<option value="0" th:selected="${task?.state eq '0'} ? true : false">激活</option>
+							<option value="1" th:selected="${task?.state eq '1'} ? true : false">冻结</option>
 						</select>
 					</div>
 				</div>
@@ -74,10 +75,10 @@
 				<th nowrap="nowrap">价格</th>
 				<th nowrap="nowrap">已测算人数</th>
 				<th nowrap="nowrap">浏览量</th>
-				<th nowrap="nowrap">激活</th>
-				<th nowrap="nowrap">创建人id</th>
-				<th nowrap="nowrap">create_date</th>
-				<th nowrap="nowrap">修改人id</th>
+				<th nowrap="nowrap">状态</th>
+				<th nowrap="nowrap">创建人</th>
+				<th nowrap="nowrap">创建时间</th>
+				<th nowrap="nowrap">修改人</th>
 				<th nowrap="nowrap">修改时间</th>
 				<th nowrap="nowrap">操作</th>
 			</tr>

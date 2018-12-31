@@ -21,19 +21,25 @@
 				<div class="form-group">
 					<label for="realName" class="bg-form-label">大师昵称：</label>
 						<div class="layui-input-inline">
-							<input id="realName" type="text" name="nickName" maxlength="60" class="layui-input">
+							<input id="realName" type="text" name="nickName" maxlength="60" class="layui-input"   th:value="${task.taskName}">
 						</div>
 				</div>
 				<div class="form-group">
-					<label for="createDate" class="bg-form-label">创建时间：</label>
-						<div class="layui-input-inline">
-							<input type="text" name="createDate" id="createDate" lay-verify="required" placeholder="yyyy-MM-dd HH:mm:ss" autocomplete="off" class="layui-input">
-						</div>
+					<label class="bg-form-label">创建时间：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"   th:value="${task.startCreateDate}">
+					</div>
+					<div class="layui-input-inline bg-cent">
+						<span> ~</span>
+					</div>
+					<div class="layui-input-inline">
+						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"   th:value="${task.endCreateDate}">
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="createBy" class="bg-form-label">创建人</label>
 						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input">
+							<input id="createBy" type="text" name="nickName" maxlength="11" class="layui-input"    th:value="${task.taskName}">
 						</div>
 				</div>
                 <div class="layui-inline  bg-Btn">

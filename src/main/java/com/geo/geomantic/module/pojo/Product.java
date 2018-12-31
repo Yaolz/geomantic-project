@@ -23,7 +23,10 @@ public class Product extends BaseEntity {
 	private String pageView;		// 浏览量
 	private String stackSize;		// 库存量
 	private String state;		// 激活
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
 	public Product() {
 		super();
 	}
@@ -109,5 +112,22 @@ public class Product extends BaseEntity {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
+
 }

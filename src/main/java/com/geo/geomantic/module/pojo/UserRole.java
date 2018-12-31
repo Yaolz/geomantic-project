@@ -16,7 +16,7 @@ public class UserRole extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	private String user;		// 用户编号
 	private String roleId;		// 角色编号
-	
+
 	public UserRole() {
 		super();
 	}
@@ -38,5 +38,5 @@ public class UserRole extends BaseEntity {
 	public void setRoleId(String roleId) {
 		this.roleId = roleId;
 	}
-	
+
 }

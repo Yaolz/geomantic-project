@@ -18,7 +18,10 @@ public class News extends BaseEntity {
 	private String infoTitle;		// 标题
 	private String subTitle;		// 副标题
 	private String content;		// 资讯内容
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
 	public News() {
 		super();
 	}
@@ -61,5 +64,22 @@ public class News extends BaseEntity {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
+
 }

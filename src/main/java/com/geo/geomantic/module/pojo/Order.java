@@ -44,6 +44,8 @@ public class Order extends BaseEntity {
 	private String expressCode;		// 快递公司编号
 	private String channelBalance;		// 渠道金额
 	private String returnBalance;		// 退款金额
+	private String startCreateDate;
+	private String endCreateDate;
 
 	public Order() {
 		super();
@@ -295,6 +297,22 @@ public class Order extends BaseEntity {
 
 	public void setReturnBalance(String returnBalance) {
 		this.returnBalance = returnBalance;
+	}
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
 	}
 
 }

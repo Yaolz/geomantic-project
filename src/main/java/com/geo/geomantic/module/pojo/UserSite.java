@@ -17,7 +17,7 @@ public class UserSite extends BaseEntity {
 	private String address;		// 地址1
 	private String isSite;		// 是否默认地址
 	private String addressCode;		// 地址1
-	
+
 	public UserSite() {
 		super();
 	}
@@ -52,5 +52,5 @@ public class UserSite extends BaseEntity {
 	public void setAddressCode(String addressCode) {
 		this.addressCode = addressCode;
 	}
-	
+
 }

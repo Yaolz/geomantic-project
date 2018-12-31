@@ -21,7 +21,9 @@ public class Task extends BaseEntity {
 	private String useNum;		// 已测算人数
 	private String pageView;		// 浏览量
 	private String state;		// 激活
-	
+	private String startCreateDate;
+	private String endCreateDate;
+
 	public Task() {
 		super();
 	}
@@ -90,5 +92,22 @@ public class Task extends BaseEntity {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
+
 }

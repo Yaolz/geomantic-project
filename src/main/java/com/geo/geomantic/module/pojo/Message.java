@@ -17,7 +17,12 @@ public class Message extends BaseEntity {
 	private String userBy;		// 被留言用户id
 	private String message;		// 用户反馈内容
 	private String state;		// 激活
-	
+
+
+	private String startCreateDate;
+	private String endCreateDate;
+
+
 	public Message() {
 		super();
 	}
@@ -51,5 +56,21 @@ public class Message extends BaseEntity {
 	public void setState(String state) {
 		this.state = state;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
 }

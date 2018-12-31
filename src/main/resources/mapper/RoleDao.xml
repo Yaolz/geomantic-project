@@ -48,8 +48,14 @@
 			<if test="createBy != null and createBy != ''">
 				AND a.CREATE_BY = #{createBy}
 			</if>
-			<if test="createDate != null">
-				AND a.CREATE_DATE = #{createDate}
+			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
+				AND a.create_date between #{startCreateDate} and #{endCreateDate}
+			</if>
+			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate == null or endCreateDate == ''">
+				AND a.create_date &gt; #{startCreateDate}
+			</if>
+			<if test="startCreateDate == null or startCreateDate == '' and endCreateDate != null and endCreateDate != ''">
+				AND a.create_date &lt; #{endCreateDate}
 			</if>
 			<if test="updateBy != null and updateBy != ''">
 				AND a.UPDATE_BY = #{updateBy}

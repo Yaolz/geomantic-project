@@ -20,7 +20,11 @@ public class Flow extends BaseEntity {
 	private String way;		// 支付方式
 	private String status;		// 状态(完成，退款)
 	private String money;		// 交易金额
-	
+
+	private String startCreateDate;
+	private String endCreateDate;
+
+
 	public Flow() {
 		super();
 	}
@@ -81,5 +85,21 @@ public class Flow extends BaseEntity {
 	public void setMoney(String money) {
 		this.money = money;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
 }

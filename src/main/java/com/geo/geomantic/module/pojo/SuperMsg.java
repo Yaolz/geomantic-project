@@ -17,7 +17,9 @@ public class SuperMsg extends BaseEntity {
 	private String photo;		// 个人图片
 	private String realName;		// 真实姓名
 	private String description;		// 简介
-	
+	private String startCreateDate;
+	private String endCreateDate;
+
 	public SuperMsg() {
 		super();
 	}
@@ -51,5 +53,22 @@ public class SuperMsg extends BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+	public String getStartCreateDate() {
+		return startCreateDate;
+	}
+
+	public void setStartCreateDate(String startCreateDate) {
+		this.startCreateDate = startCreateDate;
+	}
+
+	public String getEndCreateDate() {
+		return endCreateDate;
+	}
+
+	public void setEndCreateDate(String endCreateDate) {
+		this.endCreateDate = endCreateDate;
+	}
+
+
 }

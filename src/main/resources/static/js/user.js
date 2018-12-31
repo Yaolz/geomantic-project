@@ -16,53 +16,17 @@ layui.use(['element','form','table'], function () {
         }
     });
 
-    //渲染table数据
-    table.render({
-        elem: '#userList'
-        ,url: '/data/userPage'
-        ,cols: [[
-            {checkbox: true, fixed: true}
-            ,{field:'headphoto', title:'头像', width:90}
-            ,{field:'nickName', title:'昵称', width:100}
-            ,{field:'phone', title:'手机号', width:200}
-            ,{field:'sex', title:'性别', width:60,height:50}
-            ,{field:'autograph', title:'个性签名', width:250,height:160}
-            ,{field:'address', title:'地址', width:300,height:160}
-            ,{field:'state', title:'状态', width:60,height:160}
-        ]]
-        ,id: 'table'
-        ,page: true
-        ,width:1120
-        ,height: 500
-        ,request: {
-            pageName: 'pageNo' //页码的参数名称，默认：page
-            ,limitName: 'pageSize' //每页数据量的参数名，默认：limit
-        }
-        ,response: {
-            statusName: 'code'
-            ,statusCode: '0000'
-            ,msgName: 'msg'
-            ,countName: 'total'
-            ,dataName: 'body'
-        }
-    });
-
-    $('.bg-Btn .layui-btn').on('click', function(){
+    $('.bg-table .layui-btn').on('click', function(){
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
 
     var active = {
-        refreshBtn:function () {
-            location.reload(true);
-        },
-        updateBtn: function(){ //验证是否全选
+        delete: function(){ //验证是否全选
             var checkStatus = table.checkStatus('table')
                 ,data = checkStatus.data;
             if(data.length == 1) {
-                window.open("/page/menu/updatePg?id="+data[0].id)
-            } else {
-                layer.msg("请选择一行！");
+
             }
         }
 
