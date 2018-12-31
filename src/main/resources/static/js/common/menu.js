@@ -2,7 +2,7 @@
 layui.config({
     base: '/layui_exts/' //配置 layui 第三方扩展组件存放的基础目录
 }).extend({
-    treetable: 'treeTable/treeTable' //以 regionSelect 组件为例，定义该组件模块名
+    treetable: 'treeTable/treetable' //以 regionSelect 组件为例，定义该组件模块名
 }).use(['layer', 'table', 'treetable'], function () {
     var $ = layui.jquery;
     var table = layui.table;
@@ -22,6 +22,11 @@ layui.config({
             elem: '#menuTable',
             url: '/data/menu/list',
             page: false,
+            con_val: {
+             open: "&#xe619;",
+             close: "&#xe61a;"
+             },
+             space: 4,
             cols: [[
                 {type: 'numbers'},
                 {field: 'name', title: '名称'},
@@ -94,7 +99,7 @@ layui.config({
         if (layEvent === 'del') {
             layer.msg('添加下级' + data.id);
         } else if (layEvent === 'edit') {
-            layer.msg('修改' + data.id);
+            window.document.location.href="/page/menu/form?id="+data.id+"";
         }
     });
 });
