@@ -85,7 +85,7 @@
             if (t.tabExists(s)) t.tabChange(s); else {
                 NProgress.start();
                 var r = ['<li class="layui-this" lay-id="' + s + '" >'];
-                -1 !== n.indexOf("fa-") ? r.push('<i class="fa ' + n + '" aria-hidden="true"></i>') : r.push('<i class="layui-icon">' + n + "</i>"), r.push("&nbsp;" + l), r.push('<i class="layui-icon layui-unselect layui-tab-close">&#x1006;</i>'), r.push("</li>");
+                -1 !== n.indexOf("layui-icon-") ? r.push('<i class="layui-icon ' + n + '" aria-hidden="true"></i>') : r.push('<i class="layui-icon">' + n + "</i>"), r.push("&nbsp;" + l), r.push('<i class="layui-icon layui-unselect layui-tab-close">&#x1006;</i>'), r.push("</li>");
                 var o = '<div class="layui-tab-item layui-show" lay-item-id="' + s + '"><iframe src="' + c + '"></iframe></div>';
                 t._title.append(r.join("")), t._content.append(o), t.getTab(s).find("i.layui-tab-close").off("click").on("click", function () {
                     a.closeBefore ? a.closeBefore(i) && t.tabDelete(s) : t.tabDelete(s)
