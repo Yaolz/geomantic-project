@@ -34,14 +34,18 @@ public class MenuPgController {
 
     @RequestMapping("save")
     public String save(Menu menu, HttpSession session, Model model) {
+        String msg = "添加成功";
         if (session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
             menu.setCreateBy(user.getId());
             menu.setUpdateBy(user.getId());
         }
         menuService.save(menu);
-        model.addAttribute("msg", "添加成功！");
-        return "home/menu/addMenu";
+        if(StringUtils.isNotBlank(menu.getId())){
+            msg = "修改成功！";
+        }
+        model.addAttribute("msg", msg);
+        return "home/menu/menuForm";
     }
 
     @RequestMapping("form")

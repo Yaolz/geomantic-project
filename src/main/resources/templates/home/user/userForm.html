@@ -13,7 +13,7 @@
 <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
     <legend>用户信息编辑</legend>
 </fieldset>
-
+<input type="hidden" id="msg" th:value="${msg}"/>
     <form class="layui-form" id="inputForm" action="/page/user/save">
         <input type="hidden" name="id" th:value="${user.id}"/>
             <div class="layui-form-item">

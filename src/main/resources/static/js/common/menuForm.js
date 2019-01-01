@@ -24,7 +24,7 @@ layui.use(['form', 'layedit','iconPicker'], function () {
      * @param iconName 图标名称，自动识别fontClass/unicode
      */
     icon.checkIcon('iconPicker', 'layui-icon-star-fill');
-
+    $("#icon").attr('value', 'layui-icon-star-fill');
     //监听提交
     form.on('submit(inputForm)', function(data){
         $("#inputForm").submit();

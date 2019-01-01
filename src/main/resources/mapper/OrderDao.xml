@@ -57,10 +57,10 @@
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}
 			</if>
-			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate == null or endCreateDate == ''">
+			<if test="startCreateDate != null and startCreateDate != '' and (endCreateDate == null or endCreateDate == '')">
 				AND a.create_date &gt; #{startCreateDate}
 			</if>
-			<if test="startCreateDate == null or startCreateDate == '' and endCreateDate != null and endCreateDate != ''">
+			<if test="endCreateDate != null and endCreateDate != '' and (startCreateDate == null or startCreateDate == '')">
 				AND a.create_date &lt; #{endCreateDate}
 			</if>
 			<if test="orderMoney != null and orderMoney != ''">
