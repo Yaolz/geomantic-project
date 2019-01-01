@@ -46,9 +46,11 @@ public class MenuPgController {
 
     @RequestMapping("form")
     public String form(Menu menu, Model model) {
+        String option = menu.getOption();
         if (StringUtils.isNotBlank(menu.getId())){
             menu = menuService.get(menu.getId());
         }
+        menu.setOption(option);
         model.addAttribute("menu", menu);
         return "home/menu/menuForm";
     }

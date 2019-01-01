@@ -30,6 +30,8 @@ public class Menu extends BaseEntity {
 	private String isShow;		// 是否在菜单中显示
 	private String permission;		// 权限标识
 
+	private String option;		//接收前台的操作标识
+
 	public Menu() {
 		super();
 	}
@@ -116,6 +118,14 @@ public class Menu extends BaseEntity {
 
 	public void setPermission(String permission) {
 		this.permission = permission;
+	}
+
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
 	}
 
 	public static long getSerialVersionUID() {

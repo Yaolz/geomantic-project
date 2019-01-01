@@ -1,6 +1,7 @@
 /**
  * Created by yao on 2018/12/21.
  */
+
 layui.use(['element','form','table'], function () {
     var element = layui.element;
     var form = layui.form;
@@ -14,6 +15,7 @@ layui.use(['element','form','table'], function () {
         if (msg!= null && msg.trim() != '') {
             layer.msg(msg);
         }
+
     });
 
     $('.bg-table .layui-btn').on('click', function(){

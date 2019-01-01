@@ -8,7 +8,6 @@ layui.config({
     var table = layui.table;
     var layer = layui.layer;
     var treetable = layui.treetable;
-
     // 渲染表格
     var renderTable = function () {
         layer.load(2);
@@ -38,9 +37,9 @@ layui.config({
                 {
                     field: 'isShow',  align: 'center', templet: function (d) {
                         if (d.isShow == 0) {
-                            return '<span class="layui-badge layui-bg-gray">显示</span>';
+                            return '<span class="layui-badge layui-bg-gray">激活</span>';
                         } else {
-                            return '<span class="layui-badge layui-bg-gray">隐藏</span>';
+                            return '<span class="layui-badge layui-bg-gray">冻结</span>';
                         }
                     }, title: '是否显示'
                 },
@@ -89,17 +88,14 @@ layui.config({
             layer.msg("没有匹配结果", {icon: 5});
         }
     });
-
     //监听工具条
     table.on('tool(menuTable)', function (obj) {
         var data = obj.data;
         var layEvent = obj.event;
-        console.log(obj);
-        console.log(data);
-        if (layEvent === 'del') {
-            layer.msg('添加下级' + data.id);
+        if (layEvent === 'addChild') {
+            window.document.location.href="/page/menu/form?id="+data.id+"&option=addChild";
         } else if (layEvent === 'edit') {
-            window.document.location.href="/page/menu/form?id="+data.id+"";
+            window.document.location.href="/page/menu/form?id="+data.id+"&option=edit";
         }
     });
 });

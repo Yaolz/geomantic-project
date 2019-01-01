@@ -22,7 +22,7 @@
                 <div class="layui-input-inline">
                     <!--<label class="bg-form-label">搜索</label>-->
                     <button class="layui-btn" id="btn-search">查询</button>
-                    <a class="layui-btn" th:href="@{/page/menu/form}">添加</a>
+                    <a class="layui-btn" th:href="@{/page/menu/form?option=add}">添加</a>
                     <a class="layui-btn">保存排序</a>
                 </div>
             </div>
@@ -34,7 +34,7 @@
 <!-- 操作列 -->
 <script type="text/html" id="oper-col">
     <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
-    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">添加下级</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="addChild">添加下级</a>
 </script>
 
 </body>

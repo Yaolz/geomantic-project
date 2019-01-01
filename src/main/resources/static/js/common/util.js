@@ -162,7 +162,6 @@ layui.use(['laypage', 'layer','laydate','form'], function () {
     laydate.render({
         elem: '#endCreateDate' //指定元素
     });
-
     //提示
     var msg = $("#msg").val();
     if (isNotBlank(msg)) {
