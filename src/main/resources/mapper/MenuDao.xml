@@ -116,7 +116,6 @@
 	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
 		INSERT INTO s_menu
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">ID,</if>
 			<if test="parentId != null">PARENT_ID,</if>
 			<if test="parentIds != null">PARENT_IDS,</if>
 			<if test="name != null">NAME,</if>
@@ -133,7 +132,6 @@
 			<if test="remarks != null">REMARKS,</if>
 		</trim>
 		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
-			<if test="id != null">#{id},</if>
 			<if test="parentId != null">#{parentId},</if>
 			<if test="parentIds != null">#{parentIds},</if>
 			<if test="name != null">#{name},</if>

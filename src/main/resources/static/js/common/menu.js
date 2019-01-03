@@ -54,6 +54,12 @@ layui.config({
 
     renderTable();
 
+    //提示
+    var msg = $("#msg").val();
+    if (msg != null && msg != '') {
+        layer.msg(msg);
+    }
+
     $('#btn-expand').click(function () {
         treetable.expandAll('#menuTable');
     });
@@ -93,9 +99,9 @@ layui.config({
         var data = obj.data;
         var layEvent = obj.event;
         if (layEvent === 'addChild') {
-            window.document.location.href="/page/menu/form?id="+data.id+"&option=addChild";
+            window.document.location.href="/page/menu/form?id="+data.id;
         } else if (layEvent === 'edit') {
-            window.document.location.href="/page/menu/form?id="+data.id+"&option=edit";
+            window.document.location.href="/page/menu/form?id="+data.id;
         }
     });
 });

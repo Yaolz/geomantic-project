@@ -1,7 +1,10 @@
 package com.geo.geomantic.module.page;
 
+import com.geo.geomantic.common.constant.ConstantEnum;
 import com.geo.geomantic.common.constant.Constants;
+import com.geo.geomantic.common.constant.RedisUtil;
 import com.geo.geomantic.common.constant.TreeModel;
+import com.geo.geomantic.common.utils.RedisService;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.service.MenuService;
 import com.google.common.collect.Lists;
@@ -10,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,6 +26,9 @@ public class IndexController {
     @Autowired
     private MenuService menuService;
 
+    @Autowired
+    private RedisUtil redisUtil;
+
     @RequestMapping("")
     public String page() {
         return "minpage/compass";
@@ -36,13 +41,15 @@ public class IndexController {
 
     @RequestMapping("home")
     public String home(Model model) {
-        Menu menu = new Menu();
-        menu.setIsShow(Constants.YES);
+//        组装成树结构的集合，从redis中获取，如果没有获取到则从数据库中获取
+        @SuppressWarnings("unchecked")
+        List<TreeModel<Menu>> menuTree = (List<TreeModel<Menu>>) redisUtil.get(ConstantEnum.REDIS_MENU.getKey());
+        if (menuTree == null) {
+            Menu menu = new Menu();
+            menu.setIsShow(Constants.YES);
 //        先把所有未隐藏的菜单查出
-        List<Menu> menus = menuService.findList(menu);
-//        组装成树结构的集合
-        List<TreeModel<Menu>> menuTree = Lists.newArrayList();
-        if (menus != null) {
+            List<Menu> menus = menuService.findList(menu);
+            menuTree = Lists.newArrayList();
             for (Menu menuData : menus) {
 //                第一层必须父id为0
                 if (Menu.PARENT_ID.equals(menuData.getParentId())) {
@@ -53,6 +60,7 @@ public class IndexController {
                     menuTree.add(node);
                 }
             }
+            redisUtil.set(ConstantEnum.REDIS_MENU.getKey(), menuTree);
         }
         model.addAttribute("menuTree", menuTree);
         return "home/home";

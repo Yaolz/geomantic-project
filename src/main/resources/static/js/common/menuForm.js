@@ -1,7 +1,7 @@
 /**
  * Created by yao on 2019/1/1.
  */
-layui.use(['form', 'layedit','iconPicker'], function () {
+layui.use(['form', 'layedit', 'iconPicker'], function () {
     var form = layui.form;
     var icon = layui.iconPicker;
 
@@ -25,19 +25,19 @@ layui.use(['form', 'layedit','iconPicker'], function () {
      */
     icon.checkIcon('iconPicker', 'layui-icon-star-fill');
     $("#icon").attr('value', 'layui-icon-star-fill');
+
+    /**
+     * 选择父菜单时把父id集合更新
+     */
+    form.on('select(parentMenu)', function (data) {
+        var parentIds = $("#parentIds").val();
+        var result = parentIds.split(",");
+        $("#parentIds").val(parentIds.replace(result[result.length - 2], data.value));
+    });
+
     //监听提交
-    form.on('submit(inputForm)', function(data){
+    form.on('submit(inputForm)', function (data) {
         $("#inputForm").submit();
     });
-  var option =  $("#option").val();
-  if(option=='addChild'){
-    document.getElementById("id").style.display = "none";
-    document.getElementById("pid").style.display = "none";
-  }
-    if(option=='add'){
-        document.getElementById("parentId").value= "0";
-        document.getElementById("id").style.display = "none";
-        document.getElementById("parentIds").value = "0,";
-        document.getElementById("pid").style.display = "none";
-    }
+
 });

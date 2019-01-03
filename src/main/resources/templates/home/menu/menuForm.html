@@ -16,21 +16,15 @@
 <input type="hidden" id="msg" th:value="${msg}"/>
     <form class="layui-form" id="inputForm" action="/page/menu/save">
         <input type="hidden" name="id" th:value="${menu.id}"/>
-        <input type="hidden" id="option"  th:value="${menu.option}"/>
 			<div class="layui-form-item" id="id">
-				<label for="parentId" class="layui-form-label"><span class="layui-badge-dot"></span>父级编号</label>
+				<label for="parentId" class="layui-form-label"><span class="layui-badge-dot"></span>父级菜单</label>
 				<div class="layui-input-block">
-					<input id="parentId" type="text" name="parentId"  maxlength="64" lay-verify="required"  placeholder="请输入父级编号" autocomplete="off"
-                       th:value="${menu.parentId}" class="layui-input" />
+                    <select id="parentId" name="parentId" lay-verify="required" lay-filter="parentMenu" lay-search="">
+                        <option th:each="parent : ${menuList}" th:value="${parent.id}" th:text="${parent.name}" th:selected="${parent.id == menu.parentId} ? true : false">直接选择或搜索选择</option>
+                    </select>
 				</div>
 			</div>
-			<div class="layui-form-item" id="pid">
-				<label for="parentIds" class="layui-form-label"><span class="layui-badge-dot"></span>所有父编号</label>
-				<div class="layui-input-block">
-					<input id="parentIds" type="text" name="parentIds"  maxlength="2000" lay-verify="required"  placeholder="请输入所有父编号" autocomplete="off"
-                       th:value="${menu.parentIds}" class="layui-input"/>
-				</div>
-			</div>
+        <input id="parentIds" type="hidden" name="parentIds" th:value="${menu.parentIds}"/>
 			<div class="layui-form-item">
 				<label for="name" class="layui-form-label"><span class="layui-badge-dot"></span>名称</label>
 				<div class="layui-input-block">
@@ -42,7 +36,7 @@
 				<label for="sort" class="layui-form-label"><span class="layui-badge-dot"></span>排序</label>
 				<div class="layui-input-block">
 					<input id="sort" type="text" name="sort"  lay-verify="required"  placeholder="请输入排序" autocomplete="off"
-                       th:value="${menu.sort}" class="layui-input" />
+                       th:value="${menu.sort != null && menu.sort != ''} ? ${menu.sort} : '10'" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -52,13 +46,13 @@
                        th:value="${menu.href}" class="layui-input" />
 				</div>
 			</div>
-			<div class="layui-form-item">
+			<!--<div class="layui-form-item">
 				<label for="target" class="layui-form-label"><span class="layui-badge-dot"></span>目标</label>
 				<div class="layui-input-block">
 					<input id="target" type="text" name="target"  maxlength="20"   placeholder="请输入目标" autocomplete="off"
                        th:value="${menu.target}" class="layui-input" />
 				</div>
-			</div>
+			</div>-->
 			<div class="layui-form-item">
 				<label for="icon" class="layui-form-label"><span class="layui-badge-dot"></span>图标</label>
 				<div class="layui-input-block">
@@ -66,21 +60,21 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="isShow" class="layui-form-label"><span class="layui-badge-dot"></span>是否显示</label>
+				<label class="layui-form-label"><span class="layui-badge-dot"></span>是否显示</label>
 				<div class="layui-input-block">
-					<input id="isShow" type="text" name="isShow"  maxlength="1" lay-verify="required"  placeholder="请输入是否在菜单中显示" autocomplete="off"
-                       th:value="${menu.isShow}" class="layui-input" />
+                    <input type="radio" name="isShow" value="0" title="是" th:checked="${menu.isShow == null || menu.isShow == '0'} ? true : false">
+                    <input type="radio" name="isShow" value="1" title="否" th:checked="${menu.isShow == '1'} ? true : false">
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="permission" class="layui-form-label"><span class="layui-badge-dot"></span>权限标识</label>
+				<label for="permission" class="layui-form-label">权限标识</label>
 				<div class="layui-input-block">
 					<input id="permission" type="text" name="permission"  maxlength="200"   placeholder="请输入权限标识" autocomplete="off"
                        th:value="${menu.permission}" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="remarks" class="layui-form-label"><span class="layui-badge-dot"></span>备注信息</label>
+				<label for="remarks" class="layui-form-label">备注信息</label>
 				<div class="layui-input-block">
 					<textarea placeholder="请输入备注信息" id="remarks" name="remarks" class="layui-textarea" th:text="${menu.remarks}"   maxlength="255" ></textarea>
 				</div>
