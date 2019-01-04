@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.web.context.support.ServletContextParameterFactoryBean;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -25,9 +24,8 @@ public class Global {
 
     private static Logger logger = LoggerFactory.getLogger(Global.class);
 
-
     @Autowired
-    private static Environment environment;
+    static Environment environment;
 
     /**
      * 当前对象实例

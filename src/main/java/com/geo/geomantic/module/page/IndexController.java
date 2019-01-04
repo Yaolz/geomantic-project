@@ -1,10 +1,9 @@
 package com.geo.geomantic.module.page;
 
-import com.geo.geomantic.common.constant.ConstantEnum;
+import com.geo.geomantic.common.constant.RedisEnum;
 import com.geo.geomantic.common.constant.Constants;
 import com.geo.geomantic.common.constant.RedisUtil;
 import com.geo.geomantic.common.constant.TreeModel;
-import com.geo.geomantic.common.utils.RedisService;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.service.MenuService;
 import com.google.common.collect.Lists;
@@ -43,7 +42,7 @@ public class IndexController {
     public String home(Model model) {
 //        组装成树结构的集合，从redis中获取，如果没有获取到则从数据库中获取
         @SuppressWarnings("unchecked")
-        List<TreeModel<Menu>> menuTree = (List<TreeModel<Menu>>) redisUtil.get(ConstantEnum.REDIS_MENU.getKey());
+        List<TreeModel<Menu>> menuTree = (List<TreeModel<Menu>>) redisUtil.get(RedisEnum.REDIS_MENU.getKey());
         if (menuTree == null) {
             Menu menu = new Menu();
             menu.setIsShow(Constants.YES);
@@ -60,7 +59,7 @@ public class IndexController {
                     menuTree.add(node);
                 }
             }
-            redisUtil.set(ConstantEnum.REDIS_MENU.getKey(), menuTree);
+            redisUtil.set(RedisEnum.REDIS_MENU.getKey(), menuTree);
         }
         model.addAttribute("menuTree", menuTree);
         return "home/home";

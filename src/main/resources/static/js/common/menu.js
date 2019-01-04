@@ -99,7 +99,7 @@ layui.config({
         var data = obj.data;
         var layEvent = obj.event;
         if (layEvent === 'addChild') {
-            window.document.location.href="/page/menu/form?id="+data.id;
+            window.document.location.href="/page/menu/addChild?id="+data.id;
         } else if (layEvent === 'edit') {
             window.document.location.href="/page/menu/form?id="+data.id;
         }

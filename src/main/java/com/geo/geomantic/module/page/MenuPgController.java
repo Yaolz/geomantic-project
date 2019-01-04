@@ -1,10 +1,9 @@
 package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.basic.BaseController;
-import com.geo.geomantic.common.constant.ConstantEnum;
+import com.geo.geomantic.common.constant.RedisEnum;
 import com.geo.geomantic.common.constant.RedisUtil;
 import com.geo.geomantic.module.pojo.Menu;
-import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.MenuService;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
@@ -12,10 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +42,7 @@ public class MenuPgController extends BaseController {
     @RequestMapping("save")
     public String save(Menu menu, Model model, RedirectAttributes redirectAttributes) {
 //      更改菜单，把redis菜单结构清空清空
-        redisUtil.del(ConstantEnum.REDIS_MENU.getKey());
+        redisUtil.del(RedisEnum.REDIS_MENU.getKey());
         menu.setCreateBy(getUserInfo().getId());
         menu.setUpdateBy(getUserInfo().getId());
         menuService.save(menu);
@@ -52,10 +50,16 @@ public class MenuPgController extends BaseController {
         return "redirect:/page/menu";
     }
 
+    /**
+     * 添加，修改
+     * @param menu
+     * @param model
+     * @return
+     */
     @RequestMapping("form")
     public String form(Menu menu, Model model) {
 //        查询菜单信息
-        if (StringUtils.isNotBlank(menu.getId())){
+        if (StringUtils.isNotBlank(menu.getId())) {
             menu = menuService.get(menu.getId());
         }
 //        父级菜单列表，父级菜单以选的形式展示
@@ -72,6 +76,27 @@ public class MenuPgController extends BaseController {
             menuList = menuService.findList(menuQuery);
         }
         model.addAttribute("menu", menu);
+        model.addAttribute("menuList", menuList);
+        return "home/menu/menuForm";
+    }
+
+    /**
+     * 添加下级
+     */
+    @RequestMapping("addChild")
+    public String addChild(Menu menu, Model model, RedirectAttributes redirectAttributes) {
+        menu = menuService.get(menu.getId());
+        if (menu == null) {
+            redirectAttributes.addFlashAttribute("msg", "菜单不存在！");
+            return "redirect:/page/menu";
+        }
+        //        父级菜单查询
+        Menu menuQuery = new Menu();
+        menuQuery.setParentId(menu.getParentId());
+        //        父级菜单列表，父级菜单以选的形式展示
+        List<Menu> menuList = menuService.findList(menuQuery);
+        menuQuery.setParentId(menu.getId());
+        model.addAttribute("menu", menuQuery);
         model.addAttribute("menuList", menuList);
         return "home/menu/menuForm";
     }
