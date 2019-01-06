@@ -20,9 +20,9 @@
         </ul>
         <ul class="layui-nav layui-layout-right kit-nav">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="<%=path %>/static/images/face.jpg" class="layui-nav-img">
-                    <span id="rname"  th:if = "${session.user !=null}" th:text="${session.user.nickName}"></span>
+                <a href="javascript:;"  th:object="${session.user}">
+                    <img th:src="*{headphoto}" class="layui-nav-img">
+                    <span id="rname"  th:text="*{nickName}"></span>
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="javascript:;" id="out" onclick="out()">注销</a></dd>

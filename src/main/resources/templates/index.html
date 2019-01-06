@@ -22,8 +22,8 @@
                 <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
                 <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
                 <li class="layui-nav-item layui-layout-right "  >
-                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);" onclick="login()">请登录</a>
-                    <a th:if="${session.user} != null"   href="javascript:void(0);" onclick="home()">个人中心</a>
+                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);">请登录</a>
+                    <a th:if="${session.user} != null"  href="javascript:void(0);" onclick="home()">个人中心</a>
                 </li>
             </ul>
         <div class="layui-row">
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="links">
-                    <a href="javascript:void(0);" onclick="register()" style="color: #ed442c;">还没有账号? 点击注册</a>
+                    <a href="javascript:void(0);" id="registers" style="color: #ed442c;">还没有账号? 点击注册</a>
                 </div>
             </form>
         </div>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
                 <div class="link">
-                    <a href="javascript:void(0);" onclick="login()" style="color: #ed442c;">已有账号? 去登录</a>
+                    <a href="javascript:void(0);" id="loginBtns"  style="color: #ed442c;">已有账号? 去登录</a>
                 </div>
             </form>
         </div>

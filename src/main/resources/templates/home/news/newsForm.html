@@ -17,9 +17,9 @@
     <form class="layui-form" id="inputForm" action="/page/news/save">
         <input type="hidden" name="id" th:value="${news.id}"/>
 			<div class="layui-form-item">
-				<label for="photo" class="layui-form-label"><span class="layui-badge-dot"></span>图片,不能为空</label>
+				<label for="photo" class="layui-form-label"><span class="layui-badge-dot"></span>图片</label>
 				<div class="layui-input-block">
-					<input id="photo" type="text" name="photo"  maxlength="60" lay-verify="required"  placeholder="请输入图片,不能为空" autocomplete="off"
+					<input id="photo" type="text" name="photo"  maxlength="60" lay-verify="required"  placeholder="请选择图片" autocomplete="off"
                        th:value="${news.photo}" class="layui-input" />
 				</div>
 			</div>

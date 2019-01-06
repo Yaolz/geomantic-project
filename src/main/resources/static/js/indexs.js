@@ -84,28 +84,41 @@ layui.use(['element','form'], function () {
         );
         return false;
     });
-    //修改密码之后重新登陆
-    $(function () {
-        var resetPwd = $("#resetPwd").val();
-        if(resetPwd!=null&&resetPwd!=''){
-            login();
+
+        $("#loginBtn").click(function () {
+            var isTrue=document.getElementById("loginBtn").hasAttribute('onclick');
+            if(!isTrue){
+                layer.closeAll('page');
+                layer.open({
+                    type: 1,
+                    title: ['登录', 'font-size:18px;'],
+                    area: ['40%', '70%'],
+                    shadeClose: true,
+                    isOutAnim: false,
+                    anim: -1,
+                    shade: 0,
+                    content: $("#login")
+                });
+            }
+        })
+
+    $("#loginBtns").click(function () {
+        var isTrue=document.getElementById("loginBtn").hasAttribute('onclick');
+        if(!isTrue){
+            layer.closeAll('page');
+            layer.open({
+                type: 1,
+                title: ['登录', 'font-size:18px;'],
+                area: ['40%', '70%'],
+                shadeClose: true,
+                isOutAnim: false,
+                anim: -1,
+                shade: 0,
+                content: $("#login")
+            });
         }
     })
-
-    function login() {
-        layer.closeAll('page');
-        layer.open({
-            type: 1,
-            title: ['登录', 'font-size:18px;'],
-            area: ['40%', '70%'],
-            shadeClose: true,
-            isOutAnim: false,
-            anim: -1,
-            shade: 0,
-            content: $("#login")
-        });
-    };
-    function register() {
+    $("#registers").click(function () {
         layer.closeAll('page');
         layer.open({
             type: 1,
@@ -117,11 +130,9 @@ layui.use(['element','form'], function () {
             shade: 0,
             content: $("#register")
         })
-    }
+    })
+
 });
-
-
-
 function home() {
     window.location.href = 'home';
 }

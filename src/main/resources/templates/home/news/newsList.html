@@ -69,7 +69,7 @@
             </thead>
             <tbody>
 			<tr th:each="news : ${page.list}">
-							<td  th:text="${news.photo}"></td>
+							<td  th:src="${news.photo}" ></td>
 
 							<td  th:text="${news.infoTitle}"></td>
 

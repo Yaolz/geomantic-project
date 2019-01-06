@@ -33,8 +33,7 @@
 			<div class="layui-form-item">
 				<label for="description" class="layui-form-label"><span class="layui-badge-dot"></span>简介</label>
 				<div class="layui-input-block">
-					<input id="description" type="text" name="description"  lay-verify="required"  placeholder="请输入简介" autocomplete="off"
-                       th:value="${task.description}" class="layui-input" />
+					<textarea placeholder="请输入简介" id="description" name="description" class="layui-textarea"  th:value="${task.description}"  lay-verify="required"  ></textarea>
 				</div>
 			</div>
 			<div class="layui-form-item">
