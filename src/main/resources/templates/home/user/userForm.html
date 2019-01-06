@@ -23,13 +23,6 @@
                        th:value="${user.nickName}" class="layui-input">
             </div>
         </div>
-        <div class="layui-form-item" th:if="${user.id == null}">
-            <label class="layui-form-label"><span class="layui-badge-dot"></span>密码</label>
-            <div class="layui-input-block">
-                <input type="password" name="password" lay-verify="required" placeholder="请输入" autocomplete="off"
-                       class="layui-input">
-            </div>
-        </div>
         <div class="layui-form-item">
             <label class="layui-form-label"><span class="layui-badge-dot"></span>手机号</label>
             <div class="layui-input-block">
@@ -61,29 +54,5 @@
 </body>
 <script th:src="@{/js/jquery/jquery.min.js}"></script>
 <script th:src="@{/layui/layui.js}"></script>
-<script>
-    layui.use(['form', 'layedit'], function () {
-        var form = layui.form;
-        var $ = layui.jquery;
-
-        var msg = '[[${msg}]]';
-        if (msg !== '') {
-            layer.msg(msg);
-        }
-
-        $("#phone").change(function () {
-            $.post('/data/queryUser', {phone: this.value}, function (res) {
-                if (res !== '0000') {
-                    $("#phone").val('');
-                    layer.msg('该手机号已存在！');
-                }
-            })
-        });
-
-        //监听提交
-        form.on('submit(inputForm)', function(data){
-            $("#inputForm").submit();
-        });
-    });
-</script>
+<script th:src="@{/js/user.js}"></script>
 </html>

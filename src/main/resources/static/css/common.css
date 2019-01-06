@@ -33,5 +33,6 @@
 .bg-cent{
     margin-top: 9px;
 }
-
-
+.tipMsg{
+    color:red;
+}

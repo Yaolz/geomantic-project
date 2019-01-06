@@ -14,7 +14,7 @@ layui.use(['form', 'layedit', 'iconPicker'], function () {
         search: true,
         // 点击回调
         click: function (data) {
-            console.log(data);
+            // console.log(data);
         }
     });
 

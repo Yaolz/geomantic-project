@@ -2,6 +2,7 @@ package com.geo.geomantic.module.controller;
 
 import com.geo.geomantic.common.constant.MsgModel;
 import com.geo.geomantic.common.constant.ResultStatus;
+import com.geo.geomantic.common.utils.SecretUtils;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -9,7 +10,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * @author zyz
@@ -69,8 +73,5 @@ public class UserController {
         userService.save(user);
         return MsgModel.ok();
     }
-
-
-
 
 }

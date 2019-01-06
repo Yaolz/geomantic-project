@@ -22,7 +22,7 @@
                 <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
                 <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
                 <li class="layui-nav-item layui-layout-right "  >
-                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);">请登录</a>
+                    <a th:if="${session.user} == null"  id="loginBtn" href="javascript:void(0);" onclick="login()">请登录</a>
                     <a th:if="${session.user} != null"   href="javascript:void(0);" onclick="home()">个人中心</a>
                 </li>
             </ul>

@@ -6,7 +6,7 @@ import com.geo.geomantic.common.basic.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
- * 咨询管理Entity
+ * 资讯管理Entity
  * @author zyzz
  * @version 2018-12-16
  */

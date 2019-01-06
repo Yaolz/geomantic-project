@@ -11,7 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by yao on 2018/12/21.
@@ -68,5 +71,33 @@ public class UserPgController extends BaseController{
         redirectAttributes.addFlashAttribute("msg", "删除成功！");
         return "redirect:/page/user";
     }
-
+    @RequestMapping("pwdUpdPg")
+    public String pwdUpdate(){
+        return "home/user/changePwd";
+    }
+    @RequestMapping("pwdUpd")
+    public String pwdUpdate(@RequestParam("id") String id, @RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd, Model model, HttpSession session){
+        if(StringUtils.isNotBlank(oldPwd)&&StringUtils.isNotBlank(newPwd)){
+            User user = (User) session.getAttribute("user");
+            if(!SecretUtils.validatePassword(oldPwd, user.getPassword())){
+                 model.addAttribute("error","原密码错误");
+            }else {
+                if(!oldPwd.equals(newPwd)){
+                    User u = new User();
+                    u.setId(id);
+                    u.setPassword(SecretUtils.entryptPassword(newPwd));
+                    userService.save(u);
+                    model.addAttribute("msg", "密码修改成功，请重新登录！");
+                    session.removeAttribute("user");//移除session用户信息
+                }else{
+                    model.addAttribute("error","修改密码和原密码一致！");
+                }
+            }
+        }
+        return "home/user/changePwd";
+    }
+    @RequestMapping("/personMsg")
+    public String personMsg(){
+        return "/home/user/personMsg";
+    }
 }

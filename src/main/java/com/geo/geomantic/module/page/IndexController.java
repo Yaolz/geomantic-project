@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -83,6 +84,14 @@ public class IndexController {
             }
         }
         return children;
+    }
+
+    @RequestMapping("out")
+    public String out(HttpSession session){
+        if(session.getAttribute("user")!=null){
+            session.removeAttribute("user");
+        }
+        return "redirect:/index";
     }
 
 }

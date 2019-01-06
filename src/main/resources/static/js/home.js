@@ -16,4 +16,14 @@ layui.config({
     app.set({
         type: 'iframe'
     }).init();
+
 });
+
+
+//注销
+function out() {
+    var form = document.createElement("form");
+    form.action = "/out";
+    $(document.body).append(form);
+    form.submit();
+}

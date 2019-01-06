@@ -29,11 +29,6 @@ layui.use(['element','form'], function () {
         },
         pass: [/(.+){6,12}$/, '密码必须6到12位，且不能出现空格']
     });
-
-    $("#loginBtn").click(function () {
-        login();
-    });
-
     //监听提交
     form.on('submit(login)', function (data) {
         var index = layer.load(0, {shade: false});
@@ -89,37 +84,44 @@ layui.use(['element','form'], function () {
         );
         return false;
     });
+    //修改密码之后重新登陆
+    $(function () {
+        var resetPwd = $("#resetPwd").val();
+        if(resetPwd!=null&&resetPwd!=''){
+            login();
+        }
+    })
+
+    function login() {
+        layer.closeAll('page');
+        layer.open({
+            type: 1,
+            title: ['登录', 'font-size:18px;'],
+            area: ['40%', '70%'],
+            shadeClose: true,
+            isOutAnim: false,
+            anim: -1,
+            shade: 0,
+            content: $("#login")
+        });
+    };
+    function register() {
+        layer.closeAll('page');
+        layer.open({
+            type: 1,
+            title: ['注册', 'font-size:18px;'],
+            area: ['40%', '70%'],
+            shadeClose: true,
+            isOutAnim: false,
+            anim: -1,
+            shade: 0,
+            content: $("#register")
+        })
+    }
 });
 
-function login() {
-    layer.closeAll('page');
-    layer.open({
-        type: 1,
-        title: ['登录', 'font-size:18px;'],
-        area: ['40%', '70%'],
-        shadeClose: true,
-        isOutAnim: false,
-        anim: -1,
-        shade: 0,
-        content: $("#login")
-    })
-}
 
-function register() {
-    layer.closeAll('page');
-    layer.open({
-        type: 1,
-        title: ['注册', 'font-size:18px;'],
-        area: ['40%', '70%'],
-        shadeClose: true,
-        isOutAnim: false,
-        anim: -1,
-        shade: 0,
-        content: $("#register")
-    })
-}
 
 function home() {
     window.location.href = 'home';
-
 }
