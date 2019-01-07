@@ -4,13 +4,13 @@
 	
 	<sql id="orderColumns">
 		a.order_id AS "orderId",
-		a.product_id AS "productId",
+		(select name from t_product where id =a.product_id)AS "productId",
 		a.order_no AS "orderNo",
 		a.create_date AS "createDate",
 		a.order_money AS "orderMoney",
 		a.update_date AS "updateDate",
 		a.orderIntegration AS "orderintegration",
-		a.create_by AS "createBy",
+		(select nick_name from s_user where id = a.create_by) AS "createBy",
 		a.integration_amount AS "integrationAmount",
 		a.state AS "state",
 		a.freight AS "freight",
@@ -34,7 +34,7 @@
 		a.express_code AS "expressCode",
 		a.channel_balance AS "channelBalance",
 		a.return_balance AS "returnBalance",
-		a.update_by AS "updateBy",
+		(select nick_name from s_user where id = a.update_by) AS "updateBy",
 		a.remarks AS "remarks"
 	</sql>
 	

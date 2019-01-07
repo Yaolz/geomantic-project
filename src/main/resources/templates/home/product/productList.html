@@ -112,7 +112,7 @@
 
 							<td  th:text="${product.stackSize}"></td>
 
-							<td  th:text="${product.state}"></td>
+							<td th:text="${product.state eq  '0'  } ?'激活':'冻结'"></td>
 
 							<td  th:text="${product.createBy}"></td>
 

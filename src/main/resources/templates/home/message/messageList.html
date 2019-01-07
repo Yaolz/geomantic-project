@@ -62,7 +62,7 @@
 				<th nowrap="nowrap">创建用户</th>
 				<th nowrap="nowrap">创建时间</th>
 				<th nowrap="nowrap">用户反馈内容</th>
-				<th nowrap="nowrap">激活</th>
+				<th nowrap="nowrap">状态</th>
 				<th nowrap="nowrap">操作</th>
 			</tr>
             </thead>
@@ -76,7 +76,8 @@
 
 							<td  th:text="${message.message}"></td>
 
-							<td  th:text="${message.state}"></td>
+							<td th:text="${message.state eq  '0'  } ?'激活':'冻结'"></td>
+
 
 				<td>
 					<a class="layui-btn" th:href="@{'/page/message/form?id=' + ${message.id}}" >修改</a>

@@ -14,7 +14,7 @@
     <legend>反馈管理编辑</legend>
 </fieldset>
 
-    <form class="layui-form" id="inputForm" action="/page/message/save">
+    <form class="layui-form bg-form" id="inputForm" action="/page/message/save">
         <input type="hidden" name="id" th:value="${message.id}"/>
 			<div class="layui-form-item">
 				<label for="userBy" class="layui-form-label"><span class="layui-badge-dot"></span>被留言用户id</label>
@@ -30,14 +30,15 @@
                        th:value="${message.message}" class="layui-input" />
 				</div>
 			</div>
-			<div class="layui-form-item">
-				<label for="state" class="layui-form-label"><span class="layui-badge-dot"></span>激活</label>
-				<div class="layui-input-block">
-					<input id="state" type="text" name="state"  maxlength="4"   placeholder="请输入激活" autocomplete="off"
-                       th:value="${message.state}" class="layui-input" />
+			<div class="form-group">
+				<label  for="state" class="bg-form-label"><span class="layui-badge-dot"></span>状态：</label>
+				<div class="layui-input-inline">
+					<select id="state" name="state" lay-verify="required">
+						<option value="0" th:selected="${message?.state eq '0'} ? true : false">激活</option>
+						<option value="1" th:selected="${message?.state eq '1'} ? true : false">冻结</option>
+					</select>
 				</div>
 			</div>
-
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>

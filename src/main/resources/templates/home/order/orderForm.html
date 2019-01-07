@@ -79,11 +79,13 @@
                        th:value="${order.orderCountMoney}" class="layui-input" />
 				</div>
 			</div>
-			<div class="layui-form-item">
+			<div class="form-group">
 				<label for="dealState" class="layui-form-label"><span class="layui-badge-dot"></span>订单状态</label>
-				<div class="layui-input-block">
-					<input id="dealState" type="text" name="dealState"  maxlength="2"   placeholder="请输入订单状态" autocomplete="off"
-                       th:value="${order.dealState}" class="layui-input" />
+				<div class="layui-input-inline">
+					<select id="dealState" name="dealState" lay-verify="required">
+						<option value="0" th:selected="${order?.dealState eq '0'} ? true : false">激活</option>
+						<option value="1" th:selected="${order?.dealState eq '1'} ? true : false">冻结</option>
+					</select>
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -93,11 +95,14 @@
                        th:value="${order.buyerRemark}" class="layui-input" />
 				</div>
 			</div>
-			<div class="layui-form-item">
-				<label for="dealpayType" class="layui-form-label"><span class="layui-badge-dot"></span>交易类型,微信支付宝等</label>
+			<div class="layui-inline">
+				<label for="dealpayType" class="layui-form-label"><span class="layui-badge-dot"></span>交易类型：</label>
 				<div class="layui-input-block">
-					<input id="dealpayType" type="text" name="dealpayType"  maxlength="1"   placeholder="请输入交易类型,微信支付宝等" autocomplete="off"
-                       th:value="${order.dealpayType}" class="layui-input" />
+					<select id="dealpayType" name="dealpayType" lay-verify="required">
+						<option value="0" th:selected="${order?.dealpayType eq '0'} ? true : false">第三方平台</option>
+						<option value="1" th:selected="${order?.dealpayType eq '1'} ? true : false">支付宝</option>
+						<option value="2" th:selected="${order?.dealpayType eq '2'} ? true : false">现金</option>
+					</select>
 				</div>
 			</div>
 			<div class="layui-form-item">
@@ -143,7 +148,7 @@
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="buyUserid" class="layui-form-label"><span class="layui-badge-dot"></span>买家Id</label>
+				<label for="buyUserid" class="layui-form-label"><span class="layui-badge-dot"></span>买家姓名</label>
 				<div class="layui-input-block">
 					<input id="buyUserid" type="text" name="buyUserid"  maxlength="11"   placeholder="请输入买家Id" autocomplete="off"
                        th:value="${order.buyUserid}" class="layui-input" />

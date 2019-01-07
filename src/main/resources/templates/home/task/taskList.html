@@ -97,7 +97,7 @@
 
 							<td  th:text="${task.pageView}"></td>
 
-							<td  th:text="${task.state}"></td>
+							<td th:text="${task.state eq  '0'  } ?'激活':'冻结'"></td>
 
 							<td  th:text="${task.createBy}"></td>
 

@@ -82,8 +82,7 @@
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.sex}"></td>
                 <td th:text="${user.autograph}"></td>
-                <td th:if="${user.state == '0'}">激活</td>
-                <td th:if="${user.state == '1'}">冻结</td>
+                <td th:text="${user.state eq  '0'  } ?'激活':'冻结'"></td>
                 <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>

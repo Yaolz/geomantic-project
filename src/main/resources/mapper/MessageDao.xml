@@ -4,8 +4,8 @@
 	
 	<sql id="messageColumns">
 		a.id AS "id",
-		a.user_by AS "userBy",
-		a.create_by AS "createBy",
+		(SELECT nick_name from s_user where id = a.user_by) AS "userBy",
+		(SELECT nick_name from s_user where id = a.create_by) AS "createBy",
 		a.create_date AS "createDate",
 		a.message AS "message",
 		a.state AS "state"

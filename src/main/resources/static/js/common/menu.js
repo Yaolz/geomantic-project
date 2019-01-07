@@ -37,11 +37,11 @@ layui.config({
                 {
                     field: 'isShow',  align: 'center', templet: function (d) {
                         if (d.isShow == 0) {
-                            return '<span class="layui-badge layui-bg-gray">激活</span>';
+                            return '<span class="layui-badge layui-bg-gray">已激活</span>';
                         } else {
-                            return '<span class="layui-badge layui-bg-gray">冻结</span>';
+                            return '<span class="layui-badge layui-bg-gray">已冻结</span>';
                         }
-                    }, title: '是否显示'
+                    }, title: '状态'
                 },
                 {toolbar: '#oper-col', title: '操作'}
                 // {templet: '#oper-col', title: '操作'}
