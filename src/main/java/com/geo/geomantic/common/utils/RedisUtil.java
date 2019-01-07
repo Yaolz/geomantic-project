@@ -1,4 +1,4 @@
-package com.geo.geomantic.common.constant;
+package com.geo.geomantic.common.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

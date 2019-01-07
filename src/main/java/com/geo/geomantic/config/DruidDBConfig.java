@@ -1,4 +1,4 @@
-package com.geo.geomantic;
+package com.geo.geomantic.config;
 
 
 import com.alibaba.druid.pool.DruidDataSource;

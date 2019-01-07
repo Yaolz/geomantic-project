@@ -2,7 +2,7 @@ package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.constant.RedisEnum;
 import com.geo.geomantic.common.constant.Constants;
-import com.geo.geomantic.common.constant.RedisUtil;
+import com.geo.geomantic.common.utils.RedisUtil;
 import com.geo.geomantic.common.constant.TreeModel;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.service.MenuService;

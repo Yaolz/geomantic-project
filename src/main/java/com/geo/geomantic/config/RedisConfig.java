@@ -1,4 +1,4 @@
-package com.geo.geomantic;
+package com.geo.geomantic.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;

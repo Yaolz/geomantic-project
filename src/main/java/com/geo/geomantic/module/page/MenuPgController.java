@@ -2,7 +2,7 @@ package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.basic.BaseController;
 import com.geo.geomantic.common.constant.RedisEnum;
-import com.geo.geomantic.common.constant.RedisUtil;
+import com.geo.geomantic.common.utils.RedisUtil;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.service.MenuService;
 import com.google.common.collect.Lists;
@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

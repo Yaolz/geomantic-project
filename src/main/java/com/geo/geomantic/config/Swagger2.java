@@ -1,4 +1,4 @@
-package com.geo.geomantic;
+package com.geo.geomantic.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
