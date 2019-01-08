@@ -19,45 +19,44 @@
 			<div class="layui-form-item">
 				<label for="value" class="layui-form-label"><span class="layui-badge-dot"></span>数据值</label>
 				<div class="layui-input-block">
-					<input id="value" type="text" name="value"  maxlength="50" lay-verify="required"  placeholder="请输入数据值" autocomplete="off"
+					<input id="value" type="text" name="value"  maxlength="50" lay-verify="required"  placeholder="请输入数据值，例如：1" autocomplete="off"
                        th:value="${dict.value}" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label for="label" class="layui-form-label"><span class="layui-badge-dot"></span>标签名</label>
 				<div class="layui-input-block">
-					<input id="label" type="text" name="label"  maxlength="100" lay-verify="required"  placeholder="请输入标签名" autocomplete="off"
+					<input id="label" type="text" name="label"  maxlength="100" lay-verify="required"  placeholder="请输入标签名，例如：是" autocomplete="off"
                        th:value="${dict.label}" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label for="type" class="layui-form-label"><span class="layui-badge-dot"></span>类型</label>
 				<div class="layui-input-block">
-					<input id="type" type="text" name="type"  maxlength="100" lay-verify="required"  placeholder="请输入类型" autocomplete="off"
+					<input id="type" type="text" name="type"  maxlength="100" lay-verify="required"  placeholder="请输入类型，例如：yes_no" autocomplete="off"
                        th:value="${dict.type}" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label for="description" class="layui-form-label"><span class="layui-badge-dot"></span>描述</label>
 				<div class="layui-input-block">
-					<input id="description" type="text" name="description"  maxlength="100" lay-verify="required"  placeholder="请输入描述" autocomplete="off"
+					<input id="description" type="text" name="description"  maxlength="100" lay-verify="required"  placeholder="请输入描述，例如：是或否" autocomplete="off"
                        th:value="${dict.description}" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="sort" class="layui-form-label"><span class="layui-badge-dot"></span>排序（升序）</label>
+				<label for="sort" class="layui-form-label"><span class="layui-badge-dot"></span>排序</label>
 				<div class="layui-input-block">
-					<input id="sort" type="text" name="sort"  maxlength="10" lay-verify="required"  placeholder="请输入排序（升序）" autocomplete="off"
-                       th:value="${dict.sort}" class="layui-input" />
+					<input id="sort" type="text" name="sort"  maxlength="10" lay-verify="required|number"  placeholder="请输入排序（升序）" autocomplete="off"
+                       th:value="${dict.sort != null and dict.sort != ''} ? ${dict.sort} : 10" class="layui-input" />
 				</div>
 			</div>
 			<div class="layui-form-item">
-				<label for="remarks" class="layui-form-label"><span class="layui-badge-dot"></span>备注信息</label>
+				<label for="remarks" class="layui-form-label">备注信息</label>
 				<div class="layui-input-block">
 					<textarea placeholder="请输入备注信息" id="remarks" name="remarks" class="layui-textarea" th:text="${dict.remarks}"   maxlength="255" ></textarea>
 				</div>
 			</div>
-
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="subBtn">立即提交</button>

@@ -5,7 +5,9 @@ package com.geo.geomantic.common.constant;
  * @date 2019/1/3
  */
 public enum RedisEnum {
-    REDIS_MENU("menu-tree", 0L);
+    REDIS_MENU("menu-tree", 0L),
+
+    REDIS_DICT("dict-list:", 0L);
 
     //    键值
     private String key;

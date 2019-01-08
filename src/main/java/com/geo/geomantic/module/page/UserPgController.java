@@ -43,6 +43,14 @@ public class UserPgController extends BaseController{
         return "home/user/userForm";
     }
 
+    @RequestMapping("userInfo")
+    public String userInfo(Model model) {
+//        当前用户信息，这里先做测试，为完成
+        User user = userService.get("1");
+        model.addAttribute("user", user);
+        return "home/user/userInfo";
+    }
+
     @RequestMapping("save")
     public String save(User user, Model model, RedirectAttributes redirectAttributes) {
         if (StringUtils.isNotBlank(user.getPassword())) {

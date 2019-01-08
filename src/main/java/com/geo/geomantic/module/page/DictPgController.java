@@ -1,6 +1,8 @@
 package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.basic.BaseController;
+import com.geo.geomantic.common.constant.RedisEnum;
+import com.geo.geomantic.common.utils.RedisUtil;
 import com.geo.geomantic.module.pojo.Dict;
 import com.geo.geomantic.module.service.DictService;
 import com.github.pagehelper.PageInfo;
@@ -23,6 +25,9 @@ public class DictPgController  extends BaseController {
 	@Autowired
 	private DictService dictService;
 
+	@Autowired
+	private RedisUtil redisUtil;
+
 	 @RequestMapping(value = {"", "list"})
     public String userList(Dict dict, Model model) {
         PageInfo<Dict> page = dictService.findPage(dict);
@@ -42,6 +47,8 @@ public class DictPgController  extends BaseController {
 
 	@RequestMapping("save")
 	public String save(Dict dict, Model model, RedirectAttributes redirectAttributes) {
+		//      更改菜单，把redis菜单结构清空清空
+		redisUtil.del(RedisEnum.REDIS_DICT.getKey() + dict.getType());
 		dict.setCreateBy(getUserInfo().getId());
 		dict.setUpdateBy(getUserInfo().getId());
 		dictService.save(dict);

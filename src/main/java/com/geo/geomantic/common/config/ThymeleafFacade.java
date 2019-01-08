@@ -95,7 +95,7 @@ public final class ThymeleafFacade {
         notEmpty(rawValue, "rawValue must not be empty");
         notEmpty(delimiter, "delimiter must not be empty");
 
-        final List<String> result = new ArrayList<String>();
+        final List<String> result = new ArrayList<>();
         final List<Object> iterates = evaluateAsIterableOrRawValue(arguments, rawValue);
 
         for (Object o : iterates) {

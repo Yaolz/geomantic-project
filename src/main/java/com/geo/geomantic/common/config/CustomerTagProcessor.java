@@ -1,6 +1,8 @@
 package com.geo.geomantic.common.config;
 
 import com.geo.geomantic.common.web.RedisRepository;
+import com.geo.geomantic.module.pojo.Dict;
+import com.geo.geomantic.module.pojo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.ApplicationContext;
 import org.thymeleaf.context.ITemplateContext;
@@ -27,14 +29,34 @@ public class CustomerTagProcessor extends AbstractAttributeTagProcessor {
     private static final String ATTRIBUTE_NAME = "dict";// 标签名
     private static final int PRECEDENCE = 300;// 优先级
 
-    //	查找字典数据
+    /**
+     * 查找字典数据
+     */
     private static final String GET_LABEL_BY_TYPE = "getLabel";
-    //	根据id获取用户名
+    /**
+     * 查找字典数据并输出下拉框html
+     */
+    private static final String SELECT_LABEL_BY_TYPE = "getSelect";
+    /**
+     * 查找字典数据并输出单选框html
+     */
+    private static final String RADIO_LABEL_BY_TYPE = "getRadio";
+    /**
+     * 查找字典数据并输出单选框html
+     */
+    private static final String CHECKBOX_LABEL_BY_TYPE = "getCheckBox";
+    /**
+     * 根据id获取用户名
+     */
     private static final String USER_NAME_BY_TYPE = "getNameById";
-    //	根据id获取手机号
+    /**
+     * 根据id获取手机号
+     */
     private static final String USER_PHONE_BY_TYPE = "getPhoneById";
-    //	获取当前用户的id
-    private static final String USER_ID_BY_TYPE = "getUserId";
+    /**
+     * 获取当前用户的id
+     */
+    private static final String USER_ID_BY_TYPE = "getUser";
 
     public CustomerTagProcessor(String dialectPrefix) {
         super(TemplateMode.HTML, // 此处理器将仅应用于HTML模式
@@ -97,6 +119,18 @@ public class CustomerTagProcessor extends AbstractAttributeTagProcessor {
             case USER_ID_BY_TYPE:
                 model.add(modelFactory.createText(getUserId(context)));
                 break;
+            case SELECT_LABEL_BY_TYPE:
+//                输出html
+                model.add(modelFactory.createText(getLabelSelect(context, values)));
+                break;
+            case RADIO_LABEL_BY_TYPE:
+//                输出html
+                model.add(modelFactory.createText(getLabelRadio(context, values)));
+                break;
+            case CHECKBOX_LABEL_BY_TYPE:
+//                输出html
+                model.add(modelFactory.createText(getLabelCheckBox(context, values)));
+                break;
             default:
                 break;
         }
@@ -107,26 +141,95 @@ public class CustomerTagProcessor extends AbstractAttributeTagProcessor {
         structureHandler.replaceWith(model, false);
     }
 
+    /**
+     * 获取对应的标签名
+     * @param context
+     * @param values
+     * @return
+     */
     private String getDictName(ITemplateContext context, List<String> values) {
         ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
         RedisRepository dic = appCtx.getBean(RedisRepository.class);
         String label = dic.getDictLabelByTypeAndValue(values.get(0), values.get(1));
-        if (StringUtils.isBlank(label)) {
-            label = "激活";
-        }
         return label;
     }
 
     private String getNameById(ITemplateContext context, List<String> values) {
-        return "";
+        ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
+        RedisRepository dic = appCtx.getBean(RedisRepository.class);
+        User user = dic.getUserById(values.get(0));
+        if (user == null) {
+            return "用户不存在";
+        }
+        return user.getNickName();
     }
 
     private String getPhoneById(ITemplateContext context, List<String> values) {
-        return "";
+        ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
+        RedisRepository dic = appCtx.getBean(RedisRepository.class);
+        User user = dic.getUserById(values.get(0));
+        if (user == null) {
+            return "用户不存在";
+        }
+        return user.getPhone();
     }
 
     private String getUserId(ITemplateContext context) {
         return "";
+    }
+
+    private String getLabelSelect(ITemplateContext context, List<String> values) {
+        StringBuilder sb = new StringBuilder("");
+        ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
+        RedisRepository repository = appCtx.getBean(RedisRepository.class);
+        List<Dict> dictList = repository.getDictLabelByType(values.get(0));
+        dictList.forEach(dict -> {
+            if (values.size() > 1) {
+                if (dict.getValue().equals(values.get(1))) {
+                    sb.append("<option value='" + dict.getValue() + "' selected>" + dict.getLabel() + "</option>");
+                    return;
+                }
+            }
+            sb.append("<option value='" + dict.getValue() + "'>" + dict.getLabel() + "</option>");
+
+        });
+        return sb.toString();
+    }
+
+    private String getLabelRadio(ITemplateContext context, List<String> values) {
+        StringBuilder sb = new StringBuilder("");
+        ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
+        RedisRepository repository = appCtx.getBean(RedisRepository.class);
+        List<Dict> dictList = repository.getDictLabelByType(values.get(0));
+        dictList.forEach(dict -> {
+            if (values.size() > 2) {
+                if (dict.getValue().equals(values.get(2))) {
+                    sb.append("<input type=\"radio\" name=\"" + values.get(1) + "\" value=\"" + dict.getValue() + "\" title=\"" + dict.getLabel() + "\" checked>");
+                    return;
+                }
+            }
+            sb.append("<input type=\"radio\" name=\"" + values.get(1) + "\" value=\"" + dict.getValue() + "\" title=\"" + dict.getLabel() + "\">");
+
+        });
+        return sb.toString();
+    }
+
+    private String getLabelCheckBox(ITemplateContext context, List<String> values) {
+        StringBuilder sb = new StringBuilder("");
+        ApplicationContext appCtx = SpringContextUtils.getApplicationContext(context);
+        RedisRepository repository = appCtx.getBean(RedisRepository.class);
+        List<Dict> dictList = repository.getDictLabelByType(values.get(0));
+        dictList.forEach(dict -> {
+            if (values.size() > 2) {
+                if (dict.getValue().equals(values.get(2))) {
+                    sb.append("<input type=\"checkbox\" name=\"" + values.get(1) + "\" value=\"" + dict.getValue() + "\" title=\"" + dict.getLabel() + "\" checked>");
+                    return;
+                }
+            }
+            sb.append("<input type=\"checkbox\" name=\"" + values.get(1) + "\" value=\"" + dict.getValue() + "\" title=\"" + dict.getLabel() + "\">");
+
+        });
+        return sb.toString();
     }
 
 

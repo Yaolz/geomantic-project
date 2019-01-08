@@ -27,7 +27,7 @@ public class CustomDialect extends AbstractProcessorDialect {
     }
     
     private Set<IProcessor> createStandardProcessorsSet(String dialectPrefix) {
-        LinkedHashSet<IProcessor> processors = new LinkedHashSet<IProcessor>();
+        LinkedHashSet<IProcessor> processors = new LinkedHashSet<>();
         processors.add(new CustomerTagProcessor(dialectPrefix));  
         processors.add(new StandardXmlNsTagProcessor(TemplateMode.HTML, dialectPrefix));
         return processors;

@@ -23,5 +23,5 @@ public interface DictService {
     void save(Dict dict);
 
     void delete(Dict dict);
-		
+
 }

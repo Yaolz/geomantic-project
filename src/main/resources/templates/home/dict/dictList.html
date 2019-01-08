@@ -49,7 +49,7 @@
 				<th nowrap="nowrap">标签名</th>
 				<th nowrap="nowrap">类型</th>
 				<th nowrap="nowrap">描述</th>
-				<th nowrap="nowrap">排序（升序）</th>
+				<th nowrap="nowrap">排序</th>
 				<th nowrap="nowrap">更新时间</th>
 				<th nowrap="nowrap">操作</th>
 			</tr>
@@ -70,7 +70,7 @@
 							<td th:text="${#dates.format(dict.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/dict/form?id=' + ${dict.id}}" href="${ctx}//dict/form?id=${dict.id}">修改</a>
+					<a class="layui-btn" th:href="@{'/page/dict/form?id=' + ${dict.id}}" >修改</a>
 					<a class="layui-btn">删除</a>
 				</td>
 			</tr>
