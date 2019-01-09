@@ -18,4 +18,6 @@ public interface UserDao extends BaseDao<User> {
 
     int updStateById(@Param("id") String id, @Param("state") String state);
 
+    User getUserByphone(String phone);
+
 }

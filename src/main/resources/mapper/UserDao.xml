@@ -88,13 +88,14 @@
 		SELECT
 			<include refid="userColumns"/>
 		<include refid="listOrCountSql"/>
-		<choose>
-			<when test="orderBy != null and orderBy != ''">
-				ORDER BY ${orderBy}
-			</when>
-			<otherwise>
-			</otherwise>
-		</choose>
+	</select>
+
+	<select id="getUserByphone" resultType="User">
+		SELECT
+		<include refid="userColumns"/>
+		FROM s_user a
+		<include refid="userJoins"/>
+		WHERE a.phone = #{phone}
 	</select>
 	
 	<select id="findListCount" resultType="long">
