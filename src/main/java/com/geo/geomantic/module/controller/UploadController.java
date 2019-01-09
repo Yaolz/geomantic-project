@@ -1,5 +1,6 @@
 package com.geo.geomantic.module.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.geo.geomantic.common.config.Global;
 import com.geo.geomantic.common.constant.MsgModel;
 import com.geo.geomantic.common.constant.ResultStatus;
@@ -17,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author zyz
@@ -29,7 +32,7 @@ public class UploadController {
 
     @PostMapping("fileUpload")
     @ApiOperation("上传文件接口")
-    public MsgModel analyzeXml(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
+    public String analyzeXml(@RequestParam("file") MultipartFile file, HttpServletRequest request, HttpServletResponse response) {
         StringBuilder retur = new StringBuilder("");
         if (!file.isEmpty()) {
                 // 上传
@@ -54,17 +57,25 @@ public class UploadController {
                     FileUtils.createDirectory(realPath);
                     File tmp = new File(realPath + fileName);
                     FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(tmp));
-                    retur.append(realDbPath);
+                     file.transferTo(tmp);
+                    Map<String, Object> map = new HashMap<>();
+                    Map<String, Object> map2 = new HashMap<>();
+                    map.put("code",0);//0表示成功，1失败
+                    map.put("msg","success");//提示消息
+                    map.put("data",map2);
+                    map2.put("src",visitPath+tmp.getName());//图片url
+//                 map2.put("title",file.getOriginalFilename());//图片名称，这个会显示在输入框里
+                    retur.append(JSONObject.toJSONString(map));
+//                  retur.append(realDbPath);
                 } catch (IOException e) {
                     e.printStackTrace();
                     retur.append("文件上传出错！");
-                    return new MsgModel(ResultStatus.FILE_FAIL, retur.toString());
+//                    return new MsgModel(ResultStatus.FILE_FAIL, retur.toString());
                 } finally {
                 }
         } else {
             retur.append("空");
         }
-        return new MsgModel(ResultStatus.FILE_SUCCESS, retur.toString());
+        return  retur.toString();
     }
-
 }

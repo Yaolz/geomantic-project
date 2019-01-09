@@ -63,8 +63,7 @@
 						<option value="1" th:selected="${user?.state eq '1'} ? true : false">冻结</option>-->
                     <option adds:dict="getSelect:user_state, ${user.state}"></option>
                 </select>
-            </div>
-            <div class="layui-input-block">
+
                 <select name="state">
                     <option adds:dict="getSelect:user_state"></option>
                 </select>

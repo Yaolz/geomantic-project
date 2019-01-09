@@ -41,7 +41,7 @@
 				<label for="content" class="layui-form-label"><span class="layui-badge-dot"></span>资讯内容</label>
 				<div class="layui-input-block">
 					<textarea placeholder="请输入资讯内容" id="content" name="content" class="layui-textarea" th:text="${news.content}" lay-verify="required"  ></textarea>
-				</div>
+					</div>
 			</div>
 
         <div class="layui-form-item">
@@ -55,14 +55,5 @@
 </body>
 <script th:src="@{/js/jquery/jquery.min.js}"></script>
 <script th:src="@{/layui/layui.js}"></script>
-<script>
-    layui.use(['form', 'layedit'], function () {
-        var form = layui.form;
-
-        //监听提交
-        form.on('submit(inputForm)', function(data){
-            $("#inputForm").submit();
-        });
-    });
-</script>
+<script th:src="@{/js/news.js}"></script>
 </html>

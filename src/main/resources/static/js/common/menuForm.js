@@ -23,8 +23,14 @@ layui.use(['form', 'layedit', 'iconPicker'], function () {
      * @param filter lay-filter
      * @param iconName 图标名称，自动识别fontClass/unicode
      */
-    icon.checkIcon('iconPicker', 'layui-icon-star-fill');
-    $("#icon").attr('value', 'layui-icon-star-fill');
+    var iconValue = $("#icon").val();
+    if(iconValue!=null&&iconValue!=''){
+        icon.checkIcon('iconPicker', iconValue);
+    }else {
+        icon.checkIcon('iconPicker', 'layui-icon-star-fill');
+        $("#icon").attr('value', 'layui-icon-star-fill');
+    }
+
 
     /**
      * 选择父菜单时把父id集合更新
