@@ -351,11 +351,10 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
 
 	/**
 	 * 创建目录
-	 * @param descDirName 目录名,包含路径
+	 * @param descDirNames 目录名,包含路径
 	 * @return 如果创建成功，则返回true，否则返回false
 	 */
-	public static boolean createDirectory(String descDirName) {
-		String descDirNames = descDirName;
+	public static boolean createDirectory(String descDirNames) {
 		if (!descDirNames.endsWith(File.separator)) {
 			descDirNames = descDirNames + File.separator;
 		}

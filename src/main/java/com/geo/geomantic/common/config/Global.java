@@ -117,7 +117,7 @@ public class Global {
         String dir = getConfig("userfiles.basedir");
         if (StringUtils.isBlank(dir)) {
             try {
-                dir = request.getSession().getServletContext().getRealPath("/");
+                dir = "D:/geofile"; //request.getSession().getServletContext().getRealPath("/");
             } catch (Exception e) {
                 return "";
             }

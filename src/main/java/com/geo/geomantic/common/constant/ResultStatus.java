@@ -8,9 +8,9 @@ package com.geo.geomantic.common.constant;
 public enum  ResultStatus {
 
     SUCCESS("0000", "成功"),
-    ONE("0001", "错误一"),
-    TWO("0001", "错误二"),
-    THREE("0001", "错误三"),
+
+    FILE_SUCCESS("0","上传成功！"),
+    FILE_FAIL("1","上传失败！"),
 
     USER_NOT_EXIS("1000","用户不存在"),
     USER_EXIS("1001","用户已存在"),
