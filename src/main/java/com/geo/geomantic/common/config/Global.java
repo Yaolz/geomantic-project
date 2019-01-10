@@ -94,13 +94,6 @@ public class Global {
     }
 
     /**
-     * 获取管理端根路径
-     */
-    public static String getAdminPath() {
-        return getConfig("adminPath");
-    }
-
-    /**
      * 是否是演示模式，演示模式下不能修改用户、角色、密码、菜单、授权
      */
     public static Boolean isDemoMode() {

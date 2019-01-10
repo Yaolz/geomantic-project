@@ -61,6 +61,7 @@ public class Swagger2 {
 //                swagger覆盖的路径范围
                 .paths(PathSelectors.any())
                 .build()
+//                以下信息非必填-----------------------------
                 .useDefaultResponseMessages(false)
                 .globalResponseMessage(RequestMethod.GET, responseMessages)
                 .globalResponseMessage(RequestMethod.POST, responseMessages)

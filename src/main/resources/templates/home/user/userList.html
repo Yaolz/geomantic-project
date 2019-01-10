@@ -54,9 +54,10 @@
                     <label  for="state" class="bg-form-label">状态：</label>
                     <div class="layui-input-inline">
                         <select id="state" name="state" lay-verify="required">
-                            <option value="">请选择</option>
-                            <option value="0" th:selected="${user?.state eq '0'} ? true : false">激活</option>
-                            <option value="1" th:selected="${user?.state eq '1'} ? true : false">冻结</option>
+                            <option>请选择</option>
+                            <option adds:dict="getSelect:user_state, ${user.state}"></option>
+                            <!--<option value="0" th:selected="${user?.state eq '0'} ? true : false">激活</option>
+                            <option value="1" th:selected="${user?.state eq '1'} ? true : false">冻结</option>-->
                         </select>
                     </div>
                 </div>
@@ -82,7 +83,8 @@
                 <td th:text="${user.phone}"></td>
                 <td th:text="${user.sex}"></td>
                 <td th:text="${user.autograph}"></td>
-                <td th:text="${user.state eq  '0'  } ?'激活':'冻结'"></td>
+                <td adds:dict="getLabel:user_state,${user.state}"></td>
+                <!--<td th:text="${user.state eq  '0'  } ?'激活':'冻结'"></td>-->
                 <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
