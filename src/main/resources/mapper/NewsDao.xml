@@ -8,12 +8,14 @@
 		a.info_title AS "infoTitle",
 		a.sub_title AS "subTitle",
 		a.content AS "content",
-		(select nick_name from s_user where id = a.create_by) AS "createBy",
+		a.create_by AS "createBy",
+		u.nick_name AS "nickName",
 		a.create_date AS "createDate",
 		a.update_date AS "updateDate"
 	</sql>
 	
 	<sql id="newsJoins">
+		LEFT JOIN s_user u ON a.create_by = u.id
 	</sql>
 	
 	<sql id="listOrCountSql">
@@ -27,7 +29,7 @@
 				AND a.photo = #{photo}
 			</if>
 			<if test="infoTitle != null and infoTitle != ''">
-				AND a.info_title = #{infoTitle}
+				AND a.info_title like concat('%',#{infoTitle},'%')
 			</if>
 			<if test="subTitle != null and subTitle != ''">
 				AND a.sub_title = #{subTitle}
@@ -36,7 +38,10 @@
 				AND a.content = #{content}
 			</if>
 			<if test="createBy != null and createBy != ''">
-				AND a.create_by in (select  id from s_user where  nick_name LIKE concat('%',#{createBy},'%'))
+				AND a.create_by = #{createBy}
+			</if>
+			<if test="nickName != null and nickName != ''">
+				AND u.nick_name like concat('%', #{nickName},'%')
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}
