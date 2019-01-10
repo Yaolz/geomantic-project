@@ -63,7 +63,7 @@ public class UploadController {
                     map.put("code",0);//0表示成功，1失败
                     map.put("msg","success");//提示消息
                     map.put("data",map2);
-                    map2.put("src",visitPath+tmp.getName());//图片url
+                    map2.put("src",realDbPath);//图片url
 //                 map2.put("title",file.getOriginalFilename());//图片名称，这个会显示在输入框里
                     retur.append(JSONObject.toJSONString(map));
 //                  retur.append(realDbPath);

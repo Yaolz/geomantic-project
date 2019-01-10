@@ -134,13 +134,68 @@
 
     </dependencies>
 
+
+    <profiles>
+        <!--默认开发使用的配置文件-->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev.properties</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!--linux上使用的文件-->
+        <profile>
+            <id>pro</id>
+            <properties>
+                <env>pro.properties</env>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+        <!--配置文件的路径-->
+        <filters>
+            <filter>src/main/resources/filters/${env}</filter>
+        </filters>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <!-- 排除filters下面的文件夹 以免重复引用-->
+                <excludes>
+                    <exclude>filters/**/*</exclude>
+                </excludes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--<configuration>
+                    <classifier>exec</classifier>
+                    <fork>true</fork>
+                </configuration>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <nonFilteredFileExtensions>
+                        <nonFilteredFileExtension>woff</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>eot</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>svg</nonFilteredFileExtension>
+                        <nonFilteredFileExtension>ico</nonFilteredFileExtension>
+                    </nonFilteredFileExtensions>
+                </configuration>
             </plugin>
         </plugins>
+
     </build>
 
 </project>
