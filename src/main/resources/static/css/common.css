@@ -14,7 +14,14 @@
 .bg-table col {
     width: 33%;
 }
-
+.bg-table img {
+    width: 60px;
+    height: 25px;
+    vertical-align: middle;
+}
+.bg-table img:hover{
+    transform:scale(2.0);
+}
 .comTable tbody tr:hover {
     background-color: white;
 }
@@ -35,4 +42,12 @@
 }
 .tipMsg{
     color:red;
+}
+.bg-uploadImg{
+    float: left;
+    display: block;
+    padding: 9px 30px;
+    width: 80px;
+    font-weight: 400;
+    text-align: right;
 }

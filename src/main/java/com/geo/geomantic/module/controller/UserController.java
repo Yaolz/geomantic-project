@@ -58,7 +58,7 @@ public class UserController {
         User user = new User();
         user.setPhone(phone);
         user = userService.get(user);
-        if (user == null) {
+        if (user != null) {
             return MsgModel.error(ResultStatus.USER_EXIS);
         }
         return MsgModel.ok();

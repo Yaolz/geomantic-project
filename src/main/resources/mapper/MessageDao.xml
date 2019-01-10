@@ -22,10 +22,10 @@
 				AND a.id = #{id}
 			</if>
 			<if test="userBy != null and userBy != ''">
-				AND a.user_by = #{userBy}
+				AND a.user_by in (select  id from s_user where  nick_name LIKE concat('%',#{userBy},'%'))
 			</if>
 			<if test="createBy != null and createBy != ''">
-				AND a.create_by = #{createBy}
+				AND a.create_by in (select  id from s_user where  nick_name LIKE concat('%',#{createBy},'%'))
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}

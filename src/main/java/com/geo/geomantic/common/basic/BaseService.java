@@ -74,6 +74,7 @@ public abstract class BaseService<D extends BaseDao<T>, T extends BaseEntity> {
         if (StringUtils.isBlank(entity.getId())) {
             entity.setCreateDate(new Date());
             entity.setUpdateDate(new Date());
+            entity.setId(null);
             dao.insert(entity);
         } else {
             entity.setUpdateDate(new Date());

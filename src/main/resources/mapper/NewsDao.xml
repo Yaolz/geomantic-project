@@ -8,7 +8,7 @@
 		a.info_title AS "infoTitle",
 		a.sub_title AS "subTitle",
 		a.content AS "content",
-		a.create_by AS "createBy",
+		(select nick_name from s_user where id = a.create_by) AS "createBy",
 		a.create_date AS "createDate",
 		a.update_date AS "updateDate"
 	</sql>
@@ -36,7 +36,7 @@
 				AND a.content = #{content}
 			</if>
 			<if test="createBy != null and createBy != ''">
-				AND a.create_by = #{createBy}
+				AND a.create_by in (select  id from s_user where  nick_name LIKE concat('%',#{createBy},'%'))
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}

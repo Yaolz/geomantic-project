@@ -25,7 +25,8 @@ layui.use(['element','form','table'], function () {
 
     $("#phone").change(function () {
         $.post('/data/queryUser', {phone: this.value}, function (res) {
-            if (res !== '0000') {
+            console.log(res)
+            if (res.code == '1001') {
                 $("#phone").val('');
                 layer.msg('该手机号已存在！');
             }
