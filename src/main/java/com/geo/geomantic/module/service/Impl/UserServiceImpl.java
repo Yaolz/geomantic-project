@@ -1,10 +1,15 @@
 package com.geo.geomantic.module.service.Impl;
 
+import com.geo.geomantic.module.dao.RoleDao;
 import com.geo.geomantic.module.dao.UserDao;
+import com.geo.geomantic.module.pojo.Role;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.common.basic.BaseService;
 import com.geo.geomantic.module.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 用户管理ServiceImpl
@@ -14,7 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends BaseService<UserDao, User> implements UserService{
 
- private UserDao userDao;
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
 
     @Override
     public String getId() {
@@ -24,6 +33,19 @@ public class UserServiceImpl extends BaseService<UserDao, User> implements UserS
     @Override
     public int updStateById(String id,String state) {
         return userDao.updStateById(id,state);
+    }
+
+    @Override
+    public User findUserByPhone(String phone) {
+        return userDao.getUserByphone(phone);
+    }
+
+    @Override
+    public List<Role> findListByUserId(String phone) {
+        User user = userDao.getUserByphone(phone);
+        Role role = new Role();
+        List<Role> roleList = roleDao.queryList(role);
+        return roleList;
     }
 
 

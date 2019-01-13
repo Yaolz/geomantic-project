@@ -16,6 +16,8 @@ public interface Constants {
     /**逗号分割符*/
     String DIVISION_COMMA = ",";
 
+    String PRE_LOGIN_URL = "pre_login_url";
+
     String YES = "0";
 
     String NO = "1";

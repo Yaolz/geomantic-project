@@ -23,7 +23,7 @@ layui.config({
 //注销
 function out() {
     var form = document.createElement("form");
-    form.action = "/out";
+    form.action = "/logout";
     $(document.body).append(form);
     form.submit();
 }

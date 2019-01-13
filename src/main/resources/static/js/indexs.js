@@ -32,7 +32,7 @@ layui.use(['element','form'], function () {
     //监听提交
     form.on('submit(login)', function (data) {
         var index = layer.load(0, {shade: false});
-        $.post('/login',
+        $.post('/ajax/login',
             data.field,
             function (res) {
                 if (res.code === '0000') {
@@ -41,10 +41,8 @@ layui.use(['element','form'], function () {
                     $("#loginBtn").attr('onclick','home()');
                     $("#loginBtn").text('个人中心');
                     layer.closeAll('page');
-                }else  if (res.code === '1000') {
-                    layer.msg("用户不存在，请注册！");
                 } else {
-                    layer.msg("手机号或者密码错误");
+                    layer.msg(res.msg);
                 }
                 layer.close(index);
             }, 'json'
@@ -54,7 +52,7 @@ layui.use(['element','form'], function () {
 
     form.on('submit(register)', function (data) {
         var index =layer.load(0, {shade: false});
-        $.post('/register',
+        $.post('/ajax/register',
             data.field,
             function (res) {
                 if (res.code === '0000') {

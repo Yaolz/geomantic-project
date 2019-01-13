@@ -6,6 +6,8 @@ package com.geo.geomantic.common.constant;
  */
 public enum RedisEnum {
     REDIS_MENU("menu-tree", 0L),
+//    用户30分钟不操作，登录状态失效
+    REDIS_USER("user-info:", 30 * 60L),
 
     REDIS_DICT("dict-list:", 0L);
 

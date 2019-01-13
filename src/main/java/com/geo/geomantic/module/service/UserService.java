@@ -2,6 +2,7 @@ package com.geo.geomantic.module.service;
 
 import java.util.List;
 
+import com.geo.geomantic.module.pojo.Role;
 import com.geo.geomantic.module.pojo.User;
 import com.github.pagehelper.PageInfo;
 
@@ -27,5 +28,9 @@ public interface UserService {
     String getId();
 
     int updStateById(String id,String state);
+
+    User findUserByPhone(String phone);
+
+    List<Role> findListByUserId(String phone);
 		
 }

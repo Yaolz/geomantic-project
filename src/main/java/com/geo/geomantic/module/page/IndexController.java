@@ -1,19 +1,24 @@
 package com.geo.geomantic.module.page;
 
-import com.geo.geomantic.common.constant.RedisEnum;
 import com.geo.geomantic.common.constant.Constants;
-import com.geo.geomantic.common.utils.RedisUtil;
+import com.geo.geomantic.common.constant.RedisEnum;
 import com.geo.geomantic.common.constant.TreeModel;
+import com.geo.geomantic.common.utils.RedisUtil;
 import com.geo.geomantic.module.pojo.Menu;
 import com.geo.geomantic.module.service.MenuService;
 import com.google.common.collect.Lists;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zyz
@@ -22,6 +27,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class IndexController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
 
     @Autowired
     private MenuService menuService;
@@ -37,6 +44,40 @@ public class IndexController {
     @RequestMapping("index")
     public String index() {
         return "index";
+    }
+
+    /**
+     * 退出登录，也可以通过ajax的形式调用logout，需要自定义
+     *
+     * @return
+     */
+    @RequestMapping("logout")
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:index";
+    }
+
+    /**
+     * 如果不使用ajax登录，则使用以下方法（需要改shiro的配置代码）
+     *
+     * @param request
+     * @param map
+     * @return
+     */
+    @RequestMapping("login")
+    public String login(HttpServletRequest request, Map<String, Object> map) {
+
+        LOGGER.info("IndexController.login");
+        Object exception = request.getAttribute("shiroLoginFailure");
+        String msg = "";
+        if (exception != null) {
+            LOGGER.error("异常:{}", exception);
+            msg = exception.toString();
+        }
+        map.put("msg", msg);
+        // 此方法不处理登录成功,由shiro进行处理.
+        return "login";
     }
 
     @RequestMapping("home")
@@ -84,14 +125,6 @@ public class IndexController {
             }
         }
         return children;
-    }
-
-    @RequestMapping("out")
-    public String out(HttpSession session){
-        if(session.getAttribute("user")!=null){
-            session.removeAttribute("user");
-        }
-        return "redirect:/index";
     }
 
 }

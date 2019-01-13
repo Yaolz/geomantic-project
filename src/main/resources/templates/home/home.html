@@ -20,7 +20,7 @@
         </ul>
         <ul class="layui-nav layui-layout-right kit-nav">
             <li class="layui-nav-item">
-                <a href="javascript:;"  th:if = "${session.user != null}" th:object="${session.user}">
+                <a href="javascript:;"  th:if = "${#getUtils.getUserInfo() != null}" th:object="${#getUtils.getUserInfo()}">
                     <img th:src="*{headphoto}" class="layui-nav-img">
                     <span id="rname"  th:text="*{nickName}"></span>
                 </a>

@@ -4,12 +4,16 @@ import com.geo.geomantic.common.web.RedisRepository;
 import com.geo.geomantic.module.pojo.Dict;
 import com.geo.geomantic.module.pojo.User;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.context.ApplicationContext;
+import org.springframework.ui.Model;
 import org.thymeleaf.context.ITemplateContext;
 import org.thymeleaf.engine.AttributeName;
 import org.thymeleaf.model.IModel;
 import org.thymeleaf.model.IModelFactory;
 import org.thymeleaf.model.IProcessableElementTag;
+import org.thymeleaf.model.ITemplateEvent;
 import org.thymeleaf.processor.element.AbstractAttributeTagProcessor;
 import org.thymeleaf.processor.element.IElementTagStructureHandler;
 import org.thymeleaf.spring5.context.SpringContextUtils;
@@ -175,7 +179,9 @@ public class CustomerTagProcessor extends AbstractAttributeTagProcessor {
     }
 
     private String getUserId(ITemplateContext context) {
-        return "";
+        Subject subject = SecurityUtils.getSubject();
+        User user = (User) subject.getPrincipal();
+        return user.getId();
     }
 
     private String getLabelSelect(ITemplateContext context, List<String> values) {

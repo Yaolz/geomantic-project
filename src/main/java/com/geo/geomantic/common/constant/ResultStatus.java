@@ -15,6 +15,8 @@ public enum  ResultStatus {
     USER_NOT_EXIS("1000","用户不存在"),
     USER_EXIS("1001","用户已存在"),
 
+    NO_PERMISSION("8888", "请先登录！"),
+
     SYSTEM_ERROR("9999","系统错误！");
 
 //    CODE_ERROR("1111","验证码错误！")；
