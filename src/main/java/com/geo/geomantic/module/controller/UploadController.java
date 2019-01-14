@@ -2,8 +2,6 @@ package com.geo.geomantic.module.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.geo.geomantic.common.config.Global;
-import com.geo.geomantic.common.constant.MsgModel;
-import com.geo.geomantic.common.constant.ResultStatus;
 import com.geo.geomantic.common.utils.DateUtils;
 import com.geo.geomantic.common.utils.FileUtils;
 import com.geo.geomantic.common.utils.SecretUtils;

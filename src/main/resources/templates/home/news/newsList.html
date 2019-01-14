@@ -75,11 +75,12 @@
 
 							<td  th:text="${news.subTitle}"></td>
 
-							<td  th:text="${news.content}"></td>
+							<td   lay-data="{field:'content', width:100}" th:text="${news.content}"></td>
 
 							<td  th:text="${news.nickName}"></td>
 
 							<td th:text="${#dates.format(news.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
+
 
 							<td th:text="${#dates.format(news.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
