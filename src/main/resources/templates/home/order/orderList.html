@@ -79,38 +79,38 @@
         <table class="layui-table  bg-table"  lay-filter="table-data">
             <thead>
 			<tr>
-				<th lay-data="{field:'orderNo'}">订单号</th>
-				<th lay-data="{field:'createDate'}">创建时间</th>
-				<th lay-data="{field:'orderMoney'}">订单金额</th>
-				<th lay-data="{field:'updateDate'}">更新时间</th>
-				<th lay-data="{field:'orderintegration'}">抵扣积分</th>
-				<th lay-data="{field:'createBy'}">用户姓名</th>
-				<th lay-data="{field:'integrationAmount'}">订单积分金额</th>
-				<th lay-data="{field:'state'}">状态</th>
-				<th lay-data="{field:'freight'}">运费</th>
-				<th lay-data="{field:'orderCountMoney'}">总金额</th>
-				<th lay-data="{field:'dealState'}">订单状态</th>
-				<th lay-data="{field:'buyerRemark'}">买家留言</th>
-				<th lay-data="{field:'dealpayType'}">交易类型</th>
-				<th lay-data="{field:'receiverAddress'}">收货地址</th>
-				<th lay-data="{field:'receiverMobile'}">收货人手机号</th>
-				<th lay-data="{field:'receiverName'}">收货人姓名</th>
-				<th lay-data="{field:'receiverPhone'}">收货人电话号码</th>
-				<th lay-data="{field:'receiverPostcode'}">收货人邮编</th>
-				<th lay-data="{field:'buyerName'}">买家名称</th>
-				<th lay-data="{field:'buyUserid'}">买家姓名</th>
-				<th lay-data="{field:'createDate'}">下单时间</th>
-				<th lay-data="{field:'payTime'}">付款时间</th>
-				<th lay-data="{field:'recvfeeTime'}">收款时间</th>
-				<th lay-data="{field:'recvUsername'}">收款人</th>
-				<th lay-data="{field:'freightCompany'}">快递公司</th>
-				<th lay-data="{field:'freightNumber'}">运费单号</th>
-				<th lay-data="{field:'expressCode'}">快递公司编号</th>
-				<th lay-data="{field:'channelBalance'}">渠道金额</th>
-				<th lay-data="{field:'returnBalance'}">退款金额</th>
-				<th lay-data="{field:'updateBy'}">更新者</th>
-				<th lay-data="{field:'remarks'}">备注信息</th>
-				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
+				<th lay-data="{field:'orderNo', fixed: 'left',width:120}">订单号</th>
+				<th lay-data="{field:'createDate',width:160}">创建时间</th>
+				<th lay-data="{field:'orderMoney',width:100}">订单金额</th>
+				<th lay-data="{field:'updateDate',width:160}">更新时间</th>
+				<th lay-data="{field:'orderintegration',width:100}">抵扣积分</th>
+				<th lay-data="{field:'createBy',width:120}">用户姓名</th>
+				<th lay-data="{field:'integrationAmount',width:120}">订单积分金额</th>
+				<th lay-data="{field:'state',width:60}">状态</th>
+				<th lay-data="{field:'freight',width:80}">运费</th>
+				<th lay-data="{field:'orderCountMoney',width:100}">总金额</th>
+				<th lay-data="{field:'dealState',width:60}">订单状态</th>
+				<th lay-data="{field:'buyerRemark',width:120}">买家留言</th>
+				<th lay-data="{field:'dealpayType',width:120}">交易类型</th>
+				<th lay-data="{field:'receiverAddress',width:120}">收货地址</th>
+				<th lay-data="{field:'receiverMobile',width:120}">收货人手机</th>
+				<th lay-data="{field:'receiverName',width:120}">收货人姓名</th>
+				<th lay-data="{field:'receiverPhone',width:120}">收货人电话</th>
+				<th lay-data="{field:'receiverPostcode',width:120}">收货人邮编</th>
+				<th lay-data="{field:'buyerName',width:120}">买家名称</th>
+				<th lay-data="{field:'buyUserid',width:120}">买家姓名</th>
+				<th lay-data="{field:'createDate',width:160}">下单时间</th>
+				<th lay-data="{field:'payTime',width:160}">付款时间</th>
+				<th lay-data="{field:'recvfeeTime',width:160}">收款时间</th>
+				<th lay-data="{field:'recvUsername',width:120}">收款人</th>
+				<th lay-data="{field:'freightCompany',width:120}">快递公司</th>
+				<th lay-data="{field:'freightNumber',width:120}">运费单号</th>
+				<th lay-data="{field:'expressCode',width:120}">快递公司编号</th>
+				<th lay-data="{field:'channelBalance,width:120'}">渠道金额</th>
+				<th lay-data="{field:'returnBalance,width:120'}">退款金额</th>
+				<th lay-data="{field:'updateBy',width:120}">更新者</th>
+				<th lay-data="{field:'remarks',width:120}">备注信息</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -178,8 +178,10 @@
 							<td  th:text="${order.remarks}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/order/form?id=' + ${order.id}}" >修改</a>
-					<a class="layui-btn" th:href="@{'/page/order/delete?id=' + ${order.id}}">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn" th:href="@{'/page/order/form?id=' + ${order.id}}" >修改</a>
+						<a class="layui-btn" th:href="@{'/page/order/delete?id=' + ${order.id}}">删除</a>
+					</div>
 				</td>
 			</tr>
 

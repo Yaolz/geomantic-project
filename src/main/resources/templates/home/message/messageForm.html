@@ -14,7 +14,7 @@
     <legend>反馈管理编辑</legend>
 </fieldset>
 
-    <form class="layui-form bg-form" id="inputForm" action="/page/message/save">
+    <form class="layui-form" id="inputForm" action="/page/message/save">
         <input type="hidden" name="id" th:value="${message.id}"/>
 			<div class="layui-form-item">
 				<label for="userBy" class="layui-form-label"><span class="layui-badge-dot"></span>被留言用户id</label>
@@ -30,7 +30,7 @@
                        th:value="${message.message}" class="layui-input" />
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group bg-form">
 				<label  for="state" class="bg-form-label"><span class="layui-badge-dot"></span>状态：</label>
 				<div class="layui-input-inline">
 					<select id="state" name="state" lay-verify="required">

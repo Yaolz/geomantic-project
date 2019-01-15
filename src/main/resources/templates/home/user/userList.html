@@ -73,7 +73,7 @@
                 <th lay-data="{field:'state',width:60}">状态</th>
                 <th lay-data="{field:'createDate'}">创建时间</th>
                 <th lay-data="{field:'updateDate'}">修改时间</th>
-                <th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
+                <th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
             </tr>
             </thead>
             <tbody>
@@ -87,8 +87,10 @@
                 <td th:text="${#dates.format(user.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td th:text="${#dates.format(user.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
                 <td>
-                    <a class="layui-btn" th:href="@{'/page/user/form?id=' + ${user.id}}">修改</a>
-                    <a class="layui-btn" th:href="@{'/page/user/delete?id=' + ${user.id}}">删除</a>
+                    <div class="layui-btn-group">
+                        <a class="layui-btn layui-btn-sm" th:href="@{'/page/user/form?id=' + ${user.id}}">修改</a>
+                        <a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/user/delete?id=' + ${user.id}}">删除</a>
+                    </div>
                 </td>
             </tr>
             </tbody>

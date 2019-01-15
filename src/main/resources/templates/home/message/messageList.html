@@ -62,7 +62,7 @@
 				<th  lay-data="{field:'createDate'}">创建时间</th>
 				<th  lay-data="{field:'message'}">用户反馈内容</th>
 				<th  lay-data="{field:'state',width:60}">状态</th>
-				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -78,8 +78,10 @@
 							<td adds:dict="getLabel:state,${message.state}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/message/form?id=' + ${message.id}}" >修改</a>
-					<a class="layui-btn" th:href="@{'/page/message/delete?id=' + ${message.id}}">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn  layui-btn-sm" th:href="@{'/page/message/form?id=' + ${message.id}}" >修改</a>
+						<a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/message/delete?id=' + ${message.id}}">删除</a>
+					</div>
 				</td>
 			</tr>
 

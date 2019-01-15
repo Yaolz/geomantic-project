@@ -87,10 +87,10 @@
 				<th lay-data="{field:'stackSize',width:100}">库存量</th>
 				<th lay-data="{field:'state',width:60}">状态</th>
 				<th lay-data="{field:'createBy',width:100}">创建人</th>
-				<th lay-data="{field:'createDate',width:120}">创建时间</th>
+				<th lay-data="{field:'createDate',width:160}">创建时间</th>
 				<th lay-data="{field:'updateBy',width:100}">修改人</th>
-				<th lay-data="{field:'updateDate',width:120}">修改时间</th>
-				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
+				<th lay-data="{field:'updateDate',width:160}">修改时间</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -122,8 +122,11 @@
 							<td th:text="${#dates.format(product.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/product/form?id=' + ${product.id}}">修改</a>
-					<a class="layui-btn" th:href="@{'/page/product/delete?id=' + ${product.id}}">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn layui-btn-sm">预览</a>
+						<a class="layui-btn layui-btn-sm" th:href="@{'/page/product/form?id=' + ${product.id}}">修改</a>
+						<a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/product/delete?id=' + ${product.id}}">删除</a>
+					</div>
 				</td>
 			</tr>
 

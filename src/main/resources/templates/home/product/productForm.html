@@ -72,18 +72,19 @@
                        th:value="${product.stackSize}" class="layui-input" />
 				</div>
 			</div>
-			<div class="layui-form-item">
-				<label for="state" class="layui-form-label"><span class="layui-badge-dot"></span>激活</label>
-				<div class="layui-input-block">
-					<input id="state" type="text" name="state"  maxlength="4"   placeholder="请输入激活" autocomplete="off"
-                       th:value="${product.state}" class="layui-input" />
+			<div class="form-group bg-form">
+				<label  for="state" class="bg-form-label"><span class="layui-badge-dot"></span>状态：</label>
+				<div class="layui-input-inline">
+					<select id="state" name="state" lay-verify="required">
+						<option value="0" th:selected="${product?.state eq '0'} ? true : false">激活</option>
+						<option value="1" th:selected="${product?.state eq '1'} ? true : false">冻结</option>
+					</select>
 				</div>
 			</div>
-
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="reset" class="layui-btn layui-btn-primary" onclick="resetForm()">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/product">返回</a>
             </div>
         </div>
@@ -91,14 +92,5 @@
 </body>
 <script th:src="@{/js/jquery/jquery.min.js}"></script>
 <script th:src="@{/layui/layui.js}"></script>
-<script>
-    layui.use(['form', 'layedit'], function () {
-        var form = layui.form;
-
-        //监听提交
-        form.on('submit(inputForm)', function(data){
-            $("#inputForm").submit();
-        });
-    });
-</script>
+<script th:src="@{/js/comForm.js}"></script>
 </html>

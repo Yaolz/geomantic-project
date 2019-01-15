@@ -57,13 +57,13 @@
         <table class="layui-table  bg-table">
             <thead>
 			<tr>
-				<th nowrap="nowrap">个人图片</th>
-				<th nowrap="nowrap">大师昵称</th>
-				<th nowrap="nowrap">简介</th>
-				<th nowrap="nowrap">创建时间</th>
-				<th nowrap="nowrap">更新时间</th>
-				<th nowrap="nowrap">创建人</th>
-				<th nowrap="nowrap">操作</th>
+				<th lay-data="{field:'photo'}">个人图片</th>
+				<th lay-data="{field:'realName'}">大师昵称</th>
+				<th lay-data="{field:'description'}">简介</th>
+				<th lay-data="{field:'createDate'}">创建时间</th>
+				<th lay-data="{field:'updateDate'}">更新时间</th>
+				<th lay-data="{field:'createBy'}">创建人</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -81,8 +81,10 @@
 							<td  th:text="${superMsg.createBy}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/superMsg/form?id=' + ${superMsg.id}}" >修改</a>
-					<a class="layui-btn" th:href="@{'/page/superMsg/delete?id=' + ${superMsg.id}}">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn" th:href="@{'/page/superMsg/form?id=' + ${superMsg.id}}" >修改</a>
+						<a class="layui-btn" th:href="@{'/page/superMsg/delete?id=' + ${superMsg.id}}">删除</a>
+					</div>
 				</td>
 			</tr>
 

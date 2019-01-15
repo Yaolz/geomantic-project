@@ -17,13 +17,6 @@
     <form class="layui-form" id="inputForm" action="/page/order/save">
         <input type="hidden" name="id" th:value="${order.id}"/>
 			<div class="layui-form-item">
-				<label for="orderId" class="layui-form-label"><span class="layui-badge-dot"></span>主键</label>
-				<div class="layui-input-block">
-					<input id="orderId" type="text" name="orderId"  maxlength="11" lay-verify="required"  placeholder="请输入主键" autocomplete="off"
-                       th:value="${order.orderId}" class="layui-input" />
-				</div>
-			</div>
-			<div class="layui-form-item">
 				<label for="productId" class="layui-form-label"><span class="layui-badge-dot"></span>订单id</label>
 				<div class="layui-input-block">
 					<input id="productId" type="text" name="productId"  maxlength="11" lay-verify="required"  placeholder="请输入订单id" autocomplete="off"
@@ -79,12 +72,11 @@
                        th:value="${order.orderCountMoney}" class="layui-input" />
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group bg-form">
 				<label for="dealState" class="layui-form-label"><span class="layui-badge-dot"></span>订单状态</label>
 				<div class="layui-input-inline">
 					<select id="dealState" name="dealState" lay-verify="required">
-						<option value="0" th:selected="${order?.dealState eq '0'} ? true : false">激活</option>
-						<option value="1" th:selected="${order?.dealState eq '1'} ? true : false">冻结</option>
+						<option adds:dict="getSelect:state, ${order.state}"></option>
 					</select>
 				</div>
 			</div>

@@ -1,15 +1,31 @@
 /**
- * Created by yao on 2019/1/8.
+ * Created by yao on 2019/1/15.
  */
 layui.use(['form', 'layedit','upload'], function () {
     var form = layui.form;
     var layedit = layui.layedit;
     var upload = layui.upload;
 
+    form.verify({
+        img: function (value) {
+            if(value==null||value==''){
+                return '请选择封面图！';
+            }
+        },
+        number: [/^[0-9]*$/, '只能输入数字！'],
+        price:[/^[1-9]\d*(\.\d{1,2})?$|^[0]\.\d{1,2}$/g,'请输入有效价格！']
+
+    });
     //监听提交
     form.on('submit(inputForm)', function(data){
         $("#inputForm").submit();
     });
+    window.resetForm= function() {
+        alert(1)
+        // document.getElementById("inputForm").reset();//js 重置
+        $('#inputForm')[0].reset();
+        form.render();
+    };
     //上传封面图
     var uploadInst = upload.render({
         elem: '#checkImg'
@@ -56,7 +72,7 @@ layui.use(['form', 'layedit','upload'], function () {
             , 'link' //超链接
             , 'unlink' //清除链接
             , 'face' //表情
-            
+
             , 'image' //插入图片
         ]
     });

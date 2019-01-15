@@ -67,8 +67,10 @@
 							<td th:text="${#dates.format(dict.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/dict/form?id=' + ${dict.id}}" >修改</a>
-					<a class="layui-btn">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn  layui-btn-sm" th:href="@{'/page/dict/form?id=' + ${dict.id}}" >修改</a>
+						<a class="layui-btn layui-btn-danger layui-btn-sm">删除</a>
+					</div>
 				</td>
 			</tr>
 

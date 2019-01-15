@@ -54,8 +54,7 @@
 					<div class="layui-input-inline">
 						<select id="state" name="state" lay-verify="required">
 							<option value="">请选择</option>
-							<option value="0" th:selected="${task?.state eq '0'} ? true : false">激活</option>
-							<option value="1" th:selected="${task?.state eq '1'} ? true : false">冻结</option>
+							<option adds:dict="getSelect:state, ${task.state}"></option>
 						</select>
 					</div>
 				</div>
@@ -63,38 +62,38 @@
         </div>
     </form>
 	<div class="layui-fluid">
-        <table class="layui-table  bg-table">
+        <table class="layui-table  bg-table"  lay-filter="table-data">
             <thead>
 			<tr>
-				<th lay-data="{field:'photo'}">图片</th>
-				<th lay-data="{field:'taskName'}">测算昵称</th>
-				<th lay-data="{field:'description'}">简介</th>
-				<th lay-data="{field:'price'}">价格</th>
-				<th lay-data="{field:'useNum'}">已测算人数</th>
-				<th lay-data="{field:'pageView'}">浏览量</th>
+				<th lay-data="{field:'photo',width:100}">图片</th>
+				<th lay-data="{field:'taskName',width:150}">测算昵称</th>
+				<th lay-data="{field:'price',width:100}">价格</th>
+				<th lay-data="{field:'description',width:200}">简介</th>
 				<th lay-data="{field:'state',width:60}">状态</th>
-				<th lay-data="{field:'createBy'}">创建人</th>
-				<th lay-data="{field:'createDate'}">创建时间</th>
-				<th lay-data="{field:'updateBy'}">修改人</th>
-				<th lay-data="{field:'updateDate'}">修改时间</th>
-				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
+				<th lay-data="{field:'useNum',width:120}">已测算人数</th>
+				<th lay-data="{field:'pageView',width:100}">浏览量</th>
+				<th lay-data="{field:'createBy',width:100}">创建人</th>
+				<th lay-data="{field:'createDate',width:160}">创建时间</th>
+				<th lay-data="{field:'updateBy',width:100}">修改人</th>
+				<th lay-data="{field:'updateDate',width:160}">修改时间</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
             </thead>
             <tbody>
 			<tr th:each="task : ${page.list}">
-							<td  th:text="${task.photo}"></td>
+							<td><img th:src="@{${task.photo}}"/></td>
 
 							<td  th:text="${task.taskName}"></td>
 
+							<td  th:text="${task.price}"></td>
+
 							<td  th:text="${task.description}"></td>
 
-							<td  th:text="${task.price}"></td>
+							<td adds:dict="getLabel:state,${task.state}"></td>
 
 							<td  th:text="${task.useNum}"></td>
 
 							<td  th:text="${task.pageView}"></td>
-
-							<td th:text="${task.state eq  '0'  } ?'激活':'冻结'"></td>
 
 							<td  th:text="${task.createBy}"></td>
 
@@ -105,8 +104,10 @@
 							<td th:text="${#dates.format(task.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
-					<a class="layui-btn" th:href="@{'/page/task/form?id=' + ${task.id}}" >修改</a>
-					<a class="layui-btn" th:href="@{'/page/task/delete?id=' + ${task.id}}">删除</a>
+					<div class="layui-btn-group">
+						<a class="layui-btn  layui-btn-sm" th:href="@{'/page/task/form?id=' + ${task.id}}" >修改</a>
+						<a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/task/delete?id=' + ${task.id}}">删除</a>
+					</div>
 				</td>
 			</tr>
 
