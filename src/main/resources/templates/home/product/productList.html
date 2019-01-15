@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
 </head>
 <body>
-<div class="layui-fluid">
     <form class="layui-form bg-form" id="inputForm" action="/page/product/list" method="post">
         <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
@@ -61,8 +60,7 @@
 					<div class="layui-input-inline">
 						<select id="state" name="state" lay-verify="required">
 							<option value="">请选择</option>
-							<option value="0" th:selected="${product?.state eq '0'} ? true : false">激活</option>
-							<option value="1" th:selected="${product?.state eq '1'} ? true : false">冻结</option>
+							<option adds:dict="getSelect:state, ${product.state}"></option>
 						</select>
 					</div>
 				</div>
@@ -75,30 +73,31 @@
 			</div>
         </div>
     </form>
-        <table class="layui-table  bg-table">
+	<div class="layui-fluid">
+        <table class="layui-table  bg-table"  lay-filter="table-data">
             <thead>
 			<tr>
-				<th nowrap="nowrap">图片</th>
-				<th nowrap="nowrap">结束图</th>
-				<th nowrap="nowrap">商品昵称</th>
-				<th nowrap="nowrap">商品价格</th>
-				<th nowrap="nowrap">描述</th>
-				<th nowrap="nowrap">已购人数</th>
-				<th nowrap="nowrap">浏览量</th>
-				<th nowrap="nowrap">库存量</th>
-				<th nowrap="nowrap">状态</th>
-				<th nowrap="nowrap">创建人</th>
-				<th nowrap="nowrap">创建时间</th>
-				<th nowrap="nowrap">修改人</th>
-				<th nowrap="nowrap">修改时间</th>
-				<th nowrap="nowrap">操作</th>
+				<th lay-data="{field:'photo',width:100}">图片</th>
+				<th lay-data="{field:'photoes',width:100}">结束图</th>
+				<th lay-data="{field:'name',width:100}">商品昵称</th>
+				<th lay-data="{field:'price',width:100}">商品价格</th>
+				<th lay-data="{field:'description'}">描述</th>
+				<th lay-data="{field:'buyNum',width:120}">已购人数</th>
+				<th lay-data="{field:'pageView',width:100}">浏览量</th>
+				<th lay-data="{field:'stackSize',width:100}">库存量</th>
+				<th lay-data="{field:'state',width:60}">状态</th>
+				<th lay-data="{field:'createBy',width:100}">创建人</th>
+				<th lay-data="{field:'createDate',width:120}">创建时间</th>
+				<th lay-data="{field:'updateBy',width:100}">修改人</th>
+				<th lay-data="{field:'updateDate',width:120}">修改时间</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
 			</tr>
             </thead>
             <tbody>
 			<tr th:each="product : ${page.list}">
-							<td  th:text="${product.photo}"></td>
+							<td><img th:src="@{${product.photo}}"/></td>
 
-							<td  th:text="${product.photoes}"></td>
+							<td><img th:src="@{${product.photo}}"/></td>
 
 							<td  th:text="${product.name}"></td>
 
@@ -112,7 +111,7 @@
 
 							<td  th:text="${product.stackSize}"></td>
 
-							<td th:text="${product.state eq  '0'  } ?'激活':'冻结'"></td>
+							<td adds:dict="getLabel:state,${product.state}"></td>
 
 							<td  th:text="${product.createBy}"></td>
 

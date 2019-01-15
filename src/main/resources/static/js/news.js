@@ -25,7 +25,6 @@ layui.use(['form', 'layedit','upload'], function () {
             if (res > 0) {
                 return layer.msg('上传失败！');
             } else {
-                console.log(res)
                 return $('#firstImg').val(res.data.src);
             }
             //上传成功

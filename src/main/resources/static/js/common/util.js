@@ -137,7 +137,7 @@ layui.use(['laypage', 'layer','laydate','form', 'table'], function () {
     var laydate = layui.laydate;
     var form = layui.form;
     var table = layui.table;
-
+    //转换静态表格
     table.init('table-data', {});
 
     //分页组件

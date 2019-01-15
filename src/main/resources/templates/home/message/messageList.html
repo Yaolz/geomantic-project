@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
 </head>
 <body>
-<div class="layui-fluid">
     <form class="layui-form bg-form" id="inputForm" action="/page/message/list" method="post">
         <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
@@ -35,8 +34,7 @@
 						<div class="layui-input-inline">
 							<select id="state" name="state" lay-verify="required">
 								<option value="">请选择</option>
-								<option value="0" th:selected="${message?.state eq '0'} ? true : false">激活</option>
-								<option value="1" th:selected="${message?.state eq '1'} ? true : false">冻结</option>
+								<option adds:dict="getSelect:state, ${message.state}"></option>
 							</select>
 						</div>
 					</div>
@@ -55,15 +53,16 @@
 				</div>
 			</div>
     </form>
-        <table class="layui-table  bg-table">
+	<div class="layui-fluid">
+        <table class="layui-table  bg-table"  lay-filter="table-data">
             <thead>
 			<tr>
-				<th nowrap="nowrap">被留言用户</th>
-				<th nowrap="nowrap">创建用户</th>
-				<th nowrap="nowrap">创建时间</th>
-				<th nowrap="nowrap">用户反馈内容</th>
-				<th nowrap="nowrap">状态</th>
-				<th nowrap="nowrap">操作</th>
+				<th  lay-data="{field:'userBy',width:100}">被留言用户</th>
+				<th  lay-data="{field:'createBy',width:100}">创建用户</th>
+				<th  lay-data="{field:'createDate'}">创建时间</th>
+				<th  lay-data="{field:'message'}">用户反馈内容</th>
+				<th  lay-data="{field:'state',width:60}">状态</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -76,8 +75,7 @@
 
 							<td  th:text="${message.message}"></td>
 
-							<td th:text="${message.state eq  '0'  } ?'激活':'冻结'"></td>
-
+							<td adds:dict="getLabel:state,${message.state}"></td>
 
 				<td>
 					<a class="layui-btn" th:href="@{'/page/message/form?id=' + ${message.id}}" >修改</a>

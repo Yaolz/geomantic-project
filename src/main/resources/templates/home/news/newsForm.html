@@ -33,7 +33,7 @@
 						<p id="demoText"></p>
 					</div>
 				</div>
-				<input type="hidden" name="photo" id="firstImg"/>
+				<input type="hidden" name="photo" id="firstImg"  th:value="${news.photo}"/>
 			</div>
 			<div class="layui-form-item">
 				<label for="infoTitle" class="layui-form-label"><span class="layui-badge-dot"></span>标题</label>
@@ -61,6 +61,7 @@
                 <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/news">返回</a>
+
             </div>
         </div>
     </form>

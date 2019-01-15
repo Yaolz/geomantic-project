@@ -14,14 +14,12 @@
 .bg-table col {
     width: 33%;
 }
-.bg-table img {
-    width: 60px;
-    height: 25px;
+.layui-table-cell img {
+    width: 70px;
+    height: 30px;
     vertical-align: middle;
 }
-.bg-table img:hover{
-    transform:scale(2.0);
-}
+
 .comTable tbody tr:hover {
     background-color: white;
 }

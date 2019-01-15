@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
 </head>
 <body>
-<div class="layui-fluid">
     <form class="layui-form bg-form" id="inputForm" action="/page/news/list" method="post">
         <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
@@ -50,21 +49,18 @@
 					</div>
 				</div>
         </div>
-
-
-
     </form>
+	<div class="layui-fluid">
         <table class="bg-table" lay-filter="table-data">
             <thead>
 			<tr>
-				<th lay-data="{field:'photo'}">图片</th>
-				<th lay-data="{field:'infoTitle'}">标题</th>
+				<th lay-data="{field:'photo',width:100}">图片</th>
+				<th lay-data="{field:'infoTitle',width:120}">标题</th>
 				<th lay-data="{field:'subTitle'}">副标题</th>
-				<th lay-data="{field:'content'}">资讯内容</th>
-				<th lay-data="{field:'nickName'}">创建人</th>
-				<th lay-data="{field:'createDate'}">创建时间</th>
-				<th lay-data="{field:'updateDate'}">修改时间</th>
-				<th lay-data="{field:'operation'}">操作</th>
+				<th lay-data="{field:'nickName',width:120}">创建人</th>
+				<th lay-data="{field:'createDate',width:120}">创建时间</th>
+				<th lay-data="{field:'updateDate',width:120}">修改时间</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
 			</tr>
             </thead>
             <tbody>
@@ -74,8 +70,6 @@
 							<td  th:text="${news.infoTitle}"></td>
 
 							<td  th:text="${news.subTitle}"></td>
-
-							<td   lay-data="{field:'content', width:100}" th:text="${news.content}"></td>
 
 							<td  th:text="${news.nickName}"></td>
 

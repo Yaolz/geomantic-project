@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
 </head>
 <body>
-<div class="layui-fluid">
     <form class="layui-form bg-form" id="inputForm" action="/page/task/list" method="post">
         <input type="hidden" id="pageNo" name="pageNo" th:value="${page.pageNum}"/>
         <input type="hidden" id="pageSize" name="pageSize" th:value="${page.pageSize}"/>
@@ -62,25 +61,23 @@
 				</div>
             </div>
         </div>
-
-
-
     </form>
+	<div class="layui-fluid">
         <table class="layui-table  bg-table">
             <thead>
 			<tr>
-				<th nowrap="nowrap">图片</th>
-				<th nowrap="nowrap">测算昵称</th>
-				<th nowrap="nowrap">简介</th>
-				<th nowrap="nowrap">价格</th>
-				<th nowrap="nowrap">已测算人数</th>
-				<th nowrap="nowrap">浏览量</th>
-				<th nowrap="nowrap">状态</th>
-				<th nowrap="nowrap">创建人</th>
-				<th nowrap="nowrap">创建时间</th>
-				<th nowrap="nowrap">修改人</th>
-				<th nowrap="nowrap">修改时间</th>
-				<th nowrap="nowrap">操作</th>
+				<th lay-data="{field:'photo'}">图片</th>
+				<th lay-data="{field:'taskName'}">测算昵称</th>
+				<th lay-data="{field:'description'}">简介</th>
+				<th lay-data="{field:'price'}">价格</th>
+				<th lay-data="{field:'useNum'}">已测算人数</th>
+				<th lay-data="{field:'pageView'}">浏览量</th>
+				<th lay-data="{field:'state',width:60}">状态</th>
+				<th lay-data="{field:'createBy'}">创建人</th>
+				<th lay-data="{field:'createDate'}">创建时间</th>
+				<th lay-data="{field:'updateBy'}">修改人</th>
+				<th lay-data="{field:'updateDate'}">修改时间</th>
+				<th lay-data="{field:'operation', align: 'center',width: 180}">操作</th>
 			</tr>
             </thead>
             <tbody>
