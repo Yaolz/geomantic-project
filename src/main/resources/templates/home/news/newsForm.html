@@ -14,7 +14,7 @@
     <legend>资讯管理编辑</legend>
 </fieldset>
 
-    <form class="layui-form" id="inputForm" action="/page/news/save">
+    <form class="layui-form" id="inputForm" action="/page/news/save" lay-filter="formTest" >
         <input name="id" type="hidden" th:value="${news.id}"/>
 			<!--<div class="layui-form-item">-->
 				<!--<label for="photo" class="layui-form-label"><span class="layui-badge-dot"></span>图片</label>-->
@@ -59,7 +59,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="inputForm">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <button type="reset" class="layui-btn layui-btn-primary" onclick="resetForm()">重置</button>
                 <a type="reset" class="layui-btn layui-btn-primary" href="/page/news">返回</a>
 
             </div>

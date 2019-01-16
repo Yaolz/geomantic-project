@@ -46,6 +46,18 @@ public class RedisRepository {
                     label = dict.getLabel();
                 }
             }
+        }else{
+            Dict dict = new Dict();
+            dict.setType(type);
+            dictList = dictService.findList(dict);
+            redisUtil.set(RedisEnum.REDIS_DICT.getKey() + type, dictList);
+            if (dictList != null) {
+                for (Dict d : dictList) {
+                    if (d.getValue().equals(value)&&d.getType().equals(type)) {
+                        label = d.getLabel();
+                    }
+                }
+            }
         }
         return label;
     }
