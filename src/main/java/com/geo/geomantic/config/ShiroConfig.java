@@ -106,7 +106,7 @@ public class ShiroConfig {
                 }
                 byte[] salt = Encodes.decodeHex(user.getPassword().substring(0,16));
                 SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                        user, //用户名
+                        user, //用户信息
                         user.getPassword().substring(16), //密码
                         ByteSource.Util.bytes(salt),    //密码的盐值，这里是用户密码解密后的数据
                         getName()  //realm name
@@ -197,7 +197,7 @@ public class ShiroConfig {
         SimpleCookie simpleCookie = new SimpleCookie("rememberMe");
 
         //<!-- 记住我cookie生效时间 ,单位秒;-->
-        simpleCookie.setMaxAge(1800);
+        simpleCookie.setMaxAge(30 * 60);
         return simpleCookie;
     }
 
