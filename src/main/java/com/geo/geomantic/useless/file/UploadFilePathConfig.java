@@ -1,4 +1,4 @@
-package com.geo.geomantic.config;
+package com.geo.geomantic.useless.file;
 
 import com.geo.geomantic.common.config.Global;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,13 +10,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
  * @author zyz
  * @date 2019/1/9
  */
-@Configuration
+//@Configuration
 public class UploadFilePathConfig extends WebMvcConfigurationSupport {
 
-    @Value("${userfiles.basedir}")
+//    @Value("${userfiles.basedir}")
     private String uploadFolder;
 
-    @Override
+//    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");

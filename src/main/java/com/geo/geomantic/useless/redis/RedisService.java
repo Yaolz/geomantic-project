@@ -1,4 +1,4 @@
-package com.geo.geomantic.common.utils;
+package com.geo.geomantic.useless.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;

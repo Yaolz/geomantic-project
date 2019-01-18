@@ -1,4 +1,4 @@
-package com.geo.geomantic.config;
+package com.geo.geomantic.useless.file;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
@@ -12,13 +12,13 @@ import java.io.File;
  * @author zyz
  * @date 2019/1/9
  */
-@Configuration
+//@Configuration
 public class UploadFileConfig {
 
     @Value("${userfiles.basedir}")
     private String uploadFolder;
 
-    @Bean
+//    @Bean
     MultipartConfigElement multipartConfigElement() {
         File descDir = new File(uploadFolder);
         if (!descDir.exists()) {

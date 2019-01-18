@@ -1,4 +1,4 @@
-package com.geo.geomantic.config;
+package com.geo.geomantic.useless.redis;
 
 import com.alibaba.fastjson.support.spring.FastJsonRedisSerializer;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

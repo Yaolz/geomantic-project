@@ -1,4 +1,4 @@
-package com.geo.geomantic.module.controller;
+package com.geo.geomantic.useless.file;
 
 import com.alibaba.fastjson.JSONObject;
 import com.geo.geomantic.common.config.Global;
@@ -38,7 +38,7 @@ public class UploadController {
 //                   拼接文件内容，不推荐使用文件原来名称，重置文件名
                     String fileName = SecretUtils.entryptPassword(file.getOriginalFilename()) + file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
 //                    文件放置的基本目录
-                    String basedirPath = Global.getUserfilesBaseDir(request);
+                    String basedirPath = Global.getUserfilesBaseDir();
 //                    文件存放的详细路径，也是访问路径
                     String visitPath = Global.USERFILES_BASE_URL + DateUtils.getDate("yyyyMMdd") + File.separator;
                     // 上传文件路径

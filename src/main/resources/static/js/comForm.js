@@ -29,7 +29,7 @@ layui.use(['form', 'layedit','upload'], function () {
     //上传封面图
     var uploadInst = upload.render({
         elem: '#checkImg'
-        , url: '/util/fileUpload' //接口url
+        , url: '/uploadFile' //接口url
         , before: function (obj) {
             //预读本地文件示例，不支持ie8
             obj.preview(function (index, file, result) {
@@ -59,7 +59,7 @@ layui.use(['form', 'layedit','upload'], function () {
     // 编辑器上传图片接口
     layedit.set({
         uploadImage: {
-            url: '/util/fileUpload' //接口url
+            url: '/uploadFile' //接口url
             , type: 'post' //默认post
         }
     });

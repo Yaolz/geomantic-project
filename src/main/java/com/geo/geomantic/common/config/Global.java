@@ -106,7 +106,7 @@ public class Global {
      *
      * @return
      */
-    public static String getUserfilesBaseDir(HttpServletRequest request) {
+    public static String getUserfilesBaseDir() {
         String dir = getConfig("userfiles.basedir");
         if (StringUtils.isBlank(dir)) {
             try {
