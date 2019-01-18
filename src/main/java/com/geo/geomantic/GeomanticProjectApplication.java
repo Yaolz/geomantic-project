@@ -3,7 +3,7 @@ package com.geo.geomantic;
 import com.geo.geomantic.common.config.CustomDialect;
 import com.geo.geomantic.common.config.WorkFocusDialect;
 import com.geo.geomantic.common.file.service.StorageService;
-import com.geo.geomantic.config.StorageProperties;
+import com.geo.geomantic.common.constant.StorageProperties;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

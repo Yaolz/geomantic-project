@@ -2,7 +2,7 @@ package com.geo.geomantic.common.file.service;
 
 import com.geo.geomantic.common.file.exception.StorageException;
 import com.geo.geomantic.common.file.exception.StorageFileNotFoundException;
-import com.geo.geomantic.config.StorageProperties;
+import com.geo.geomantic.common.constant.StorageProperties;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;

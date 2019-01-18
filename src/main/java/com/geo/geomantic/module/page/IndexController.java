@@ -38,7 +38,7 @@ public class IndexController {
 
     @RequestMapping("")
     public String page() {
-        return "minpage/compass";
+        return "page/minpage/compass";
     }
 
     @RequestMapping("index")

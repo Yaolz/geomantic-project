@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geo.geomantic.module.dao.EnterDao">
+	<!--  `id` int(11) NOT NULL COMMENT '关联user表id',
+  `real_name` varchar(255) NOT NULL COMMENT '真实姓名',
+  `card_no` varchar(20) NOT NULL COMMENT '身份证号',
+  `card_head` varchar(255) DEFAULT NULL COMMENT '身份证头像面',
+  `card_national` varchar(255) DEFAULT NULL COMMENT '身份国徽面',
+  `job` varchar(255) DEFAULT NULL COMMENT '工作',
+  `state` tinyint(4) DEFAULT '0' COMMENT '审核状态',
+  `create_date` datetime NOT NULL COMMENT '创建时间',
+  `update_date` datetime DEFAULT NULL,
+  `update_by` int(11) DEFAULT NULL COMMENT '创建人',
+  `introduce` text COMMENT '介绍',-->
+	<sql id="enterColumns">
+		a.id AS "id",
+		s.nick_name AS "nickName",
+		s.phone AS "phone",
+		s.sex AS "sex",
+		s.headphoto AS "headphoto",
+		s.autograph AS "autograph",
+		s.address AS "address",
+		a.real_name AS "realName",
+		a.card_no AS "cardNo",
+		a.card_head AS "cardHead",
+		a.card_national AS "cardNational",
+		a.job AS "job",
+		a.introduce AS "introduce",
+		a.state AS "state",
+		a.create_date AS "createDate",
+		a.update_date AS "updateDate",
+		a.update_by AS "createBy"
+	</sql>
+	
+	<sql id="enterJoins">
+	</sql>
+	
+	<sql id="listOrCountSql">
+		FROM t_user_enter  a inner join s_user  s on s.id = a.id
+		<include refid="enterJoins"/>
+		<where>
+			<if test="id != null and id != ''">
+				AND a.id = #{id}
+			</if>
+			<if test="realName != null and realName != ''">
+				AND a.real_name LIKE concat('%',#{real_name},'%')
+			</if>
+			<if test="cardNo != null and cardNo != ''">
+				AND a.card_no = #{card_no}
+			</if>
+			<if test="cardHead != null and cardHead != ''">
+				AND a.card_head = #{card_head}
+			</if>
+			<if test="cardNational != null and cardNational != ''">
+				AND a.card_national = #{card_national}
+			</if>
+			<if test="job != null and job != ''">
+				AND a.job = #{job}
+			</if>
+			<if test="state != null and state != ''">
+				AND a.state = #{state}
+			</if>
+			<if test="createDate != null">
+				AND a.create_date = #{createDate}
+			</if>
+			<if test="updateDate != null">
+				AND a.update_date = #{updateDate}
+			</if>
+			<if test="createBy != null and createBy != ''">
+				AND a.update_by = #{createBy}
+			</if>
+			<if test="introduce != null and introduce != ''">
+				AND a.introduce = #{introduce}
+			</if>
+            <if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
+			AND a.create_date between #{startCreateDate} and #{endCreateDate}
+			</if>
+			<if test="startCreateDate != null and startCreateDate != '' and (endCreateDate == null or endCreateDate == '')">
+				AND a.create_date &gt; #{startCreateDate}
+			</if>
+			<if test="endCreateDate != null and endCreateDate != '' and (startCreateDate == null or startCreateDate == '')">
+				AND a.create_date &lt; #{endCreateDate}
+			</if>
+		</where>
+	</sql>
+
+	<select id="get" resultType="Enter">
+		SELECT 
+			<include refid="enterColumns"/>
+		FROM t_user_enter a inner join s_user  s on s.id = a.id
+		<include refid="enterJoins"/>
+		WHERE a.id = #{id}
+	</select>
+
+	<select id="queryBy" resultType="Enter">
+		SELECT
+			<include refid="enterColumns"/>
+		<include refid="listOrCountSql"/>
+	</select>
+
+	<select id="getUserByphone" resultType="Enter">
+		SELECT
+		<include refid="enterColumns"/>
+		FROM t_user_enter a inner join s_user  s on s.id = a.id
+		<include refid="enterJoins"/>
+		WHERE a.phone = #{phone}
+	</select>
+	
+	<select id="findListCount" resultType="long">
+		SELECT COUNT(1) <include refid="listOrCountSql"/>
+	</select>
+	
+	<select id="queryList" resultType="Enter">
+		SELECT 
+			<include refid="enterColumns"/>
+		<include refid="listOrCountSql"/>
+		<choose>
+			<when test="orderBy != null and orderBy != ''">
+				ORDER BY ${orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO t_user_enter
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null and id != ''">id,</if>
+			<if test="realName != null">real_name,</if>
+			<if test="cardNo != null">card_no,</if>
+			<if test="cardHead != null">card_head,</if>
+			<if test="cardNational != null">card_national,</if>
+			<if test="job != null">job,</if>
+			<if test="state != null">state,</if>
+			<if test="createDate != null">create_date,</if>
+			<if test="updateDate != null">update_date,</if>
+			<if test="createBy != null">update_by,</if>
+			<if test="introduce != null">introduce,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			<if test="id != null  and id != ''">#{id},</if>
+			<if test="realName != null">#{real_name},</if>
+			<if test="cardNo != null">#{card_no},</if>
+			<if test="cardHead != null">#{card_head},</if>
+			<if test="cardNational != null">#{card_national},</if>
+			<if test="job != null">#{job},</if>
+			<if test="state != null">#{state},</if>
+			<if test="createDate != null">#{createDate},</if>
+			<if test="updateDate != null">#{updateDate},</if>
+			<if test="createBy != null">#{createBy},</if>
+			<if test="introduce != null">#{introduce},</if>
+		</trim>
+	</insert>
+	
+	<update id="update">
+		UPDATE t_user_enter
+		<set>
+			<if test="realName != null">real_name = #{realName},</if>
+			<if test="cardNo != null">card_no = #{cardNo},</if>
+			<if test="cardHead != null">card_head = #{cardHead},</if>
+			<if test="cardNational != null">card_national = #{cardNational},</if>
+			<if test="job != null">job = #{job},</if>
+			<if test="introduce != null">introduce = #{introduce},</if>
+			<if test="state != null">state = #{state},</if>
+			<if test="updateDate != null">update_date = #{updateDate},</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM t_user_enter
+		WHERE id = #{id}
+	</update>
+
+	<update id="updStateById">
+		update  t_user_enter
+		<set>
+			<if test="state != null">state = #{state}</if>
+		</set>
+		WHERE id = #{id}
+	</update>
+	
+</mapper>

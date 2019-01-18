@@ -1,4 +1,4 @@
-package com.geo.geomantic.config;
+package com.geo.geomantic.common.constant;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
