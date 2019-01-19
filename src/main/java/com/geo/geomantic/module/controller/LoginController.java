@@ -58,6 +58,7 @@ public class LoginController {
         user.setPhone(phone);
 //        密码加密
         user.setPassword(SecretUtils.entryptPassword(password));
+        user.setHeadphoto("/images/heading/boy.png");
         userService.save(user);
         return MsgModel.ok();
     }

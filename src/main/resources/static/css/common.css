@@ -1,3 +1,9 @@
+.back-img{
+    height:261px;
+    background:url(/images/headimg.jpg) no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
 .bg-form-label {
     float: left;
     display: block;
@@ -41,11 +47,14 @@
 .tipMsg{
     color:red;
 }
-.bg-uploadImg{
+.bg-uploadImg {
     float: left;
     display: block;
     padding: 9px 30px;
     width: 80px;
     font-weight: 400;
     text-align: right;
+}
+.index-top{
+    margin-top: 12%;
 }

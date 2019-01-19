@@ -48,6 +48,9 @@ public class UserController {
     @PostMapping("update")
     @ApiOperation("根据用户id更新用户信息")
     public MsgModel update(@RequestBody User user){
+        if(user.getSex()=="1"){
+            user.setHeadphoto("/images/heading/girl.png");
+        }
         userService.save(user);
         return MsgModel.ok();
     }

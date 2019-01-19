@@ -9,29 +9,30 @@
     <link rel="stylesheet"  th:href="@{/layui/css/modules/layer/default/layer.css}"  media="all"/>
     <link rel="stylesheet"  th:href="@{/css/index.css}"  media="all"/>
     <link href="../static/calendar/css/wnl.css" th:href="@{/calendar/css/wnl.css}" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="../../static/css/common.css" th:href="@{/css/common.css}" media="all"/>
+
 </head>
 
 <script src="../static/calendar/js/calendar_top_one.js" th:src="@{/calendar/js/calendar_top_one.js}"></script>
 <script src="../static/calendar/js/calendar_top_two.js" th:src="@{/calendar/js/calendar_top_two.js}"></script>
 
 <body>
-            <ul class="layui-nav" lay-filter="">
-                <li class="layui-nav-item  layui-this"><a th:href="@{/}"> 首页</a></li>
-                <li class="layui-nav-item"><a th:href="@{/}">大师简介</a></li>
-                <li class="layui-nav-item"><a th:href="@{/}">测算功能</a></li>
-                <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
-                <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
-                <li class="layui-nav-item layui-layout-right "  >
-                    <a th:if="${#getUtils.getUserInfo()} == null"  id="loginBtn" href="javascript:void(0);">请登录</a>
-                    <a th:if="${#getUtils.getUserInfo()} != null"  href="javascript:void(0);" onclick="home()">个人中心</a>
-                </li>
-            </ul>
-        <div class="layui-row">
-            <span class="fonts">XXX风水网</span>
-
-            <span class="call">看风水：请拨打：xxxxxxxxxxxxxxx</span>
-        </div>
-        <div class="layui-container contain_main">
+            <div class="layui-row back-img">
+                <span class="fonts">XXX风水网</span>
+                <span class="call">看风水：请拨打：xxxxxxxxxxxxxxx</span>
+                    <ul class="layui-container layui-nav index-top " lay-filter="">
+                        <li class="layui-nav-item  layui-this"><a th:href="@{/}"> 首页</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/}">大师简介</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/}">测算功能</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/}">风水吉祥物</a></li>
+                        <li class="layui-nav-item"><a th:href="@{/}">在线留言</a></li>
+                        <li class="layui-nav-item layui-layout-right "  >
+                            <a th:if="${#getUtils.getUserInfo()} == null"  id="loginBtn" href="javascript:void(0);">请登录</a>
+                            <a th:if="${#getUtils.getUserInfo()} != null"  href="javascript:void(0);" onclick="home()">个人中心</a>
+                        </li>
+                    </ul>
+                </div>
+        <div class="layui-container bg-top">
             <div class="layui-row">
                 <div class="layui-row layui-col-space10">
                     <div class="layui-col-xs3 layui-col-sm3 layui-col-md3">

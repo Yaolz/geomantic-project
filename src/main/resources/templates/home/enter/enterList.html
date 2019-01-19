@@ -19,6 +19,8 @@
                 <div class="layui-input-inline">
                     <button class="layui-btn" type="submit" id="subBtn">查询</button>
                     <a class="layui-btn" th:href="@{/page/enter/form}">添加</a>
+                    <a class="layui-btn">审核</a>
+
                 </div>
             </div>
             <div class="layui-row">
@@ -64,7 +66,8 @@
         <table class="layui-table  bg-table" id="table"  lay-filter="table-data">
             <thead>
             <tr>
-                <th lay-data="{field:'nickName',width:100}">昵称</th>
+                <th lay-data="{checkbox:true, fixed:'left'}" rowspan="2"></th>
+                <th lay-data="{field:'nickName',width:100,fixed:'left'}">昵称</th>
                 <th lay-data="{field:'realName',width:100}">真实姓名</th>
                 <th lay-data="{field:'sex',width:60}">性别</th>
                 <th lay-data="{field:'phone',width:120}">手机号</th>
@@ -82,6 +85,7 @@
             </thead>
             <tbody>
             <tr th:each="enter : ${page.list}">
+                <td></td>
                 <td th:text="${enter.nickName}"></td>
                 <td th:text="${enter.realName}"></td>
                 <td adds:dict="getLabel:sex,${enter.sex}"></td>

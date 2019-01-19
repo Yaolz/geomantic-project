@@ -66,6 +66,7 @@
         <table class="layui-table  bg-table" id="table"  lay-filter="table-data">
             <thead>
             <tr>
+                <th lay-data="{field:'headphoto',width:60}">头像</th>
                 <th lay-data="{field:'nickName',width:100}">昵称</th>
                 <th lay-data="{field:'phone',width:120}">手机号</th>
                 <th lay-data="{field:'sex',width:60}">性别</th>
@@ -78,6 +79,7 @@
             </thead>
             <tbody>
             <tr th:each="user : ${page.list}">
+                <td><img  style="width: 28px;height:28px;border-radius: 50%;" th:src="@{${user.headphoto}}"></td>
                 <td th:text="${user.nickName}"></td>
                 <td th:text="${user.phone}"></td>
                 <td adds:dict="getLabel:sex,${user.sex}"></td>
