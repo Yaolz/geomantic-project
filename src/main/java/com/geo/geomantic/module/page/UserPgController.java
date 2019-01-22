@@ -45,8 +45,7 @@ public class UserPgController extends BaseController{
 
     @RequestMapping("userInfo")
     public String userInfo(Model model) {
-//        当前用户信息，这里先做测试，为完成
-        User user = userService.get("1");
+        User user = userService.get(getUserInfo().getId());
         model.addAttribute("user", user);
         return "home/user/userInfo";
     }
