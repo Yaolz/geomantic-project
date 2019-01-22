@@ -23,13 +23,12 @@
                     <!--<label class="bg-form-label">搜索</label>-->
                     <button class="layui-btn" id="btn-search">查询</button>
                     <a class="layui-btn" th:href="@{/page/menu/form}">添加</a>
-                    <a class="layui-btn" lay-filter ="saveNum">保存排序</a>
                 </div>
             </div>
         </div>
         <input type="hidden" id="msg" th:value="${msg}"/>
     </div>
-<table class="layui-table" id="menuTable" lay-filter="menuTable"></table>
+<table class="layui-table" id="menuTable" lay-data="{id:'menuTable'}"  lay-filter="menuTable"></table>
 </div>
 <!-- 操作列 -->
 <script type="text/html" id="oper-col">

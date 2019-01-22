@@ -31,9 +31,9 @@ layui.config({
                 {field: 'name', title: '名称'},
                 {field: 'id',  title: 'id'},
                 {field: 'href',  title: '链接'},
-                {field: 'sort',  templet: function (d) {
+                {field: 'sort',  edit: 'text',event: 'setSort',/*templet: function (d) {
                         return '<input class="layui-input" value="' + d.sort + '"/>';
-                    }, title: '排序'},
+                    },*/ title: '排序'},
                 {
                     field: 'isShow',  align: 'center', templet: function (d) {
                         if (d.isShow == 0) {
@@ -103,5 +103,19 @@ layui.config({
         } else if (layEvent === 'edit') {
             window.document.location.href="/page/menu/form?id="+data.id;
         }
+    });
+    //监听单元格编辑
+    table.on('edit(menuTable)', function(obj){
+        var value = obj.value //得到修改后的值
+            ,data = obj.data //得到所在行所有键值
+            ,field = obj.field; //得到字段
+        $.post("/data/menu/sortUp",{"id":data.id,"sort":obj.value},function (res) {
+            console.log(res)
+            if(res.code=='0000'){
+                layer.msg("修改成功！")
+            }else {
+                layer.msg("修改失败！")
+            }
+        })
     });
 });

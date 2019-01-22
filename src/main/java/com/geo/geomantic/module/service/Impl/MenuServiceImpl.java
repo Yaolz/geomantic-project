@@ -12,7 +12,5 @@ import org.springframework.stereotype.Service;
  * @version 2018-12-18
  */
 @Service
-public class MenuServiceImpl extends BaseService<MenuDao, Menu> implements MenuService{
-
-		
+public class MenuServiceImpl extends BaseService<MenuDao, Menu> implements MenuService {
 }

@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import com.geo.geomantic.module.pojo.Menu;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 
 /**
  * 菜单管理DAO接口
@@ -14,5 +17,4 @@ import com.geo.geomantic.module.pojo.Menu;
 @Mapper
 @Repository
 public interface MenuDao extends BaseDao<Menu> {
-	
 }

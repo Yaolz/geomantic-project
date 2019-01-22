@@ -1,6 +1,8 @@
 package com.geo.geomantic.module.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.geo.geomantic.module.pojo.Menu;
 import com.github.pagehelper.PageInfo;
@@ -23,5 +25,4 @@ public interface MenuService {
     void save(Menu menu);
 
     void delete(Menu menu);
-		
 }
