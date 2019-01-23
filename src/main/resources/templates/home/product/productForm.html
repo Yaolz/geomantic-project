@@ -17,19 +17,30 @@
     <form class="layui-form" id="inputForm" action="/page/product/save">
         <input type="hidden" name="id" th:value="${product.id}"/>
 			<div class="layui-form-item">
-				<label for="photo" class="layui-form-label"><span class="layui-badge-dot"></span>图片</label>
-				<div class="layui-input-block">
-					<input id="photo" type="text" name="photo"  maxlength="60" lay-verify="required"  placeholder="请输入图片" autocomplete="off"
-                       th:value="${product.photo}" class="layui-input" />
+				<div class="layui-upload">
+					<label class="layui-label bg-uploadImg">
+						<button type="button" class="layui-btn" id="checkImg"><i class="layui-icon">&#xe67c;</i>商品图</button>
+					</label>
+					<div class="layui-upload-list">
+						<img id="photo" width="200" height="150" th:src="@{${product.photo}}">
+						<p id="demoText"></p>
+					</div>
 				</div>
+				<input type="hidden" name="photo" id="firstImg"  th:value="${product.photo}"  lay-verify="pro_img"/>
 			</div>
 			<div class="layui-form-item">
-				<label for="photoes" class="layui-form-label"><span class="layui-badge-dot"></span>结束图，逗号分割</label>
-				<div class="layui-input-block">
-					<input id="photoes" type="text" name="photoes"    placeholder="请输入结束图，逗号分割" autocomplete="off"
-                       th:value="${product.photoes}" class="layui-input" />
+				<input type="hidden" name="photoes" id="firstImgs"  th:value="${product.photoes}"  lay-verify="pro_imgs"/>
+				<div class="layui-upload bg-uploadImgs">
+					<label class="layui-label">
+						<button type="button" class="layui-btn" id="checkImgs"><i class="layui-icon">&#xe67c;</i>详情图</button>
+					</label>
+					<!--<blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;" >-->
+						预览图：
+						<div class="layui-upload-list" id="demo2"></div>
+					<!--</blockquote>-->
 				</div>
 			</div>
+
 			<div class="layui-form-item">
 				<label for="name" class="layui-form-label"><span class="layui-badge-dot"></span>商品昵称</label>
 				<div class="layui-input-block">

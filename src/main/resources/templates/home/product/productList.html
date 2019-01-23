@@ -78,7 +78,6 @@
             <thead>
 			<tr>
 				<th lay-data="{field:'photo',width:100}">图片</th>
-				<th lay-data="{field:'photoes',width:100}">结束图</th>
 				<th lay-data="{field:'name',width:100}">商品昵称</th>
 				<th lay-data="{field:'price',width:100}">商品价格</th>
 				<th lay-data="{field:'description'}">描述</th>
@@ -95,8 +94,6 @@
             </thead>
             <tbody>
 			<tr th:each="product : ${page.list}">
-							<td><img th:src="@{${product.photo}}"/></td>
-
 							<td><img th:src="@{${product.photo}}"/></td>
 
 							<td  th:text="${product.name}"></td>
