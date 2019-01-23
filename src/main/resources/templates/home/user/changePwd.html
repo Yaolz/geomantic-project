@@ -15,7 +15,7 @@
 </fieldset>
 <input type="hidden" id="msg" th:value="${msg}"/>
 <form class="layui-form" id="updPdSubmit" method="post" action="/page/user/pwdUpd">
-    <input  name="id" th:if="${session.user != null}" type="hidden" th:value="${session.user.id}"/>
+    <input  name="id" th:if="${#getUtils.getUserInfo()} != null" type="hidden" th:value="${#getUtils.getUserInfo().getId()}"/>
     <div class="layui-input-block">
         <span class="tipMsg" id = "tipMsg" th:text="${error}"></span>
     </div>

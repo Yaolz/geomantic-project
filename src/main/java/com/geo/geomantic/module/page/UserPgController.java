@@ -6,7 +6,8 @@ import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.ibatis.annotations.Param;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -85,7 +86,7 @@ public class UserPgController extends BaseController{
     @RequestMapping("pwdUpd")
     public String pwdUpdate(@RequestParam("id") String id, @RequestParam("oldPwd") String oldPwd, @RequestParam("newPwd") String newPwd, Model model, HttpSession session){
         if(StringUtils.isNotBlank(oldPwd)&&StringUtils.isNotBlank(newPwd)){
-            User user = (User) session.getAttribute("user");
+            User user = getUserInfo();
             if(!SecretUtils.validatePassword(oldPwd, user.getPassword())){
                  model.addAttribute("error","原密码错误");
             }else {
@@ -95,7 +96,9 @@ public class UserPgController extends BaseController{
                     u.setPassword(SecretUtils.entryptPassword(newPwd));
                     userService.save(u);
                     model.addAttribute("msg", "密码修改成功，请重新登录！");
-                    session.removeAttribute("user");//移除session用户信息
+                   //移除redis用户信息
+                    Subject subject = SecurityUtils.getSubject();
+                    subject.logout();
                 }else{
                     model.addAttribute("error","修改密码和原密码一致！");
                 }
