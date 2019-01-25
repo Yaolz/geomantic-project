@@ -22,8 +22,6 @@ public class News extends BaseEntity {
 	private String startCreateDate;
 	private String endCreateDate;
 
-	private String nickName;	//发布资讯的用户名
-
 	public News() {
 		super();
 	}
@@ -83,11 +81,4 @@ public class News extends BaseEntity {
 		this.endCreateDate = endCreateDate;
 	}
 
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
 }

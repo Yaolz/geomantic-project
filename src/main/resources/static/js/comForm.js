@@ -20,7 +20,7 @@ layui.use(['form', 'layedit','upload'], function () {
         pro_imgs: function (value) {
             if(value==null||value==''){
                 return '请选择商品详情图！';
-            }
+        }
         },
         number: [/^[0-9]*$/, '只能输入数字！'],
         price:[/^[1-9]\d*(\.\d{1,2})?$|^[0]\.\d{1,2}$/g,'请输入有效价格！']
@@ -122,8 +122,8 @@ layui.use(['form', 'layedit','upload'], function () {
         var data = firstImgs.split(',');
         for(var i=0,size = data.length; i < size; i++){
             $('#demo2').append('<div style="float:left;" id="'+data[i].split("/")[5].split(".")[0]+'div">' +
-                '<a href=\"javascript:;\" style="cursor:pointer" onclick="upImg('+"'"+data[i]+"'"+','+"'"+data[i].split("/")[5].split(".")[0]+"'"+')" id ="'+data[i].split("/")[5].split(".")[0]+'"><img src="'+ data[i] +'" class="layui-upload-img"></a><br />' +
-                '<a href=\"javascript:;\" style="cursor:pointer" onclick="deleteImg('+"'"+data[i]+"'"+','+"'"+data[i].split("/")[5].split(".")[0]+"'"+')"><i class="layui-icon">&#xe640;</i></a>' +
+                '<a href=\"javascript:;\" class ="bg-hand" onclick="upImg('+"'"+data[i]+"'"+','+"'"+data[i].split("/")[5].split(".")[0]+"'"+')" id ="'+data[i].split("/")[5].split(".")[0]+'"><img src="'+ data[i] +'" class="layui-upload-img"></a><br />' +
+                '<a href=\"javascript:;\"  class ="bg-hand"  onclick="deleteImg('+"'"+data[i]+"'"+','+"'"+data[i].split("/")[5].split(".")[0]+"'"+')"><i class="layui-icon">&#xe640;</i></a>' +
                 '</div>')
         }
     }
@@ -136,7 +136,7 @@ layui.use(['form', 'layedit','upload'], function () {
                 //预读本地文件示例，不支持ie8
                 obj.preview(function(index, file, result){
                     console.log(result)
-                    document.getElementById(id).getElementsByTagName("img")[0].src=result;
+                    // document.getElementById(id).getElementsByTagName("img")[0].src=result;
                     $("#"+id+" img").attr("src",result);//修改选中的图片
                     // $('#'+id).attr('src',result)
                 });
@@ -162,6 +162,6 @@ layui.use(['form', 'layedit','upload'], function () {
         if(imgStr!=null&&imgStr!=''){
             imgStr = imgStr.replace(value+',','');
     }
-
+        return $('#firstImgs').val(imgStr);
     }
 });

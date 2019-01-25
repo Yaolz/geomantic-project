@@ -66,3 +66,6 @@
     height: 92px;
     margin: 0 10px 10px 0;
 }
+bg-hand {
+    cursor:pointer
+}

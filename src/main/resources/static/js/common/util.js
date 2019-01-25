@@ -158,13 +158,10 @@ layui.use(['laypage', 'layer','laydate','form', 'table'], function () {
         }
     });
     laydate.render({
-        elem: '#createDate' //指定元素
+        elem: '#start_createDate' //指定元素
     });
     laydate.render({
-        elem: '#startCreateDate' //指定元素
-    });
-    laydate.render({
-        elem: '#endCreateDate' //指定元素
+        elem: '#end_createDate' //指定元素
     });
     //提示
     var msg = $("#msg").val();

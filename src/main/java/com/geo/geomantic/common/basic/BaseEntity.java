@@ -38,6 +38,8 @@ public abstract class BaseEntity implements Serializable {
     protected int pageSize; // 页面大小，设置为“-1”表示不进行分页（分页无效）
     protected String orderBy; // 排序sql，例如：a.create_date desc
 
+    protected String userName;	//用于接收用户中文名
+
     /**
      * 自定义SQL（SQL标识，SQL内容）
      */
@@ -152,5 +154,13 @@ public abstract class BaseEntity implements Serializable {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

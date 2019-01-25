@@ -36,15 +36,12 @@
 						</div>
 				</div>
 				<div class="form-group">
-					<label class="bg-form-label">创建时间：</label>
+					<label  for="state" class="bg-form-label">状态：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.startCreateDate}">
-					</div>
-					<div class="layui-input-inline bg-cent">
-						<span> ~</span>
-					</div>
-					<div class="layui-input-inline">
-						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.endCreateDate}">
+						<select id="state" name="state" lay-verify="required">
+							<option value="">请选择</option>
+							<option adds:dict="getSelect:state, ${product.state}"></option>
+						</select>
 					</div>
 				</div>
 			</div>
@@ -56,19 +53,36 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label  for="state" class="bg-form-label">状态：</label>
+					<label for="createBy" class="bg-form-label">已购人数：</label>
 					<div class="layui-input-inline">
-						<select id="state" name="state" lay-verify="required">
-							<option value="">请选择</option>
-							<option adds:dict="getSelect:state, ${product.state}"></option>
-						</select>
+						<input id="buyNum" type="text" name="buyNum" maxlength="4" class="layui-input"  th:value="${product.buyNum}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="createBy" class="bg-form-label">创建人：</label>
+					<label for="createBy" class="bg-form-label">浏览量：</label>
 						<div class="layui-input-inline">
-							<input id="createBy" type="text" name="createBy" maxlength="4" class="layui-input"  th:value="${product.createBy}">
+							<input id="pageView" type="text" name="pageView" maxlength="4" class="layui-input"  th:value="${product.pageView}">
 						</div>
+				</div>
+			</div>
+			<div class="layui-row">
+				<div class="form-group">
+					<label for="stackSize" class="bg-form-label">创建人：</label>
+					<div class="layui-input-inline">
+						<input id="createBy" type="text" name="createBy" maxlength="11" class="layui-input"  th:value="${product.createBy}">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="bg-form-label">创建时间：</label>
+					<div class="layui-input-inline">
+						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.startCreateDate}">
+					</div>
+					<div class="layui-input-inline bg-cent">
+						<span> ~</span>
+					</div>
+					<div class="layui-input-inline">
+						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.endCreateDate}">
+					</div>
 				</div>
 			</div>
         </div>

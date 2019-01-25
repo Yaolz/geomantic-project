@@ -9,7 +9,7 @@
 		a.sub_title AS "subTitle",
 		a.content AS "content",
 		a.create_by AS "createBy",
-		u.nick_name AS "nickName",
+		u.nick_name AS "userName",
 		a.create_date AS "createDate",
 		a.update_date AS "updateDate"
 	</sql>
@@ -40,8 +40,8 @@
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by = #{createBy}
 			</if>
-			<if test="nickName != null and nickName != ''">
-				AND u.nick_name like concat('%', #{nickName},'%')
+			<if test="userName != null and userName != ''">
+				AND u.nick_name like concat('%', #{userName},'%')
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}
