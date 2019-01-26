@@ -31,19 +31,19 @@
                 <div class="form-group">
                     <label for="phone" class="bg-form-label">手机号：</label>
                     <div class="layui-input-inline">
-                        <input id="phone" type="text" name="phone" maxlength="11" class="layui-input" th:value="${user.phone}">
+                        <input id="phone" type="text" name="phone" maxlength="11" class="layui-input" th:value="${user.phone}" lay-verify = "phone">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="bg-form-label">创建时间：</label>
                     <div class="layui-input-inline">
-                        <input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.startCreateDate}">
+                        <input type="text" name="startCreateDate"  id="startCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.startCreateDate}">
                     </div>
                     <div class="layui-input-inline bg-cent">
                         <span> ~</span>
                     </div>
                     <div class="layui-input-inline">
-                        <input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.endCreateDate}">
+                        <input type="text" name="endCreateDate"   id="endCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${user.endCreateDate}">
                     </div>
                 </div>
             </div>

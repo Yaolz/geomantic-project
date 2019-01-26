@@ -12,16 +12,19 @@
 		a.page_view AS "pageView",
 		a.state AS "state",
 		a.create_by AS "createBy",
+		u.nick_name AS "createName",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy",
+		s.nick_name AS "updateName",
 		a.update_date AS "updateDate"
 	</sql>
 	
 	<sql id="taskJoins">
+		  INNER JOIN s_user u ON a.create_by = u.id) INNER JOIN s_user s ON a.update_by = s.id
 	</sql>
 	
 	<sql id="listOrCountSql">
-		FROM t_task a
+		FROM (t_task a
 		<include refid="taskJoins"/>
 		<where>
 			<if test="id != null and id != ''">

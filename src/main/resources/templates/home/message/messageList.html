@@ -41,13 +41,13 @@
 					<div class="form-group">
 						<label class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.startCreateDate}">
+							<input type="text" name="startCreateDate"  id="startCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.startCreateDate}">
 						</div>
 						<div class="layui-input-inline bg-cent">
 							<span> ~</span>
 						</div>
 						<div class="layui-input-inline">
-							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.endCreateDate}">
+							<input type="text" name="endCreateDate"   id="endCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${message.endCreateDate}">
 						</div>
 					</div>
 				</div>
@@ -57,8 +57,8 @@
         <table class="layui-table  bg-table"  lay-filter="table-data">
             <thead>
 			<tr>
-				<th  lay-data="{field:'userBy',width:100}">被留言用户</th>
-				<th  lay-data="{field:'createBy',width:100}">创建用户</th>
+				<th  lay-data="{field:'userName',width:100}">被留言用户</th>
+				<th  lay-data="{field:'createName',width:100}">创建用户</th>
 				<th  lay-data="{field:'createDate'}">创建时间</th>
 				<th  lay-data="{field:'message'}">用户反馈内容</th>
 				<th  lay-data="{field:'state',width:60}">状态</th>
@@ -67,9 +67,9 @@
             </thead>
             <tbody>
 			<tr th:each="message : ${page.list}">
-							<td  th:text="${message.userBy}"></td>
+							<td  th:text="${message.userName}"></td>
 
-							<td  th:text="${message.createBy}"></td>
+							<td  th:text="${message.createName}"></td>
 
 							<td th:text="${#dates.format(message.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
@@ -79,7 +79,6 @@
 
 				<td>
 					<div class="layui-btn-group">
-						<a class="layui-btn  layui-btn-sm" th:href="@{'/page/message/form?id=' + ${message.id}}" >修改</a>
 						<a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/message/delete?id=' + ${message.id}}">删除</a>
 					</div>
 				</td>

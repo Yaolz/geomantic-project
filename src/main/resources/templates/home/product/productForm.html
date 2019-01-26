@@ -51,7 +51,7 @@
 			<div class="layui-form-item">
 				<label for="price" class="layui-form-label"><span class="layui-badge-dot"></span>商品价格</label>
 				<div class="layui-input-block">
-					<input id="price" type="text" name="price"  lay-verify="required"  placeholder="请输入商品价格" autocomplete="off"
+					<input id="price" type="text" name="price"  lay-verify="required|price"  placeholder="请输入商品价格" autocomplete="off"
                        th:value="${product.price}" class="layui-input" />
 				</div>
 			</div>
@@ -66,21 +66,21 @@
 				<label for="buyNum" class="layui-form-label"><span class="layui-badge-dot"></span>已购人数</label>
 				<div class="layui-input-block">
 					<input id="buyNum" type="text" name="buyNum"  maxlength="11"   placeholder="请输入已购人数" autocomplete="off"
-                       th:value="${product.buyNum}" class="layui-input" />
+                       th:value="${product.buyNum}" class="layui-input"  lay-verify = "number"/>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label for="pageView" class="layui-form-label"><span class="layui-badge-dot"></span>浏览量</label>
 				<div class="layui-input-block">
 					<input id="pageView" type="text" name="pageView"  maxlength="11"   placeholder="请输入浏览量" autocomplete="off"
-                       th:value="${product.pageView}" class="layui-input" />
+                       th:value="${product.pageView}" class="layui-input" lay-verify = "number"/>
 				</div>
 			</div>
 			<div class="layui-form-item">
 				<label for="stackSize" class="layui-form-label"><span class="layui-badge-dot"></span>库存量</label>
 				<div class="layui-input-block">
 					<input id="stackSize" type="text" name="stackSize"  maxlength="11"   placeholder="请输入库存量" autocomplete="off"
-                       th:value="${product.stackSize}" class="layui-input" />
+                       th:value="${product.stackSize}" class="layui-input" lay-verify = "required|number"/>
 				</div>
 			</div>
 			<div class="form-group bg-form">

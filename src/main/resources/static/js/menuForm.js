@@ -4,6 +4,7 @@
 layui.use(['form', 'layedit', 'iconPicker'], function () {
     var form = layui.form;
     var icon = layui.iconPicker;
+    var  $ = layui.jquery;
 
     icon.render({
         // 选择器，推荐使用input
@@ -45,5 +46,4 @@ layui.use(['form', 'layedit', 'iconPicker'], function () {
     form.on('submit(inputForm)', function (data) {
         $("#inputForm").submit();
     });
-
 });

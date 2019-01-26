@@ -140,6 +140,11 @@ layui.use(['laypage', 'layer','laydate','form', 'table'], function () {
     //转换静态表格
     table.init('table-data', {});
 
+    form.verify({
+        number: [/^[0-9]*$/, '只能输入数字！'],
+        price:[/^[1-9]\d*(\.\d{1,2})?$|^[0]\.\d{1,2}$/g,'请输入有效价格！']
+    })
+
     //分页组件
     laypage.render({
         elem: 'paging' //注意，这里的 paging 是 ID，不用加 # 号
@@ -158,10 +163,10 @@ layui.use(['laypage', 'layer','laydate','form', 'table'], function () {
         }
     });
     laydate.render({
-        elem: '#start_createDate' //指定元素
+        elem: '#startCreateDate' //指定元素
     });
     laydate.render({
-        elem: '#end_createDate' //指定元素
+        elem: '#endCreateDate' //指定元素
     });
     //提示
     var msg = $("#msg").val();

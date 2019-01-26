@@ -67,7 +67,7 @@ public class MenuController {
 //            User user = (User) session.getAttribute("user");
 //        }
         PageInfo<Menu> menuDate=menuService.findPage(menu);
-        return new MsgModel("0000", "查询成功！", menuDate.getList(), menuDate.getTotal());
+        return new MsgModel("0000", "查询成功！", menuDate.getList());
     }
     
     @PostMapping("sortUp")

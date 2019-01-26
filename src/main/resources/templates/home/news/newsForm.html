@@ -22,7 +22,7 @@
 						<button type="button" class="layui-btn" id="checkImg"><i class="layui-icon">&#xe67c;</i>封面图</button>
 					</label>
 					<div class="layui-upload-list">
-						<img class="layui-upload-img " id="photo" width="200" height="150" th:src="@{${news.photo}}">
+						<img id="photo" width="200" height="150" th:src="@{${news.photo}}">
 						<p id="demoText"></p>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 			<div class="layui-form-item">
 				<label for="content" class="layui-form-label"><span class="layui-badge-dot"></span>资讯内容</label>
 				<div class="layui-input-block">
-					<textarea placeholder="请输入资讯内容" id="content" name="content" class="layui-textarea" th:text="${news.content}" lay-verify="required"  ></textarea>
+					<textarea placeholder="请输入资讯内容" id="content" name="content" class="layui-textarea" th:text="${news.content}" lay-verify="content"  ></textarea>
 					</div>
 			</div>
 

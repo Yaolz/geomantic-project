@@ -17,13 +17,6 @@
     <form class="layui-form" id="inputForm" action="/page/order/save">
         <input type="hidden" name="id" th:value="${order.id}"/>
 			<div class="layui-form-item">
-				<label for="productId" class="layui-form-label"><span class="layui-badge-dot"></span>订单id</label>
-				<div class="layui-input-block">
-					<input id="productId" type="text" name="productId"  maxlength="11" lay-verify="required"  placeholder="请输入订单id" autocomplete="off"
-                       th:value="${order.productId}" class="layui-input" />
-				</div>
-			</div>
-			<div class="layui-form-item">
 				<label for="orderNo" class="layui-form-label"><span class="layui-badge-dot"></span>订单号</label>
 				<div class="layui-input-block">
 					<input id="orderNo" type="text" name="orderNo"  maxlength="50" lay-verify="required"  placeholder="请输入订单号" autocomplete="off"

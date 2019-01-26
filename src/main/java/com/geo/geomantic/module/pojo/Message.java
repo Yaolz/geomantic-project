@@ -17,6 +17,7 @@ public class Message extends BaseEntity {
 	private String userBy;		// 被留言用户id
 	private String message;		// 用户反馈内容
 	private String state;		// 激活
+	private String userName;// 被留言用户昵称
 
 
 	private String startCreateDate;
@@ -73,4 +74,11 @@ public class Message extends BaseEntity {
 		this.endCreateDate = endCreateDate;
 	}
 
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 }

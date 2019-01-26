@@ -32,13 +32,13 @@
 				<div class="form-group">
 					<label for="price" class="bg-form-label">价格：</label>
 						<div class="layui-input-inline">
-							<input id="price" type="text" name="price" maxlength="0" class="layui-input"  th:value="${product.price}">
+							<input id="price" type="text" name="price"  class="layui-input" lay-verify="required|price"  th:value="${product.price}">
 						</div>
 				</div>
 				<div class="form-group">
 					<label  for="state" class="bg-form-label">状态：</label>
 					<div class="layui-input-inline">
-						<select id="state" name="state" lay-verify="required">
+						<select id="state" name="state">
 							<option value="">请选择</option>
 							<option adds:dict="getSelect:state, ${product.state}"></option>
 						</select>
@@ -49,39 +49,39 @@
 				<div class="form-group">
 					<label for="stackSize" class="bg-form-label">库存量：</label>
 					<div class="layui-input-inline">
-						<input id="stackSize" type="text" name="stackSize" maxlength="11" class="layui-input"  th:value="${product.stackSize}">
+						<input id="stackSize" type="text" name="stackSize" maxlength="11" class="layui-input"  lay-verify = "number" th:value="${product.stackSize}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="createBy" class="bg-form-label">已购人数：</label>
+					<label for="buyNum" class="bg-form-label">已购人数：</label>
 					<div class="layui-input-inline">
-						<input id="buyNum" type="text" name="buyNum" maxlength="4" class="layui-input"  th:value="${product.buyNum}">
+						<input id="buyNum" type="text" name="buyNum" maxlength="4" class="layui-input"  lay-verify = "number" th:value="${product.buyNum}">
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="createBy" class="bg-form-label">浏览量：</label>
+					<label for="pageView" class="bg-form-label">浏览量：</label>
 						<div class="layui-input-inline">
-							<input id="pageView" type="text" name="pageView" maxlength="4" class="layui-input"  th:value="${product.pageView}">
+							<input id="pageView" type="text" name="pageView" maxlength="4" class="layui-input" lay-verify = "number"  th:value="${product.pageView}">
 						</div>
 				</div>
 			</div>
 			<div class="layui-row">
 				<div class="form-group">
-					<label for="stackSize" class="bg-form-label">创建人：</label>
+					<label for="createBy" class="bg-form-label">创建人：</label>
 					<div class="layui-input-inline">
-						<input id="createBy" type="text" name="createBy" maxlength="11" class="layui-input"  th:value="${product.createBy}">
+						<input id="createBy" type="text" name="createName" maxlength="11" class="layui-input"  th:value="${product.createName}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="bg-form-label">创建时间：</label>
 					<div class="layui-input-inline">
-						<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.startCreateDate}">
+						<input type="text" name="startCreateDate"  id="startCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.startCreateDate}">
 					</div>
 					<div class="layui-input-inline bg-cent">
 						<span> ~</span>
 					</div>
 					<div class="layui-input-inline">
-						<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.endCreateDate}">
+						<input type="text" name="endCreateDate"   id="endCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input"  th:value="${product.endCreateDate}">
 					</div>
 				</div>
 			</div>
@@ -99,9 +99,9 @@
 				<th lay-data="{field:'pageView',width:100}">浏览量</th>
 				<th lay-data="{field:'stackSize',width:100}">库存量</th>
 				<th lay-data="{field:'state',width:60}">状态</th>
-				<th lay-data="{field:'createBy',width:100}">创建人</th>
+				<th lay-data="{field:'createName',width:100}">创建人</th>
 				<th lay-data="{field:'createDate',width:160}">创建时间</th>
-				<th lay-data="{field:'updateBy',width:100}">修改人</th>
+				<th lay-data="{field:'updateName',width:100}">修改人</th>
 				<th lay-data="{field:'updateDate',width:160}">修改时间</th>
 				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
 			</tr>
@@ -124,17 +124,17 @@
 
 							<td adds:dict="getLabel:state,${product.state}"></td>
 
-							<td  th:text="${product.createBy}"></td>
+							<td  th:text="${product.createName}"></td>
 
 							<td th:text="${#dates.format(product.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
-							<td  th:text="${product.updateBy}"></td>
+							<td  th:text="${product.updateName}"></td>
 
 							<td th:text="${#dates.format(product.updateDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 
 				<td>
 					<div class="layui-btn-group">
-						<a class="layui-btn layui-btn-sm">预览</a>
+						<a class="layui-btn layui-btn-sm">详情</a>
 						<a class="layui-btn layui-btn-sm" th:href="@{'/page/product/form?id=' + ${product.id}}">修改</a>
 						<a class="layui-btn layui-btn-danger layui-btn-sm" th:href="@{'/page/product/delete?id=' + ${product.id}}">删除</a>
 					</div>

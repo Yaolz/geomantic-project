@@ -32,19 +32,19 @@
 					<div class="form-group">
 						<label for="createBy" class="bg-form-label">创建人：</label>
 							<div class="layui-input-inline">
-								<input id="createBy" type="text" name="userName" maxlength="11" class="layui-input" th:value="${news.userName}">
+								<input id="createBy" type="text" name="createName" maxlength="11" class="layui-input" th:value="${news.createName}">
 							</div>
 					</div>
 					<div class="form-group">
 						<label class="bg-form-label">创建时间：</label>
 						<div class="layui-input-inline">
-							<input type="text" name="start_createDate"  id="start_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.startCreateDate}">
+							<input type="text" name="startCreateDate"  id="startCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.startCreateDate}">
 						</div>
 						<div class="layui-input-inline bg-cent">
 							<span> ~</span>
 						</div>
 						<div class="layui-input-inline">
-							<input type="text" name="end_createDate"   id="end_createDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.endCreateDate}">
+							<input type="text" name="endCreateDate"   id="endCreateDate" lay-verify="required" placeholder="yyyy-MM-dd"  class="layui-input" th:value="${news.endCreateDate}">
 						</div>
 					</div>
 				</div>
@@ -57,7 +57,7 @@
 				<th lay-data="{field:'photo',width:100}">图片</th>
 				<th lay-data="{field:'infoTitle',width:120}">标题</th>
 				<th lay-data="{field:'subTitle'}">副标题</th>
-				<th lay-data="{field:'userName',width:120}">创建人</th>
+				<th lay-data="{field:'createName',width:120}">创建人</th>
 				<th lay-data="{field:'createDate',width:160}">创建时间</th>
 				<th lay-data="{field:'updateDate',width:160}">修改时间</th>
 				<th lay-data="{field:'operation', align: 'center',width: 180,fixed: 'right'}">操作</th>
@@ -71,7 +71,7 @@
 
 							<td  th:text="${news.subTitle}"></td>
 
-							<td  th:text="${news.userName}"></td>
+							<td  th:text="${news.createName}"></td>
 
 							<td th:text="${#dates.format(news.createDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
 

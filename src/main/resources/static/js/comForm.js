@@ -20,7 +20,12 @@ layui.use(['form', 'layedit','upload'], function () {
         pro_imgs: function (value) {
             if(value==null||value==''){
                 return '请选择商品详情图！';
-        }
+            }
+        },
+        content:function (value) {
+            if (value == null || value == '') {
+                return '请输入资讯内容！';
+            }
         },
         number: [/^[0-9]*$/, '只能输入数字！'],
         price:[/^[1-9]\d*(\.\d{1,2})?$|^[0]\.\d{1,2}$/g,'请输入有效价格！']
@@ -30,12 +35,12 @@ layui.use(['form', 'layedit','upload'], function () {
     form.on('submit(inputForm)', function(data){
         $("#inputForm").submit();
     });
-    window.resetForm= function() {
-        alert(1)
-        // document.getElementById("inputForm").reset();//js 重置
-        $('#inputForm')[0].reset();
-        form.render();
-    };
+    // window.resetForm= function() {
+    //     alert(1)
+    //     // document.getElementById("inputForm").reset();//js 重置
+    //     $('#inputForm')[0].reset();
+    //     form.render();
+    // };
     //上传封面图
     var uploadInst = upload.render({
         elem: '#checkImg'

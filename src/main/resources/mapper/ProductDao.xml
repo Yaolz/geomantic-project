@@ -14,16 +14,19 @@
 		a.stack_size AS "stackSize",
 		a.state AS "state",
 		a.create_by AS "createBy",
+		u.nick_name AS "createName",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy",
+		s.nick_name AS "updateName",
 		a.update_date AS "updateDate"
 	</sql>
 	
 	<sql id="productJoins">
+		INNER JOIN s_user u ON a.create_by = u.id) INNER JOIN s_user s ON a.update_by = s.id
 	</sql>
 	
 	<sql id="listOrCountSql">
-		FROM t_product a
+		FROM (t_product a
 		<include refid="productJoins"/>
 		<where>
 			<if test="id != null and id != ''">
@@ -58,6 +61,9 @@
 			</if>
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by = #{createBy}
+			</if>
+			<if test="createName != null and createName != ''">
+				AND u.nick_name like concat('%', #{createName},'%')
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}

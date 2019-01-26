@@ -4,18 +4,19 @@
 	
 	<sql id="messageColumns">
 		a.id AS "id",
-		(SELECT nick_name from s_user where id = a.user_by) AS "userBy",
-		(SELECT nick_name from s_user where id = a.create_by) AS "createBy",
+		u.nick_name AS "userName",
+		s.nick_name AS "createName",
 		a.create_date AS "createDate",
 		a.message AS "message",
 		a.state AS "state"
 	</sql>
 	
 	<sql id="messageJoins">
+		INNER JOIN s_user u on a.create_by = u.id) INNER JOIN s_user s ON a.user_by = s.id
 	</sql>
 	
 	<sql id="listOrCountSql">
-		FROM t_message a
+		FROM (t_message a
 		<include refid="messageJoins"/>
 		<where>
 			<if test="id != null and id != ''">
@@ -26,6 +27,9 @@
 			</if>
 			<if test="createBy != null and createBy != ''">
 				AND a.create_by in (select  id from s_user where  nick_name LIKE concat('%',#{createBy},'%'))
+			</if>
+			<if test="createName != null and createName != ''">
+				AND u.nick_name like concat('%', #{createName},'%')
 			</if>
 			<if test="startCreateDate != null and startCreateDate != '' and endCreateDate != null and endCreateDate != ''">
 				AND a.create_date between #{startCreateDate} and #{endCreateDate}
