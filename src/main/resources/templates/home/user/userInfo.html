@@ -75,15 +75,24 @@
                 </select>
             </div>
         </div>-->
-        <div class="layui-form-item">
+        <!--<div class="layui-form-item">
             <label class="layui-form-label">文本输出</label>
             <div class="layui-input-block">
-                <!--getLabel（必填）；state字典表类型（必填）；${user.state}（必填），例如，${user.state}=1，1代表激活，如果字典表有对应的值，则输出激活-->
+                &lt;!&ndash;getLabel（必填）；state字典表类型（必填）；${user.state}（必填），例如，${user.state}=1，1代表激活，如果字典表有对应的值，则输出激活&ndash;&gt;
                 <span adds:dict="getLabel:state,${user.state}"></span>
             </div>
             <div class="layui-input-block">
-                <!--根据用户id输出用户名称，getNameById，getPhoneById-->
+                &lt;!&ndash;根据用户id输出用户名称，getNameById，getPhoneById&ndash;&gt;
                 <span adds:dict="getNameById:${user.id}"></span>
+            </div>
+        </div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">地区</label>
+            <div class="layui-input-block" data-toggle="distpicker">
+                <!--layui内部默认把select给重写了，暂时只有使用原始的select才能联动-->
+                <select name="province" id="province" lay-ignore></select>
+                <select name="city" id="city" lay-ignore></select>
+                <select name="district" id="district" lay-ignore></select>
             </div>
         </div>
         <div class="layui-form-item">
@@ -95,5 +104,22 @@
 </body>
 <script th:src="@{/js/jquery/jquery.min.js}"></script>
 <script th:src="@{/layui/layui.js}"></script>
+<script th:src="@{/distpicter/distpicker.data.js}"></script>
+<script th:src="@{/distpicter/distpicker.js}"></script>
 <!--<script th:src="@{/js/user.js}"></script>-->
+<!--<script>
+    layui.use('form', function(){
+        var form = layui.form;
+
+        form.render('select'); //刷新select选择框渲染
+
+        // form.render(null, 'city'); //更新 lay-filter="city" 所在容器内的全部表单状态
+        form.on('select', function(data){
+            console.log(data.elem); //得到select原始DOM对象
+            console.log(data.value); //得到被选中的值
+            console.log(data.othis); //得到美化后的DOM对象
+            form.render('select'); //刷新select选择框渲染
+        });
+    });
+</script>-->
 </html>
