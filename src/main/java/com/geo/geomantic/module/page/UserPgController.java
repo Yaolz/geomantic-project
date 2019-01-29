@@ -2,6 +2,7 @@ package com.geo.geomantic.module.page;
 
 import com.geo.geomantic.common.basic.BaseController;
 import com.geo.geomantic.common.utils.SecretUtils;
+import com.geo.geomantic.common.web.UserShiroInfoChange;
 import com.geo.geomantic.module.pojo.User;
 import com.geo.geomantic.module.service.UserService;
 import com.github.pagehelper.PageInfo;
@@ -71,6 +72,26 @@ public class UserPgController extends BaseController{
         redirectAttributes.addFlashAttribute("msg", "保存成功！");
         userService.save(user);
         return "redirect:/page/user";
+    }
+
+    @RequestMapping("saveInfo")
+    public String saveInfo(User user, Model model, RedirectAttributes redirectAttributes) {
+        if (StringUtils.isBlank(user.getId())) {
+            User userQuery = new User();
+            userQuery.setPhone(user.getPhone());
+            Object object = userService.get(userQuery);
+            if (object != null) {
+                model.addAttribute("msg", "手机号已经存在");
+                return form(user, model);
+            }
+        }
+        user.setCreateBy(getUserInfo().getId());
+        user.setUpdateBy(getUserInfo().getId());
+        redirectAttributes.addFlashAttribute("msg", "保存成功！");
+        userService.save(user);
+        //        更新当前用户的shiro的信息
+        UserShiroInfoChange.updateUser(user);
+        return "redirect:/page/user/userInfo";
     }
 
     @RequestMapping("delete")
