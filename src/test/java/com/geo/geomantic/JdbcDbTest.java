@@ -50,6 +50,7 @@ public class JdbcDbTest {
             System.out.println("test2");
             System.out.println("TEST3");
             System.out.println("test4");
+            System.out.println("test５");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
