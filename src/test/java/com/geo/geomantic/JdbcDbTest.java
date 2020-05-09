@@ -47,6 +47,7 @@ public class JdbcDbTest {
                 stmt.execute();
             }
             System.out.println("TEST1");
+            System.out.println("test2");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
