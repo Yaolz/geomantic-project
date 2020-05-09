@@ -46,11 +46,6 @@ public class JdbcDbTest {
                 stmt.setDate(3, new Date(System.currentTimeMillis()));
                 stmt.execute();
             }
-            System.out.println("TEST1");
-            System.out.println("test2");
-            System.out.println("TEST3");
-            System.out.println("test4");
-            System.out.println("test５");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
